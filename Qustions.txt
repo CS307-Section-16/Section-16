@@ -1,0 +1,98 @@
+JAVA
+
+1.	Why would you use a private constructor?
+	A.	If you want to disallow all instantiation of that class from outside that class
+	B.	If you want only child objects to inherit values of the class	
+	C.	If you want to allow access from all outside classes
+	D.	Because public constructors are too mainstream
+	CORRECT: A
+	
+2.	...........
+	if(a == b){
+		if(c != d){
+			e = f;
+		if(e == f){
+			System.out.println("E = F!!!!!");
+		}
+	}
+	...........
+	What is wrong with the above code?
+	A.	There is no closing bracket for the first if-statement (line 1)
+	B.	There is no closing bracket for the second nested if-statement (line 4)
+	C.	There is no closing bracket for the first nested if-statement (line 2)
+	D.	Nothing. The code is correct.
+	CORRECT: C
+	
+3.	Which of these is not a primitive data type in Java?
+	A. int
+	B. String
+	C. byte
+	D. char
+	CORRECT: B
+	
+4.	..........
+	int a[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	for(int i = 10; i > 0; i--){
+		System.out.print(a[i] + " ");
+	}
+	..........
+	What is printed in the above code?
+	A. 0 1 2 3 4 5 6 7 8 9
+	B. 9 8 7 6 5 4 3 2 1 0
+	C. 10 9 8 7 6 5 4 3 2 1
+	D. The program crashes.
+	CORRECT: D
+	
+5.	..........
+	int x, y, z;
+	y = 1;
+	z = 5;
+	x = 0 - (++y) + z++;
+	..........
+	What are the values of x, y, and z after this code executes?
+	A. x = 4, y = 2, z = 6
+	B. x = 4, y = 1, z = 5
+	C. x = 3, y = 2, z = 6
+	D. x = -7, y = 1, z = 5
+	CORECT: C
+	
+6.	..........
+	int a = 1;
+	long b = 2;
+	float c = 3.0f;
+	double d = 4.0;
+	..........
+	Which of the following commands is illegal?
+	A. b = a
+	B. c = d
+	C. d = a
+	D. c = b
+	CORRECT: B
+	
+7.	Which of the following is true about an abstract method inherited into a class Apple
+	A. It must be defined in Apple before Apple can be instantiated.
+	B. It always forces Apple to become abstract.
+	C. Both a and b.
+	D. Neither a nor b.
+	CORRECT: A
+	
+8.	Suppose the class Undergraduate extends the class Student which extends the class Person.
+	Given the following variable declaration:
+	..........
+	Person p = new Person();
+	Student s = new Student();
+	Undergraduate ug = new Undergraduate();
+	..........
+	Which of the following assignments are legal?
+	I. p = ug;
+	II. p = new Undergraduate();
+	III. ug = new Student();
+	IV. ug = p;
+	V. s = new Person();
+	
+	A. III and IV
+	B. I and IV
+	C. I and II
+	D. II, III, and V
+	CORRECT: C
+	

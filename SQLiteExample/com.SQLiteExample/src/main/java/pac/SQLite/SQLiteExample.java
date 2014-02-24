@@ -51,7 +51,7 @@ public class SQLiteExample extends Activity {
         Linear.addView(t4);
         Toast.makeText(getApplicationContext(), "Showing table values after updation.", Toast.LENGTH_SHORT).show();
         showTableValues();
-        deleteValues();
+        deleteValues(3);
         TextView t5 = new TextView(this);
         t5.setText("Deleting table values..........");
         Linear.addView(t5);
@@ -59,6 +59,9 @@ public class SQLiteExample extends Activity {
         TextView t6 = new TextView(this);
         t6.setText("Showing table values after deletion.........");
         Linear.addView(t6);
+        deleteValues(1);
+        insertOneIntoTable("Carlos","Mexico");
+        insertOneIntoTable("Cameron","Purdue");
         Toast.makeText(getApplicationContext(), "Showing table values after deletion.", Toast.LENGTH_SHORT).show();
         showTableValues();
         setColor(t0);
@@ -87,6 +90,16 @@ public class SQLiteExample extends Activity {
         }
     }
     // THIS FUNCTION INSERTS DATA TO THE DATABASE
+    public void insertOneIntoTable(String name, String place){
+        try{
+            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('"+name+"','"+place+"')");
+            mydb.close();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
+        }
+    }
+
     public void insertIntoTable(){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
@@ -105,7 +118,7 @@ public class SQLiteExample extends Activity {
     public void showTableValues(){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            Cursor allrows  = mydb.rawQuery("SELECT * FROM "+  TABLE, null);
+            Cursor allrows  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " ORDER BY NAME DESC", null);
             System.out.println("COUNT : " + allrows.getCount());
             Integer cindex = allrows.getColumnIndex("NAME");
             Integer cindex1 = allrows.getColumnIndex("PLACE");
@@ -170,10 +183,10 @@ public class SQLiteExample extends Activity {
         }
     }
     // THIS FUNCTION DELETES VALUES FROM THE DATABASE ACCORDING TO THE CONDITION
-    public void deleteValues(){
+    public void deleteValues(int id){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("DELETE FROM " + TABLE + " WHERE PLACE = 'USA'");
+            mydb.execSQL("DELETE FROM " + TABLE + " WHERE ID = "+id);
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error encountered while deleting.", Toast.LENGTH_LONG);
