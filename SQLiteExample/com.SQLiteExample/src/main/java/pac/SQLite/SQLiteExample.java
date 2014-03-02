@@ -9,8 +9,12 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 class Question{
+
     String question;
     String answer_A;
     String answer_B;
@@ -19,11 +23,15 @@ class Question{
     char correct;
     int used;
     int difficulty;
+    String hint;
+
+    public Question(){}
 }
 public class SQLiteExample extends Activity {
 
     LinearLayout Linear;
     SQLiteDatabase mydb;
+    Question q_array[];
     private static String DBNAME = "PERSONS.db";    // THIS IS THE SQLITE DATABASE FILE NAME.
     private static String TABLE = "MY_TABLE";       // THIS IS THE TABLE NAME
 
@@ -37,50 +45,59 @@ public class SQLiteExample extends Activity {
 
         dropTable();        // DROPPING THE TABLE.
         createTable();
-        //TextView t0 = new TextView(this);
-        //t0.setText("This tutorial covers CREATION, INSERTION, UPDATION AND DELETION USING SQLITE DATABASES.                                                Creating table complete........");
-        //Linear.addView(t0);
-        //Toast.makeText(getApplicationContext(), "Creating table complete.", Toast.LENGTH_SHORT).show();
-        //insertIntoTable();
-        //TextView t1 = new TextView(this);
-        //t1.setText("Insert into table complete........");
-        //Linear.addView(t1);
-        //Toast.makeText(getApplicationContext(), "Insert into table complete", Toast.LENGTH_SHORT).show();
-        //TextView t2 = new TextView(this);
-        //t2.setText("Showing table values............");
-        //Linear.addView(t2);
-        //showTableValues();
-        //Toast.makeText(getApplicationContext(), "Showing table values", Toast.LENGTH_SHORT).show();
-        //updateTable();
-        //TextView t3 = new TextView(this);
-        //t3.setText("Updating table values............");
-        //Linear.addView(t3);
-        //Toast.makeText(getApplicationContext(), "Updating table values", Toast.LENGTH_SHORT).show();
-        //TextView t4 = new TextView(this);
-        //t4.setText("Showing table values after updation..........");
-        //Linear.addView(t4);
-        //Toast.makeText(getApplicationContext(), "Showing table values after updation.", Toast.LENGTH_SHORT).show();
-        //showTableValues();
-        //deleteValues(3);
-        //TextView t5 = new TextView(this);
-        //t5.setText("Deleting table values..........");
-        //Linear.addView(t5);
-        //Toast.makeText(getApplicationContext(), "Deleting table values", Toast.LENGTH_SHORT).show();
-        //TextView t6 = new TextView(this);
-        //t6.setText("Showing table values after deletion.........");
-        //Linear.addView(t6);
-        //deleteValues(1);
-        Question q = new Question();
-        q.question = "What is 5 + 5?";
-        q.answer_A = "1";
-        q.answer_B = "3";
-        q.answer_C = "432";
-        q.answer_D = "10";
-        q.correct = 'D';
-        q.used = 0;
-        q.difficulty = 1;
 
-        insertOneIntoTable(q);
+        q_array = new Question[100];
+
+        q_array[0] = new Question();
+        q_array[1] = new Question();
+        q_array[2] = new Question();
+        q_array[3] = new Question();
+        
+        q_array[0].question = "Wy would you use a private constructor?";
+        q_array[0].answer_A = "If you want to disallow all instantiation of that class from outside that class";
+        q_array[0].answer_B = "If you want only child objects to inherit values of the class";
+        q_array[0].answer_C = "If you want to allow access from all outside classes";
+        q_array[0].answer_D = "Because public constructors are too mainstream";
+        q_array[0].correct = 'A';
+        q_array[0].used = 0;
+        q_array[0].difficulty = 1;
+        q_array[0].hint = "Not D";
+        
+        q_array[1].question = "..........\n" +
+                "if(a == b){\n" +
+                "\tif(c != d){\n" +
+                "\t\te = f;\n" +
+                "\tif(e == f){\n" +
+                "\t\tSystem.out.println(\"E = F!!!!!\");\n" +
+                "\t}\n" +
+                "}\n" +
+                ".......... \n +" +
+                "What is wrong with the above code?";
+        q_array[1].answer_A = "There is no closing bracket for the first if-statement (line 1)";
+        q_array[1].answer_B = "There is no closing bracket for the second nested if-statement (line 4)";
+        q_array[1].answer_C = "There is no closing bracket for the first nested if-statement (line 2)";
+        q_array[1].answer_D = "Nothing. The code is correct.";
+        q_array[1].correct = 'C';
+        q_array[1].used = 0;
+        q_array[1].difficulty = 1;
+        q_array[1].hint = "Not A";
+
+
+        q_array[2].question = "Which of these is not a primitive data type in Java?";
+        q_array[2].answer_A = "int";
+        q_array[2].answer_B = "String";
+        q_array[2].answer_C = "byte";
+        q_array[2].answer_D = "char";
+        q_array[2].correct = 'B';
+        q_array[2].used = 0;
+        q_array[2].difficulty = 1;
+        q_array[2].hint = "Not A";
+
+
+        insertAllIntoTable(q_array);
+
+
+        q_array[3] = retrieveQuestion();
         //insertOneIntoTable("Cameron", "Purdue");
         //Toast.makeText(getApplicationContext(), "Showing table values after deletion.", Toast.LENGTH_SHORT).show();
         showTableValues();
@@ -103,7 +120,7 @@ public class SQLiteExample extends Activity {
     public void createTable(){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("CREATE TABLE IF  NOT EXISTS "+ TABLE +" (ID INTEGER PRIMARY KEY, QUESTION TEXT, ANSWER_A TEXT, ANSWER_B TEXT, ANSWER_C TEXT, ANSWER_D TEXT, CORRECT CHARACTER, USED INTEGER, DIFFICULTY INTEGER );");
+            mydb.execSQL("CREATE TABLE IF  NOT EXISTS "+ TABLE +" (ID INTEGER PRIMARY KEY, QUESTION TEXT, ANSWER_A TEXT, ANSWER_B TEXT, ANSWER_C TEXT, ANSWER_D TEXT, CORRECT CHARACTER, USED INTEGER, DIFFICULTY INTEGER, HINT TEXT );");
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error in creating table", Toast.LENGTH_LONG);
@@ -113,23 +130,46 @@ public class SQLiteExample extends Activity {
     public void insertOneIntoTable(Question q){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY)" +
-                    " VALUES('"+q.question+"','"+q.answer_A+"','"+q.answer_B+"','"+q.answer_C+"','"+q.answer_D+"','"+q.correct+"','"+q.used+"','"+q.difficulty+"')");
+            mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY, HINT)" +
+                    " VALUES('"+q.question+"','"+q.answer_A+"','"+q.answer_B+"','"+q.answer_C+"','"+q.answer_D+"','"+q.correct+"','"+q.used+"','"+q.difficulty+"','"+q.hint+"')");
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
         }
     }
 
-    public void insertIntoTable(){
+    public Question retrieveQuestion(){
+        int id = 0;
+
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('CODERZHEAVEN','GREAT INDIA')");
-            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('ANTHONY','USA')");
-            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('SHUING','JAPAN')");
-            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('JAMES','INDIA')");
-            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('SOORYA','INDIA')");
-            mydb.execSQL("INSERT INTO " + TABLE + "(NAME, PLACE) VALUES('MALIK','INDIA')");
+            Cursor i = mydb.rawQuery("SELECT * FROM " + TABLE + " WHERE ID = "+2, null);
+            String id_string = i.getString(0);
+            id_string = "LOOK HERE";
+            Toast.makeText(getApplicationContext(), id_string, Toast.LENGTH_SHORT).show();
+            id = Integer.parseInt(id_string);
+
+            mydb.execSQL("UPDATE " + TABLE + " SET USED = 1 WHERE ID = "+id);
+
+            q_array[id -1].used = 1;
+
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Error in retrieving question", Toast.LENGTH_LONG);
+        }
+
+        return q_array[id];
+    }
+
+    public void insertAllIntoTable(Question q[]){
+        try{
+            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+            int i = 0;
+
+            while(i < 4){
+                 mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY, HINT)" +
+                            " VALUES('"+q[i].question+"','"+q[i].answer_A+"','"+q[i].answer_B+"','"+q[i].answer_C+"','"+q[i].answer_D+"','"+q[i].correct+"','"+q[i].used+"','"+q[i].difficulty+"','"+q[i].hint+"')");
+                 i++;
+            }
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
@@ -149,10 +189,11 @@ public class SQLiteExample extends Activity {
             Integer cindex5 = allrows.getColumnIndex("CORRECT");
             Integer cindex6 = allrows.getColumnIndex("USED");
             Integer cindex7 = allrows.getColumnIndex("DIFFICULTY");
+            Integer cindex8 = allrows.getColumnIndex("HINT");
 
             TextView t = new TextView(this);
             t.setText("========================================");
-            //Linear.removeAllViews();
+            Linear.removeAllViews();
             Linear.addView(t);
 
             if(allrows.moveToFirst()){
@@ -166,6 +207,7 @@ public class SQLiteExample extends Activity {
                     LinearLayout correct_row= new LinearLayout(this);
                     LinearLayout used_row = new LinearLayout(this);
                     LinearLayout difficulty_row= new LinearLayout(this);
+                    LinearLayout hint_row= new LinearLayout(this);
 
 
                     final TextView id_  = new TextView(this);
@@ -177,6 +219,7 @@ public class SQLiteExample extends Activity {
                     final TextView correct_ = new TextView(this);
                     final TextView used_ = new TextView(this);
                     final TextView difficulty_ = new TextView(this);
+                    final TextView hint_ = new TextView(this);
                     final TextView   sep  = new TextView(this);
 
                     String ID = allrows.getString(0);
@@ -188,6 +231,7 @@ public class SQLiteExample extends Activity {
                     String CORRECT= allrows.getString(6);
                     String USED = allrows.getString(7);
                     String DIFFICULTY = allrows.getString(8);
+                    String HINT = allrows.getString(9);
 
                     id_.setTextColor(Color.RED);
                     id_.setPadding(20, 5, 0, 5);
@@ -207,18 +251,20 @@ public class SQLiteExample extends Activity {
                     used_.setPadding(20, 5, 0, 5);
                     difficulty_.setTextColor(Color.RED);
                     difficulty_.setPadding(20, 5, 0, 5);
+                    hint_.setTextColor(Color.RED);
+                    hint_.setPadding(20, 5, 0, 5);
 
                     System.out.println("QUESTION " + allrows.getString(cindex) + " ANSWER_A : "+ allrows.getString(cindex1) + " ANSWER_B : "+ allrows.getString(cindex2)
                                   + " ANSWER_C : "+ allrows.getString(cindex3) + " ANSWER_D : "+ allrows.getString(cindex4) + " CORRECT : "+ allrows.getString(cindex5)
-                                  + " USED : "+ allrows.getString(cindex6) + " DIFFICULTY : "+ allrows.getString(cindex7));
+                                  + " USED : "+ allrows.getString(cindex6) + " DIFFICULTY : "+ allrows.getString(cindex7) + " HINT : " + allrows.getString(cindex8));
                     System.out.println("ID : "+ ID  + " || QUESTION " + QUESTION + "|| ANSWER_A : "+ ANSWER_A + "|| ANSWER_B : "+ ANSWER_B +
                                        "|| ANSWER_C : "+ ANSWER_C + "|| ANSWER_D : "+ ANSWER_D + "|| CORRECT : "+ CORRECT + "|| USED : "+ USED +
-                                       "|| DIFFICULTY : "+DIFFICULTY);
+                                       "|| DIFFICULTY : "+DIFFICULTY + "|| HINT : "+ HINT);
 
                     id_.setText("ID : " + ID);
                     id_row.addView(id_);
                     Linear.addView(id_row);
-                    question_.setText("QUESTION : "+QUESTION);
+                    question_.setText("QUESTION : " + QUESTION);
                     question_row.addView(question_);
                     Linear.addView(question_row);
                     answer_a_.setText("ANSWER_A : " + ANSWER_A);
@@ -242,6 +288,9 @@ public class SQLiteExample extends Activity {
                     difficulty_.setText("DIFFICULTY : " + DIFFICULTY);
                     difficulty_row.addView(difficulty_);
                     Linear.addView(difficulty_row);
+                    hint_.setText("HINT : " + HINT);
+                    hint_row.addView(hint_);
+                    Linear.addView(hint_row);
                     sep.setText("---------------------------------------------------------------");
                     Linear.addView(sep);
                 }
