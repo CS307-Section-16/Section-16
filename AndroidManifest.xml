@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.section_16"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+        android:debuggable="true" >
+        
+        <activity
+            android:name="com.example.section_16.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.section_16.ContinueGame"
+            android:label="@string/title_activity_continue_game" >
+        </activity>
+        <activity
+            android:name="com.example.section_16.Initialize"
+            android:label="@string/title_activity_initialize" >
+        </activity>
+        <activity
+            android:name="com.example.section_16.HighScoreScreen"
+            android:label="@string/title_activity_high_score_screen" >
+        </activity>
+        <activity
+            android:name="com.example.section_16.SettingsScreen"
+            android:label="@string/title_activity_settings_screen" >
+        </activity>
+    </application>
+
+</manifest>
