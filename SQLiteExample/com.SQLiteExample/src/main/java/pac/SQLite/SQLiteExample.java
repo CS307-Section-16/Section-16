@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.sql.Statement;
+import java.util.Random;
 
 class Question{
 
@@ -20,7 +22,7 @@ class Question{
     String answer_B;
     String answer_C;
     String answer_D;
-    char correct;
+    String correct;
     int used;
     int difficulty;
     String hint;
@@ -51,14 +53,13 @@ public class SQLiteExample extends Activity {
         q_array[0] = new Question();
         q_array[1] = new Question();
         q_array[2] = new Question();
-        q_array[3] = new Question();
         
-        q_array[0].question = "Wy would you use a private constructor?";
+        q_array[0].question = "Why would you use a private constructor?";
         q_array[0].answer_A = "If you want to disallow all instantiation of that class from outside that class";
         q_array[0].answer_B = "If you want only child objects to inherit values of the class";
         q_array[0].answer_C = "If you want to allow access from all outside classes";
         q_array[0].answer_D = "Because public constructors are too mainstream";
-        q_array[0].correct = 'A';
+        q_array[0].correct = "A";
         q_array[0].used = 0;
         q_array[0].difficulty = 1;
         q_array[0].hint = "Not D";
@@ -71,13 +72,13 @@ public class SQLiteExample extends Activity {
                 "\t\tSystem.out.println(\"E = F!!!!!\");\n" +
                 "\t}\n" +
                 "}\n" +
-                ".......... \n +" +
+                ".......... \n" +
                 "What is wrong with the above code?";
         q_array[1].answer_A = "There is no closing bracket for the first if-statement (line 1)";
         q_array[1].answer_B = "There is no closing bracket for the second nested if-statement (line 4)";
         q_array[1].answer_C = "There is no closing bracket for the first nested if-statement (line 2)";
         q_array[1].answer_D = "Nothing. The code is correct.";
-        q_array[1].correct = 'C';
+        q_array[1].correct = "C";
         q_array[1].used = 0;
         q_array[1].difficulty = 1;
         q_array[1].hint = "Not A";
@@ -88,26 +89,19 @@ public class SQLiteExample extends Activity {
         q_array[2].answer_B = "String";
         q_array[2].answer_C = "byte";
         q_array[2].answer_D = "char";
-        q_array[2].correct = 'B';
+        q_array[2].correct = "B";
         q_array[2].used = 0;
         q_array[2].difficulty = 1;
         q_array[2].hint = "Not A";
 
-
         insertAllIntoTable(q_array);
 
-
         q_array[3] = retrieveQuestion();
-        //insertOneIntoTable("Cameron", "Purdue");
-        //Toast.makeText(getApplicationContext(), "Showing table values after deletion.", Toast.LENGTH_SHORT).show();
+
+        insertOneIntoTable(q_array[3]);
+
         showTableValues();
-        //setColor(t0);
-        //setColor(t1);
-        //setColor(t2);
-        //setColor(t3);
-        //setColor(t4);
-        //setColor(t5);
-        //setColor(t6);
+
     }
     // THIS FUNCTION SETS COLOR AND PADDING FOR THE TEXTVIEWS 
     public void setColor(TextView t){
@@ -120,7 +114,7 @@ public class SQLiteExample extends Activity {
     public void createTable(){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("CREATE TABLE IF  NOT EXISTS "+ TABLE +" (ID INTEGER PRIMARY KEY, QUESTION TEXT, ANSWER_A TEXT, ANSWER_B TEXT, ANSWER_C TEXT, ANSWER_D TEXT, CORRECT CHARACTER, USED INTEGER, DIFFICULTY INTEGER, HINT TEXT );");
+            mydb.execSQL("CREATE TABLE IF  NOT EXISTS "+ TABLE +" (ID INTEGER PRIMARY KEY, QUESTION TEXT, ANSWER_A TEXT, ANSWER_B TEXT, ANSWER_C TEXT, ANSWER_D TEXT, CORRECT TEXT, USED INTEGER, DIFFICULTY INTEGER, HINT TEXT );");
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error in creating table", Toast.LENGTH_LONG);
@@ -139,25 +133,45 @@ public class SQLiteExample extends Activity {
     }
 
     public Question retrieveQuestion(){
-        int id = 0;
+
+        Random rand = new Random();
+        int id = rand.nextInt(3) + 1;
+        Question q = new Question();
 
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            Cursor i = mydb.rawQuery("SELECT * FROM " + TABLE + " WHERE ID = "+2, null);
-            String id_string = i.getString(0);
-            id_string = "LOOK HERE";
-            Toast.makeText(getApplicationContext(), id_string, Toast.LENGTH_SHORT).show();
-            id = Integer.parseInt(id_string);
+            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE ID = " + id, null);
 
-            mydb.execSQL("UPDATE " + TABLE + " SET USED = 1 WHERE ID = "+id);
+            if(question_to_retrieve.moveToFirst()){
+                    String ID = question_to_retrieve .getString(0);
+                    String QUESTION= question_to_retrieve .getString(1);
+                    String ANSWER_A= question_to_retrieve .getString(2);
+                    String ANSWER_B= question_to_retrieve .getString(3);
+                    String ANSWER_C= question_to_retrieve .getString(4);
+                    String ANSWER_D= question_to_retrieve .getString(5);
+                    String CORRECT= question_to_retrieve .getString(6);
+                    String DIFFICULTY = question_to_retrieve .getString(8);
+                    String HINT = question_to_retrieve .getString(9);
 
-            q_array[id -1].used = 1;
+                    q.question = QUESTION;
+                    q.answer_A = ANSWER_A;
+                    q.answer_B = ANSWER_B;
+                    q.answer_C = ANSWER_C;
+                    q.answer_D = ANSWER_D;
+                    q.correct = CORRECT;
+                    q.used = 1;
+                    q.difficulty = Integer.parseInt(DIFFICULTY);
+                    q.hint = HINT;
 
+                    mydb.execSQL("UPDATE " + TABLE + " SET USED = 1 WHERE ID = " + ID);
+
+            }
+            mydb.close();
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Error in retrieving question", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Error encountered.", Toast.LENGTH_LONG);
         }
 
-        return q_array[id];
+        return q;
     }
 
     public void insertAllIntoTable(Question q[]){
@@ -165,7 +179,7 @@ public class SQLiteExample extends Activity {
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
             int i = 0;
 
-            while(i < 4){
+            while(q_array[i] != null){
                  mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY, HINT)" +
                             " VALUES('"+q[i].question+"','"+q[i].answer_A+"','"+q[i].answer_B+"','"+q[i].answer_C+"','"+q[i].answer_D+"','"+q[i].correct+"','"+q[i].used+"','"+q[i].difficulty+"','"+q[i].hint+"')");
                  i++;
