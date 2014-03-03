@@ -53,6 +53,11 @@ public class SQLiteExample extends Activity {
         q_array[0] = new Question();
         q_array[1] = new Question();
         q_array[2] = new Question();
+        q_array[3] = new Question();
+        q_array[4] = new Question();
+        q_array[5] = new Question();
+        q_array[6] = new Question();
+        q_array[7] = new Question();
         
         q_array[0].question = "Why would you use a private constructor?";
         q_array[0].answer_A = "If you want to disallow all instantiation of that class from outside that class";
@@ -94,11 +99,96 @@ public class SQLiteExample extends Activity {
         q_array[2].difficulty = 1;
         q_array[2].hint = "Not A";
 
+        q_array[3].question = " ..........\n" +
+                "int a[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\n" +
+                "for(int i = 10; i > 0; i--){\n" +
+                "\tSystem.out.print(a[i] + \" \");\n" +
+                "}\n" +
+                "..........\n" +
+                "What is the output of the above code?";
+        q_array[3].answer_A = "0 1 2 3 4 5 6 7 8 9";
+        q_array[3].answer_B = "9 8 7 6 5 4 3 2 1 0";
+        q_array[3].answer_C = "10 9 8 7 6 5 4 3 2 1";
+        q_array[3].answer_D = "The program crashes.";
+        q_array[3].correct = "D";
+        q_array[3].used = 0;
+        q_array[3].difficulty = 5;
+        q_array[3].hint = "Not C";
+
+        q_array[4].question = "..........\n" +
+                "int x, y, z;\n" +
+                "y = 1;\n" +
+                "z = 5;\n" +
+                "x = 0 - (++y) + z++;\n" +
+                "..........\n" +
+                "What are the values of x, y, and z after this code executes?";
+        q_array[4].answer_A = "x = 4, y = 2, z = 6";
+        q_array[4].answer_B = "x = 4, y = 1, z = 5";
+        q_array[4].answer_C = "x = 3, y = 2, z = 6";
+        q_array[4].answer_D = "x = -7, y = 1, z = 5";
+        q_array[4].correct = "C";
+        q_array[4].used = 0;
+        q_array[4].difficulty = 7;
+        q_array[4].hint = "Not D";
+
+        q_array[5].question = "..........\n" +
+                "int a = 1;\n" +
+                "long b = 2;\n" +
+                "float c = 3.0f;\n" +
+                "double d = 4.0;\n" +
+                "..........\n" +
+                "Which of the following commands is illegal?";
+        q_array[5].answer_A = "b = a";
+        q_array[5].answer_B = "c = d";
+        q_array[5].answer_C = "d = a";
+        q_array[5].answer_D = "c = b";
+        q_array[5].correct = "B";
+        q_array[5].used = 0;
+        q_array[5].difficulty = 6;
+        q_array[5].hint = "Not A";
+
+        q_array[6].question = "Which of the following is true about an abstract method inherited into a class Apple?";
+        q_array[6].answer_A = "It must be defined in Apple before Apple can be instantiated";
+        q_array[6].answer_B = "It always forces Apple to become abstract.";
+        q_array[6].answer_C = "Both a and b";
+        q_array[6].answer_D = "Neither a nor b";
+        q_array[6].correct = "A";
+        q_array[6].used = 0;
+        q_array[6].difficulty = 9;
+        q_array[6].hint = "Not C";
+
+        q_array[7].question = "Suppose the class Undergraduate extends the class Student which extends the class Person.\n" +
+                "Given the following variable declaration:\n" +
+                "..........\n" +
+                "Person p = new Person();\n" +
+                "Student s = new Student();\n" +
+                "Undergraduate ug = new Undergraduate();\n" +
+                "..........\n" +
+                "Which of the following assignments are legal?\n" +
+                "I. p = ug;\n" +
+                "II. p = new Undergraduate();\n" +
+                "III. ug = p;\n" +
+                "IV. ug = p;\n" +
+                "V. s = new Person();";
+        q_array[7].answer_A = "III and IV";
+        q_array[7].answer_B = "I and IV";
+        q_array[7].answer_C = "I and II";
+        q_array[7].answer_D = "II, III, and V";
+        q_array[7].correct = "C";
+        q_array[7].used = 0;
+        q_array[7].difficulty = 8;
+        q_array[7].hint = "Not B";
+
+
         insertAllIntoTable(q_array);
 
         q_array[3] = retrieveQuestion();
 
         insertOneIntoTable(q_array[3]);
+
+        q_array[4] = retrieveQuestion();
+
+        insertOneIntoTable(q_array[4]);
 
         showTableValues();
 
@@ -135,12 +225,11 @@ public class SQLiteExample extends Activity {
     public Question retrieveQuestion(){
 
         Random rand = new Random();
-        int id = rand.nextInt(3) + 1;
         Question q = new Question();
 
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE ID = " + id, null);
+            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE USED = 0 ORDER BY RANDOM()", null);
 
             if(question_to_retrieve.moveToFirst()){
                     String ID = question_to_retrieve .getString(0);
@@ -278,7 +367,7 @@ public class SQLiteExample extends Activity {
                     id_.setText("ID : " + ID);
                     id_row.addView(id_);
                     Linear.addView(id_row);
-                    question_.setText("QUESTION : " + QUESTION);
+                    question_.setText("QUESTION : \n" + QUESTION);
                     question_row.addView(question_);
                     Linear.addView(question_row);
                     answer_a_.setText("ANSWER_A : " + ANSWER_A);
@@ -329,7 +418,7 @@ public class SQLiteExample extends Activity {
     public void deleteValues(int id){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("DELETE FROM " + TABLE + " WHERE ID = "+id);
+            mydb.execSQL("DELETE FROM " + TABLE + " WHERE ID = "+id +" AND WHERE USED = 0");
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error encountered while deleting.", Toast.LENGTH_LONG);
