@@ -34,7 +34,7 @@ public class SQLiteExample extends Activity {
     LinearLayout Linear;
     SQLiteDatabase mydb;
     Question q_array[];
-    private static String DBNAME = "PERSONS.db";    // THIS IS THE SQLITE DATABASE FILE NAME.
+    private static String DBNAME = "QUESTIONS.db";    // THIS IS THE SQLITE DATABASE FILE NAME.
     private static String TABLE = "MY_TABLE";       // THIS IS THE TABLE NAME
 
     @Override
@@ -43,10 +43,93 @@ public class SQLiteExample extends Activity {
         setContentView(R.layout.fragment_sqlite_example);
 
         Linear  = (LinearLayout)findViewById(R.id.linear);
-        Toast.makeText(getApplicationContext(), "Creating table.", Toast.LENGTH_SHORT).show();
 
         dropTable();        // DROPPING THE TABLE.
-        createTable();
+
+        if(checkDataBase()){
+            createTable();
+            insertAllIntoTable();
+            q_array[8] = retrieveQuestion();
+            insertOneIntoTable(q_array[8]);
+            q_array[9] = retrieveQuestion();
+            insertOneIntoTable(q_array[9]);
+        }
+
+
+        showTableValues();
+
+    }
+    // THIS FUNCTION SETS COLOR AND PADDING FOR THE TEXTVIEWS 
+    public void setColor(TextView t){
+        t.setTextColor(Color.BLACK);
+        t.setPadding(20, 5, 0, 5);
+        t.setTextSize(1, 15);
+    }
+
+    // CREATE TABLE IF NOT EXISTS 
+    public void createTable(){
+        try{
+            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+            mydb.execSQL("CREATE TABLE IF  NOT EXISTS "+ TABLE +" (ID INTEGER PRIMARY KEY, QUESTION TEXT, ANSWER_A TEXT, ANSWER_B TEXT, ANSWER_C TEXT, ANSWER_D TEXT, CORRECT TEXT, USED INTEGER, DIFFICULTY INTEGER, HINT TEXT );");
+            mydb.close();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Error in creating table", Toast.LENGTH_LONG);
+        }
+    }
+    // THIS FUNCTION INSERTS DATA TO THE DATABASE
+    public void insertOneIntoTable(Question q){
+        try{
+            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+            mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY, HINT)" +
+                    " VALUES('"+q.question+"','"+q.answer_A+"','"+q.answer_B+"','"+q.answer_C+"','"+q.answer_D+"','"+q.correct+"','"+q.used+"','"+q.difficulty+"','"+q.hint+"')");
+            mydb.close();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
+        }
+    }
+
+    public Question retrieveQuestion(){
+
+        Random rand = new Random();
+        Question q = new Question();
+
+        try{
+            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE USED = 0 ORDER BY RANDOM()", null);
+
+            if(question_to_retrieve.moveToFirst()){
+                    String ID = question_to_retrieve .getString(0);
+                    String QUESTION= question_to_retrieve .getString(1);
+                    String ANSWER_A= question_to_retrieve .getString(2);
+                    String ANSWER_B= question_to_retrieve .getString(3);
+                    String ANSWER_C= question_to_retrieve .getString(4);
+                    String ANSWER_D= question_to_retrieve .getString(5);
+                    String CORRECT= question_to_retrieve .getString(6);
+                    String DIFFICULTY = question_to_retrieve .getString(8);
+                    String HINT = question_to_retrieve .getString(9);
+
+                    q.question = QUESTION;
+                    q.answer_A = ANSWER_A;
+                    q.answer_B = ANSWER_B;
+                    q.answer_C = ANSWER_C;
+                    q.answer_D = ANSWER_D;
+                    q.correct = CORRECT;
+                    q.used = 1;
+                    q.difficulty = Integer.parseInt(DIFFICULTY);
+                    q.hint = HINT;
+
+                    mydb.execSQL("UPDATE " + TABLE + " SET USED = 1 WHERE ID = " + ID);
+
+            }
+            mydb.close();
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), "Error encountered.", Toast.LENGTH_LONG);
+        }
+
+        return q;
+    }
+
+    public void insertAllIntoTable(){
 
         q_array = new Question[100];
 
@@ -58,7 +141,7 @@ public class SQLiteExample extends Activity {
         q_array[5] = new Question();
         q_array[6] = new Question();
         q_array[7] = new Question();
-        
+
         q_array[0].question = "Why would you use a private constructor?";
         q_array[0].answer_A = "If you want to disallow all instantiation of that class from outside that class";
         q_array[0].answer_B = "If you want only child objects to inherit values of the class";
@@ -68,7 +151,7 @@ public class SQLiteExample extends Activity {
         q_array[0].used = 0;
         q_array[0].difficulty = 1;
         q_array[0].hint = "Not D";
-        
+
         q_array[1].question = "..........\n" +
                 "if(a == b){\n" +
                 "\tif(c != d){\n" +
@@ -179,104 +262,33 @@ public class SQLiteExample extends Activity {
         q_array[7].difficulty = 8;
         q_array[7].hint = "Not B";
 
-
-        insertAllIntoTable(q_array);
-
-        q_array[3] = retrieveQuestion();
-
-        insertOneIntoTable(q_array[3]);
-
-        q_array[4] = retrieveQuestion();
-
-        insertOneIntoTable(q_array[4]);
-
-        showTableValues();
-
-    }
-    // THIS FUNCTION SETS COLOR AND PADDING FOR THE TEXTVIEWS 
-    public void setColor(TextView t){
-        t.setTextColor(Color.BLACK);
-        t.setPadding(20, 5, 0, 5);
-        t.setTextSize(1, 15);
-    }
-
-    // CREATE TABLE IF NOT EXISTS 
-    public void createTable(){
-        try{
-            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("CREATE TABLE IF  NOT EXISTS "+ TABLE +" (ID INTEGER PRIMARY KEY, QUESTION TEXT, ANSWER_A TEXT, ANSWER_B TEXT, ANSWER_C TEXT, ANSWER_D TEXT, CORRECT TEXT, USED INTEGER, DIFFICULTY INTEGER, HINT TEXT );");
-            mydb.close();
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Error in creating table", Toast.LENGTH_LONG);
-        }
-    }
-    // THIS FUNCTION INSERTS DATA TO THE DATABASE
-    public void insertOneIntoTable(Question q){
-        try{
-            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY, HINT)" +
-                    " VALUES('"+q.question+"','"+q.answer_A+"','"+q.answer_B+"','"+q.answer_C+"','"+q.answer_D+"','"+q.correct+"','"+q.used+"','"+q.difficulty+"','"+q.hint+"')");
-            mydb.close();
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
-        }
-    }
-
-    public Question retrieveQuestion(){
-
-        Random rand = new Random();
-        Question q = new Question();
-
-        try{
-            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE USED = 0 ORDER BY RANDOM()", null);
-
-            if(question_to_retrieve.moveToFirst()){
-                    String ID = question_to_retrieve .getString(0);
-                    String QUESTION= question_to_retrieve .getString(1);
-                    String ANSWER_A= question_to_retrieve .getString(2);
-                    String ANSWER_B= question_to_retrieve .getString(3);
-                    String ANSWER_C= question_to_retrieve .getString(4);
-                    String ANSWER_D= question_to_retrieve .getString(5);
-                    String CORRECT= question_to_retrieve .getString(6);
-                    String DIFFICULTY = question_to_retrieve .getString(8);
-                    String HINT = question_to_retrieve .getString(9);
-
-                    q.question = QUESTION;
-                    q.answer_A = ANSWER_A;
-                    q.answer_B = ANSWER_B;
-                    q.answer_C = ANSWER_C;
-                    q.answer_D = ANSWER_D;
-                    q.correct = CORRECT;
-                    q.used = 1;
-                    q.difficulty = Integer.parseInt(DIFFICULTY);
-                    q.hint = HINT;
-
-                    mydb.execSQL("UPDATE " + TABLE + " SET USED = 1 WHERE ID = " + ID);
-
-            }
-            mydb.close();
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Error encountered.", Toast.LENGTH_LONG);
-        }
-
-        return q;
-    }
-
-    public void insertAllIntoTable(Question q[]){
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
             int i = 0;
 
             while(q_array[i] != null){
                  mydb.execSQL("INSERT INTO " + TABLE + "(QUESTION, ANSWER_A, ANSWER_B, ANSWER_C, ANSWER_D, CORRECT, USED, DIFFICULTY, HINT)" +
-                            " VALUES('"+q[i].question+"','"+q[i].answer_A+"','"+q[i].answer_B+"','"+q[i].answer_C+"','"+q[i].answer_D+"','"+q[i].correct+"','"+q[i].used+"','"+q[i].difficulty+"','"+q[i].hint+"')");
+                            " VALUES('"+q_array[i].question+"','"+q_array[i].answer_A+"','"+q_array[i].answer_B+"','"+q_array[i].answer_C+"','"+q_array[i].answer_D+"','"+q_array[i].correct+"','"+q_array[i].used+"','"+q_array[i].difficulty+"','"+q_array[i].hint+"')");
                  i++;
             }
             mydb.close();
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
         }
+    }
+    private boolean checkDataBase() {
+        boolean ret;
+        SQLiteDatabase checkDB = null;
+        try {
+            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+            mydb.execSQL("SELECT * FROM " + TABLE);
+            mydb.close();
+            ret = true;
+        } catch (Exception e) {
+            // database doesn't exist yet.
+            ret = false;
+        }
+        return ret;
     }
     // THIS FUNCTION SHOWS DATA FROM THE DATABASE 
     public void showTableValues(){
