@@ -28,6 +28,7 @@ public final class R {
         public static final int ProgressBar02=0x7f080017;
         public static final int ProgressBar03=0x7f080016;
         public static final int ProgressBar04=0x7f080014;
+        public static final int ScrollView01=0x7f08002b;
         public static final int TextView01=0x7f080013;
         public static final int TextView02=0x7f080012;
         public static final int TextView03=0x7f080011;
@@ -38,7 +39,8 @@ public final class R {
         public static final int TextView09=0x7f08001e;
         public static final int TextView10=0x7f08001d;
         public static final int TextView11=0x7f08001c;
-        public static final int action_settings=0x7f08002b;
+        public static final int action_settings=0x7f08002e;
+        public static final int add_record=0x7f08002d;
         public static final int button1=0x7f080026;
         public static final int button2=0x7f080027;
         public static final int button3=0x7f080028;
@@ -49,6 +51,7 @@ public final class R {
         public static final int choice4=0x7f080005;
         public static final int confirm=0x7f080007;
         public static final int hint=0x7f080009;
+        public static final int linear=0x7f08002c;
         public static final int lives=0x7f080008;
         public static final int progressBar1=0x7f080015;
         public static final int questionBox=0x7f080006;
@@ -75,6 +78,7 @@ public final class R {
         public static final int activity_initialize=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_settings_screen=0x7f030004;
+        public static final int fragment_sqlite_example=0x7f030005;
     }
     public static final class menu {
         public static final int continue_game=0x7f070000;
