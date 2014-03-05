@@ -44,9 +44,9 @@ public class SQLiteExample extends Activity {
 
         Linear  = (LinearLayout)findViewById(R.id.linear);
 
-        dropTable();        // DROPPING THE TABLE.
+        //dropTable();        // DROPPING THE TABLE.
 
-        if(checkDataBase()){
+        if(!checkDataBase()){
             createTable();
             insertAllIntoTable();
             q_array[8] = retrieveQuestion();
@@ -279,16 +279,20 @@ public class SQLiteExample extends Activity {
     private boolean checkDataBase() {
         boolean ret;
         SQLiteDatabase checkDB = null;
-        try {
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            mydb.execSQL("SELECT * FROM " + TABLE);
+        try {
+            Cursor cur = mydb.rawQuery("SELECT COUNT(*) FROM " + TABLE,null);
+            cur.moveToFirst();
+            if (cur.getInt (0) == 0) { //table is empty
+                mydb.close();
+                return false;
+            }
+        }catch (Exception e){
             mydb.close();
-            ret = true;
-        } catch (Exception e) {
-            // database doesn't exist yet.
-            ret = false;
+            return false;
         }
-        return ret;
+        mydb.close();
+        return true;
     }
     // THIS FUNCTION SHOWS DATA FROM THE DATABASE 
     public void showTableValues(){
