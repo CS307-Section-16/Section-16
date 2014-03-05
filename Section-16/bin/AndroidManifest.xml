@@ -41,6 +41,9 @@
             android:name="com.example.section_16.SettingsScreen"
             android:label="@string/title_activity_settings_screen" >
         </activity>
+        <activity
+            android:name="com.example.section_16.SQLiteExample" >
+        </activity>
     </application>
 
 </manifest>

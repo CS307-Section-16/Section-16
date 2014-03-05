@@ -105,6 +105,7 @@ public final class R {
         public static final int hint=0x7f050011;
         public static final int lives=0x7f050010;
         public static final int placeholder=0x7f05000c;
+        public static final int question=0x7f050013;
         public static final int testQuestion=0x7f050012;
         public static final int title_activity_continue_game=0x7f050003;
         public static final int title_activity_high_score_screen=0x7f050005;

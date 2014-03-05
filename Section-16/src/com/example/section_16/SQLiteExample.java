@@ -42,21 +42,21 @@ public class SQLiteExample extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_sqlite_example);
 
-        Linear  = (LinearLayout)findViewById(R.id.linear);
+        //Linear  = (LinearLayout)findViewById(R.id.linear);
 
         //dropTable();        // DROPPING THE TABLE.
 
-        if(!checkDataBase()){
+        //if(!checkDataBase()){
             createTable();
             insertAllIntoTable();
             q_array[8] = retrieveQuestion();
             insertOneIntoTable(q_array[8]);
             q_array[9] = retrieveQuestion();
             insertOneIntoTable(q_array[9]);
-        }
+       // }
 
 
-        showTableValues();
+        //showTableValues();
 
     }
     // THIS FUNCTION SETS COLOR AND PADDING FOR THE TEXTVIEWS 
