@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.section_16"
+    package="game.section_16"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,11 +12,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" 
-        android:debuggable="true" >
-        
+        android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.section_16.MainActivity"
+            android:name="game.section_16.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,20 +23,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.section_16.ContinueGame"
-            android:label="@string/title_activity_continue_game" >
+            android:name="game.section_16.InitializeScreen"
+            android:label="@string/title_activity_initialize_screen" >
         </activity>
         <activity
-            android:name="com.example.section_16.Initialize"
-            android:label="@string/title_activity_initialize" >
+            android:name="game.section_16.ContinueScreen"
+            android:label="@string/title_activity_continue_screen" >
         </activity>
         <activity
-            android:name="com.example.section_16.HighScoreScreen"
-            android:label="@string/title_activity_high_score_screen" >
+            android:name="game.section_16.SettingScreen"
+            android:label="@string/title_activity_setting_screen" >
         </activity>
         <activity
-            android:name="com.example.section_16.SettingsScreen"
-            android:label="@string/title_activity_settings_screen" >
+            android:name="game.section_16.HighScoresScreen"
+            android:label="@string/title_activity_high_scores_screen" >
         </activity>
     </application>
 

@@ -61,15 +61,11 @@ public final class R {
         public static final int textView7=0x7f08000f;
     }
     public static final class layout {
-        public static final int activity_continue=0x7f030000;
-        public static final int activity_continue_game=0x7f030001;
-        public static final int activity_high_score_screen=0x7f030002;
-        public static final int activity_high_scores=0x7f030003;
-        public static final int activity_initialization=0x7f030004;
-        public static final int activity_initialize=0x7f030005;
-        public static final int activity_main=0x7f030006;
-        public static final int activity_settings=0x7f030007;
-        public static final int activity_settings_screen=0x7f030008;
+        public static final int activity_continue_game=0x7f030000;
+        public static final int activity_high_score_screen=0x7f030001;
+        public static final int activity_initialize=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_settings_screen=0x7f030004;
     }
     public static final class menu {
         public static final int continue_game=0x7f070000;
