@@ -42,7 +42,7 @@
             android:label="@string/title_activity_settings_screen" >
         </activity>
         <activity
-            android:name="com.example.section_16.SQLiteExample" >
+            android:name="com.example.section_16.SQLiteDB" >
         </activity>
     </application>
 
