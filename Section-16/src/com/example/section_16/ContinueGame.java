@@ -25,7 +25,7 @@ public class ContinueGame extends Activity {
 	Question q;
     private static String DBNAME = "QUESTIONS.db";    // THIS IS THE SQLITE DATABASE FILE NAME.
     private static String TABLE = "MY_TABLE";       // THIS IS THE TABLE NAME
-
+    private static String SCORETABLE = "SCORE_TABLE";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -36,9 +36,30 @@ public class ContinueGame extends Activity {
 		
 		q = retrieveQuestion();
 		
+		Score a = new Score();
+		a.name = "Tom";
+		a.score = 3555;
+		insertHighScore(a);
+		
+		
+		
+		Score s;
+		s = retrieveScore();
+		
 		TextView tv = (TextView)findViewById(R.id.questionBox);
+		//tv.setText("NAME " + s.name + "\n\n SCORE: " + s.score );
 		tv.setText(q.question + "\n\nA: " + q.answer_A + "\n\nB: " + q.answer_B+ "\n\nC: " + q.answer_C+ "\n\nD: " + q.answer_D);
 	}
+	 public void insertHighScore(Score s){
+	    	try{
+	            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+	            mydb.execSQL("INSERT INTO " + SCORETABLE + "(NAME, SCORE)" +
+	                    " VALUES('"+s.name+"','"+s.score+"')");
+	            mydb.close();
+	        }catch(Exception e){
+	           // Toast.makeText(getApplicationContext(), "Error in inserting into table", Toast.LENGTH_LONG);
+	        }
+	    }
 	
     public Question retrieveQuestion(){
     	
@@ -49,7 +70,7 @@ public class ContinueGame extends Activity {
 
         try{
             mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+  /*WHERE USED = 0*/  " ORDER BY RANDOM()", null);
+            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE USED = 1 ORDER BY RANDOM()", null);
 
             if(question_to_retrieve.moveToFirst()){
                     String ID = question_to_retrieve .getString(0);
@@ -125,4 +146,27 @@ public class ContinueGame extends Activity {
 		alertDialog.show();
     }
 
+	public Score retrieveScore(){
+
+	        Score s = new Score();
+
+	        try{
+	            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
+	            Cursor score_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  SCORETABLE, null);
+
+	            if(score_to_retrieve.moveToFirst()){
+	                    String ID = score_to_retrieve .getString(0);
+	                    String NAME= score_to_retrieve .getString(1);
+	                    String SCORE= score_to_retrieve .getString(2);
+	                    
+	                    s.name = NAME;
+	                    s.score = Integer.parseInt(SCORE);
+	            }
+	            mydb.close();
+	        }catch(Exception e){
+	            Toast.makeText(getApplicationContext(), "Error encountered.", Toast.LENGTH_LONG);
+	        }
+
+	        return s;
+	    }
 }

@@ -11,8 +11,8 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Intent db = new Intent(this, SQLiteDB.class);
-		startActivity(db);
+		//Intent db = new Intent(this, SQLiteDB.class);
+		//startActivity(db);
 		setContentView(R.layout.activity_main);
 
 	}
