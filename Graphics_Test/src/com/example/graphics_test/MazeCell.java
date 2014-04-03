@@ -1,4 +1,4 @@
-package com.example.section_16;
+package com.example.graphics_test;
 
 import android.graphics.Point;
 
@@ -13,13 +13,20 @@ public class MazeCell {
 	boolean inMaze;
 	boolean pathWay;
 	boolean obstacle;
+	boolean isPerson;
 	
 	//Parent cell for computing opposite
 	MazeCell parent;
 	
 	//Contructor
 	public MazeCell(int x, int y, MazeCell parent){
-		this.wall = true;
+		this.wall = false;
+		this.end = false;
+		this.start = false;
+		this.inMaze = false;
+		this.pathWay = false;
+		this.obstacle = false;
+		this.isPerson = false;
 		this.x=x;
 		this.y=y;
 		this.parent = parent;		

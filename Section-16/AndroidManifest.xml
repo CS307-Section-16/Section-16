@@ -27,22 +27,31 @@
         </activity>
         <activity
             android:name="com.example.section_16.ContinueGame"
-            android:label="@string/title_activity_continue_game" >
+            android:label="@string/title_activity_continue_game"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.example.section_16.Initialize"
-            android:label="@string/title_activity_initialize" >
+            android:label="@string/title_activity_initialize"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.example.section_16.HighScoreScreen"
-            android:label="@string/title_activity_high_score_screen" >
+            android:label="@string/title_activity_high_score_screen" 
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.example.section_16.SettingsScreen"
-            android:label="@string/title_activity_settings_screen" >
+            android:label="@string/title_activity_settings_screen"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.example.section_16.SQLiteDB" >
+            android:name="com.example.section_16.SQLiteDB"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.section_16.MazeActivity"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 
