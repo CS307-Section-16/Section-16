@@ -10,9 +10,9 @@ public class MazeCell {
 	boolean start;
 	boolean end;
 	boolean wall;
-	boolean inMaze;
-	boolean pathWay;
+	boolean visible;
 	boolean obstacle;
+	boolean player;
 	
 	//Parent cell for computing opposite
 	MazeCell parent;
@@ -39,28 +39,24 @@ public class MazeCell {
 		return null;		
 	}
 	
-	public boolean isWall(MazeCell cell){
-		return cell.wall;
+	public boolean isWall(){
+		return this.wall;
+	}
+
+	public boolean isVisible(){
+		return this.visible;
 	}
 	
-	public boolean isPath(MazeCell cell){
-		return cell.pathWay;
+	public boolean hasObstacle(){
+		return this.obstacle;
 	}
 	
-	public boolean isInMaze(MazeCell cell){
-		return cell.inMaze;
-	}
-	
-	public boolean hasObstacle(MazeCell cell){
-		return cell.obstacle;
-	}
-	
-	public boolean isStart(MazeCell cell){
-		return cell.start;
+	public boolean isStart(){
+		return this.start;
 	}
 	
 	public boolean isEnd(MazeCell cell){
-		return cell.end;
+		return this.end;
 	}
 	
 	public Point coordinates(MazeCell cell){
