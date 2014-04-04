@@ -21,13 +21,18 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(new MyView(this));
 		
-		a = new MazeCell[5][6];
+		a = new MazeCell[9][9];
 		
-		int[][] a1 = {{1,2,1,0,1,1},
-				 {1,0,1,0,0,1},
-				 {1,0,1,1,0,1},
-				 {1,0,3,0,0,1},
-				 {1,1,1,1,1,1}};
+		int[][] a1 = {{1,2,1,1,1,1,1,4,1},
+				 	  {1,0,1,0,1,0,1,0,1},
+				 	  {1,0,0,0,1,3,0,0,1},
+				 	  {1,0,1,1,1,0,1,1,1},
+				 	  {1,0,3,0,0,3,0,1,1},
+				 	  {1,1,0,1,1,1,0,3,1},
+				 	  {1,0,3,0,0,1,1,0,1},
+				 	  {1,0,1,1,0,1,0,0,1},
+				 	  {1,1,1,1,1,1,1,1,1},
+				 	  };
 		
 		for(int i = 0; i< a.length; i++){
 			for(int j = 0; j<a[i].length; j++){
@@ -40,6 +45,8 @@ public class MainActivity extends Activity {
 					a[i][j].isPerson = true;
 				}else if(a1[i][j] == 3){
 					a[i][j].obstacle = true;
+				}else if(a1[i][j] == 4){
+					a[i][j].end = true;
 				}
 			}
 		}	
@@ -64,6 +71,7 @@ public class MainActivity extends Activity {
            super.onDraw(canvas);
            int x = getWidth();
            int y = getHeight();
+          
            Paint paint = new Paint();
            paint.setStyle(Paint.Style.FILL);
            paint.setColor(Color.WHITE);
@@ -84,6 +92,7 @@ public class MainActivity extends Activity {
                }
            }*/
            
+           int startX = x/2 - y/2;
            for(int j = 0; j < a[1].length; j++){
               	for(int i = 0; i < a.length; i++){
               		if(a[i][j].wall == true)
@@ -94,10 +103,15 @@ public class MainActivity extends Activity {
               			paint.setColor(Color.parseColor("#00FF00"));
               		else if(a[i][j].obstacle == true)
               			paint.setColor(Color.parseColor("#FF0000"));
-                  	canvas.drawRect(j*(x/a[i].length),i*(y/a.length) ,j*(x/a[i].length)+x/a[i].length ,i*(y/a.length)+y/a.length, paint);
-                  	
+              		else if(a[i][j].end == true)
+              			paint.setColor(Color.parseColor("#F34AB2"));
+              		
+              		
+              		//canvas.drawRect(j*(x/a[i].length),i*(y/a.length) ,j*(x/a[i].length)+x/a[i].length ,i*(y/a.length)+y/a.length, paint);
+                  	canvas.drawRect(startX + j*(y/a[i].length),i*(y/a.length) ,startX + j*(y/a[i].length)+y/a[i].length ,i*(y/a.length)+y/a.length, paint);
+                    
                   }
-              }
+              }		
        }
     }
 }
