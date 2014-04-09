@@ -28,7 +28,6 @@ public class MazeActivity extends Activity {
 			{
 				break;
 			}  
-			
 		}
 
 		/*int[][] a1 = {{1,2,1,1,1,1,1,4,1},
@@ -60,7 +59,6 @@ public class MazeActivity extends Activity {
 			{
 				return false;
 			}
-
 		}
 		return true;
 	}

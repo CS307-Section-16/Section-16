@@ -170,6 +170,7 @@ public class SQLiteDB extends Activity {
         q_array[5] = new Question();
         q_array[6] = new Question();
         q_array[7] = new Question();
+        q_array[8] = new Question();
 
         q_array[0].question = "Why would you use a private constructor?";
         q_array[0].answer_A = "If you want to disallow all instantiation of that class from outside that class";
@@ -290,6 +291,17 @@ public class SQLiteDB extends Activity {
         q_array[7].used = 0;
         q_array[7].difficulty = 8;
         q_array[7].hint = "Not B";
+        
+        q_array[8].question = "What does GUI stand for?\n";
+                q_array[8].answer_A = "Greatest Universe Inside";
+                q_array[8].answer_B = "Graphical User Interface";
+                q_array[8].answer_C = "Good Until Interface";
+                q_array[8].answer_D = "Growing Urban Integration";
+                q_array[8].correct = "B";
+                q_array[8].used = 0;
+                q_array[8].difficulty = 1;
+                q_array[8].hint = "It isn't growing or good";
+
         
         Score s = new Score();
         s.name = "Will";
