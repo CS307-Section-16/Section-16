@@ -15,10 +15,13 @@ public class MazeGen {
 		}
 	 }		 
  }
+ 
 	
-	
+ 
+ 
+ 
  public static MazeCell[][] generateMaze(){
-  int mazeSize = 10;
+  int mazeSize = 31;
   MazeCell maze[][] = new MazeCell[mazeSize][mazeSize]; 
   
   //Initialize cells
@@ -105,6 +108,8 @@ public class MazeGen {
   } 
   
   generateObstacles(maze, mazeSize);
+  
+  
   
   return maze;
  }
