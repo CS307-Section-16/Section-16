@@ -9,7 +9,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-	private QuestionsDataSource datasource;
+	public QuestionsDataSource datasource;
 	private boolean created = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,14 @@ public class MainActivity extends Activity {
 		datasource = new QuestionsDataSource(this);
 		datasource.open();
 		
-		if(!created){
+		if(!datasource.exists()){
 			datasource.insertAllIntoTable(datasource);
 			created = !created;
 		}else{
 			Log.d("insertion", "Already Created");
 		}
+	Question q = datasource.retrieveQuestion();
+	Log.d("Q_ID",String.valueOf(q.id));
 		
 	}
 	  protected void onResume() {

@@ -51,7 +51,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	  @Override
 	  public void onCreate(SQLiteDatabase database) {
 		  database.execSQL(QUESTION_CREATE);
-		 // MainActivity.datasource.insertAllIntoTable();
+		  //MainActivity.datasource.insertAllIntoTable(MainActivity.datasource);
 		  Log.d("onCreate", "Database created");
 	  }
 

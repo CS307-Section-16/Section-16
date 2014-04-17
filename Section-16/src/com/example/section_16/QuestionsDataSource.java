@@ -395,6 +395,14 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     
 }
 
+public boolean exists(){
+	Cursor cursor = database.rawQuery("SELECT * FROM " + MySQLiteHelper.TABLE_QUESTIONS + " ", null);
+	if(cursor.moveToFirst()){
+		return true;
+	}
+	return false;
+}
+
 }
 
 
