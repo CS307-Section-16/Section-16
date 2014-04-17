@@ -3,19 +3,40 @@ package com.example.section_16;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
 
+	private QuestionsDataSource datasource;
+	private boolean created = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//Intent db = new Intent(this, SQLiteDB.class);
-		//startActivity(db);
 		setContentView(R.layout.activity_main);
-
+		
+		datasource = new QuestionsDataSource(this);
+		datasource.open();
+		
+		if(!created){
+			datasource.insertAllIntoTable(datasource);
+			created = !created;
+		}else{
+			Log.d("insertion", "Already Created");
+		}
+		
 	}
+	  protected void onResume() {
+	    datasource.open();
+	    super.onResume();
+	}
+
+	  @Override
+	  protected void onPause() {
+	    datasource.close();
+	    super.onPause();
+	  }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

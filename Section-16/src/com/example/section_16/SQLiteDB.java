@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
+/*
 class Question{
 
 	String question;
@@ -28,6 +28,7 @@ class Score{
 	int score;
 	public Score(){}
 }
+*/
 public class SQLiteDB extends Activity {
 
 	LinearLayout Linear;
