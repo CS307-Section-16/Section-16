@@ -84,7 +84,8 @@ public final class R {
         public static final int activity_initialize=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_settings_screen=0x7f030004;
-        public static final int fragment_sqlite_example=0x7f030005;
+        public static final int dpad_buttons=0x7f030005;
+        public static final int fragment_sqlite_example=0x7f030006;
     }
     public static final class menu {
         public static final int continue_game=0x7f080000;
