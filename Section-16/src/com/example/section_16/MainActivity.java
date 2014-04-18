@@ -1,5 +1,7 @@
 package com.example.section_16;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +13,21 @@ public class MainActivity extends Activity {
 
 	public QuestionsDataSource datasource;
 	private boolean created = false;
+	
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		View decorView = getWindow().getDecorView();
+		// Hide the status bar.
+		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+		decorView.setSystemUiVisibility(uiOptions);
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
+		
 		
 		datasource = new QuestionsDataSource(this);
 		datasource.open();

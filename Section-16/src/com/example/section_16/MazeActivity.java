@@ -1,6 +1,8 @@
 package com.example.section_16;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,11 +18,20 @@ public class MazeActivity extends Activity {
 
 	MazeCell a[][] = null;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(new MyView(this));
-
+		View decorView = getWindow().getDecorView();
+		// Hide the status bar.
+		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+		decorView.setSystemUiVisibility(uiOptions);
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
+		
 		while( true ) 
 		{
 			a =	 MazeGen.generateMaze();

@@ -6,7 +6,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    android:background="@color/black">
+    
+    
+	<View
+            android:id="@+id/anchor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/textView1"
@@ -16,52 +24,55 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:minWidth="100dp"
-        android:text="Escape from Section-16" />
+        android:text="Escape from Section-16" 
+        android:fontFamily="sans-serif"
+    	android:textSize="32sp"
+    	android:textColor="@color/white" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:minWidth="100dp"
+        android:layout_centerInParent="true"
+		android:layout_toLeftOf="@+id/anchor"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="startInitialization"
-        android:text="New" />
+        android:text="New" 
+        android:textSize="15sp" 
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@+id/button1"
-        android:minWidth="100dp"
+        android:layout_centerInParent="true"
+		android:layout_toRightOf="@+id/anchor"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="startContinue"
-        android:text="Continue" />
+        android:text="Continue" 
+        android:textSize="15sp" 
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button2"
-        android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@+id/button2"
-        android:minWidth="100dp"
+        android:layout_centerInParent="true"
+		android:layout_below="@+id/button1"
+		android:layout_toLeftOf="@+id/anchor"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="startHighScores"
         android:text="High Scores"
-        android:textSize="15sp" />
+        android:textSize="15sp" 
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_marginLeft="28dp"
-        android:layout_toRightOf="@+id/button3"
-        android:minWidth="100dp"
+        android:layout_centerInParent="true"
+		android:layout_below="@+id/button1"
+		android:layout_toRightOf="@+id/anchor"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="startSettings"
-        android:text="Settings" />
+        android:text="Settings" 
+        android:textSize="15sp" 
+        android:textColor="@color/white"/>
 
 </RelativeLayout>

@@ -5,6 +5,8 @@ import java.util.Random;
 import com.example.section_16.R;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,6 +28,8 @@ public class ContinueGame extends Activity {
     private static String DBNAME = "QUESTIONS.db";    // THIS IS THE SQLITE DATABASE FILE NAME.
     private static String TABLE = "MY_TABLE";       // THIS IS THE TABLE NAME
     private static String SCORETABLE = "SCORE_TABLE";
+    
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -33,6 +37,13 @@ public class ContinueGame extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_continue_game);
 		
+		View decorView = getWindow().getDecorView();
+		// Hide the status bar.
+		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+		decorView.setSystemUiVisibility(uiOptions);
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
 		
 		q = retrieveQuestion();
 		
