@@ -46,8 +46,8 @@ public final class R {
         public static final int TextView11=0x7f09001c;
         public static final int action_settings=0x7f09002f;
         public static final int add_record=0x7f09002e;
-        public static final int anchor=0x7f090027;
-        public static final int button1=0x7f090026;
+        public static final int anchor=0x7f090021;
+        public static final int button1=0x7f090027;
         public static final int button2=0x7f090028;
         public static final int button3=0x7f090029;
         public static final int button4=0x7f09002a;
@@ -61,11 +61,11 @@ public final class R {
         public static final int lives=0x7f090008;
         public static final int progressBar1=0x7f090015;
         public static final int questionBox=0x7f090006;
-        public static final int radio0=0x7f090022;
-        public static final int radio1=0x7f090023;
-        public static final int radio2=0x7f090024;
-        public static final int radioGroup1=0x7f090021;
-        public static final int radioGroup2=0x7f090025;
+        public static final int radio0=0x7f090024;
+        public static final int radio1=0x7f090025;
+        public static final int radio2=0x7f090026;
+        public static final int radioGroup1=0x7f090022;
+        public static final int radioGroup2=0x7f090023;
         public static final int radiogroup=0x7f090001;
         public static final int seekBar1=0x7f09002b;
         public static final int textView1=0x7f09000a;
