@@ -75,4 +75,14 @@
             android:text="Hard" />
     </RadioGroup>
 
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup2"
+        android:layout_toRightOf="@+id/radioGroup2"
+        android:onClick="initSettings"
+        android:text="Start" />
+
 </RelativeLayout>

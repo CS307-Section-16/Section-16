@@ -34,23 +34,7 @@ public class QuestionsDataSource {
     dbHelper.close();
   }
 
-  public Question addQuestion(Question q){
-	  database.execSQL("INSERT INTO " + MySQLiteHelper.TABLE_QUESTIONS + " (QUESTION, ANSWER_A, ANSWER_B," +
-      		" ANSWER_C, ANSWER_D," + " CORRECT, USED, DIFFICULTY, HINT)" +
-              " VALUES('"+q.question+"','"+q.answer_A+"','"+q.answer_B+"','"+
-      		q.answer_C+"','"+q.answer_D+"','"+q.correct+"','"+q.used+"','"+q.difficulty+"','"+q.hint+"')");
-	  Cursor cursor = database.query(MySQLiteHelper.TABLE_QUESTIONS,
-		        allColumns, MySQLiteHelper.Q_ID + " = " + q.id, null,
-		        null, null, null);
-		    cursor.moveToFirst();
-		    Question newQuestion = cursorToQuestion(cursor);
-		    cursor.close();
-		    Log.d("createQuestion()", newQuestion.question);
-		    return newQuestion;
-  }
   
- /* public Question createQuestion(String question, String A, String B, String C, 
-		  		String D, String correct, int used, int difficulty, String hint) {*/
   public Question createQuestion(Question question){
     ContentValues values = new ContentValues();
     values.put(MySQLiteHelper.QUESTION, question.question);
@@ -85,16 +69,15 @@ public class QuestionsDataSource {
   }
 
   public Question retrieveQuestion(){
-      
-      Cursor cursor  = database.rawQuery("SELECT * FROM "+  MySQLiteHelper.TABLE_QUESTIONS, null); // + 
-    		 // " WHERE USED = 1 ORDER BY RANDOM()", null);
+      Cursor cursor  = database.rawQuery("SELECT * FROM "+  MySQLiteHelper.TABLE_QUESTIONS + 
+    		  " WHERE USED = 0 ORDER BY RANDOM()", null);
       cursor.moveToFirst();
       Question q = cursorToQuestion(cursor);
       //database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 1 WHERE ID = " + q.id);            
       return q;       
  }
 			
-  public List<Question> getAllComments() {
+  public List<Question> getAllQuestions() {
     List<Question> questions = new ArrayList<Question>();
 
     Cursor cursor = database.query(MySQLiteHelper.TABLE_QUESTIONS,
@@ -108,6 +91,14 @@ public class QuestionsDataSource {
     // make sure to close the cursor
     cursor.close();
     return questions;
+  }
+  
+  public void addSettings(int type, int diff){
+	  ContentValues v = new ContentValues();
+	  v.put(MySQLiteHelper.S_TYPE, type);
+	  v.put(MySQLiteHelper.S_DIFF, diff);
+	  long insertId = database.insert(MySQLiteHelper.TABLE_SETTINGS, null, v);
+	  Log.d("addSettings", "Settings ID = "+String.valueOf(insertId));
   }
   
   private Question cursorToQuestion(Cursor cursor) {

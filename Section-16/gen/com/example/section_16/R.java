@@ -46,8 +46,8 @@ public final class R {
         public static final int TextView11=0x7f09001c;
         public static final int action_settings=0x7f09002f;
         public static final int add_record=0x7f09002e;
-        public static final int anchor=0x7f090026;
-        public static final int button1=0x7f090027;
+        public static final int anchor=0x7f090027;
+        public static final int button1=0x7f090026;
         public static final int button2=0x7f090028;
         public static final int button3=0x7f090029;
         public static final int button4=0x7f09002a;

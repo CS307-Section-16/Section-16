@@ -40,9 +40,28 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			  + " text not null);";
 	  
 	  //Settings Data Fields
+	  public static final String S_ID = "ID";
+	  public static final String S_TYPE = "TYPE";
+	  public static final String S_DIFF = "DIFFICULTY";
+	  public static final String S_FONT = "FONT";
+	  
+	  public static final String SETTINGS_CREATE = "create table "
+			  + TABLE_SETTINGS + "(" + S_ID 
+			  + " integer primary key autoincrement, " + S_TYPE
+			  + " integer, " + S_DIFF
+			  + " integer, " + S_FONT
+			  + " integer);";
 	  
 	  //Score Data Fields
-
+	  public static final String HS_ID = "ID";
+	  public static final String HS_NAME = "NAME";
+	  public static final String HS_SCORE = "SCORE";
+	  
+	  public static final String HIGH_SCORE_CREATE = "create table "
+			  + TABLE_SCORES + "(" + HS_ID 
+			  + " integer primary key autoincrement, " + HS_NAME
+			  + " text not null, " + HS_SCORE
+			  + " integer);";
 
 	  public MySQLiteHelper(Context context) {
 	    super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -51,7 +70,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	  @Override
 	  public void onCreate(SQLiteDatabase database) {
 		  database.execSQL(QUESTION_CREATE);
-		  //MainActivity.datasource.insertAllIntoTable(MainActivity.datasource);
+		  database.execSQL(HIGH_SCORE_CREATE);
+		  database.execSQL(SETTINGS_CREATE);
 		  Log.d("onCreate", "Database created");
 	  }
 

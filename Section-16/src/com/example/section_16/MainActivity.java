@@ -11,7 +11,7 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
-	public QuestionsDataSource datasource;
+	public static QuestionsDataSource datasource;
 	private boolean created = false;
 	
 	@SuppressLint("NewApi")
@@ -38,8 +38,11 @@ public class MainActivity extends Activity {
 		}else{
 			Log.d("insertion", "Already Created");
 		}
-	Question q = datasource.retrieveQuestion();
-	Log.d("Q_ID",String.valueOf(q.id));
+		
+		for(int i=0;i<4;i++){
+			Question q = datasource.retrieveQuestion();
+			Log.d("Q_ID","ID = "+String.valueOf(q.id));
+		}
 		
 	}
 	  protected void onResume() {

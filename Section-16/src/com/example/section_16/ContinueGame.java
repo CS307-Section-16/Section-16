@@ -45,18 +45,6 @@ public class ContinueGame extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
 		
-		q = retrieveQuestion();
-		
-		Score a = new Score();
-		a.name = "Tom";
-		a.score = 3555;
-		insertHighScore(a);
-		
-		
-		
-		Score s;
-		s = retrieveScore();
-		
 		TextView tv = (TextView)findViewById(R.id.questionBox);
 		//tv.setText("NAME " + s.name + "\n\n SCORE: " + s.score );
 		tv.setText(q.question + "\n\nA: " + q.answer_A + "\n\nB: " + q.answer_B+ "\n\nC: " + q.answer_C+ "\n\nD: " + q.answer_D);
