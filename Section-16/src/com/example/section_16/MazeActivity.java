@@ -11,16 +11,15 @@ import android.view.View;
 
 public class MazeActivity extends Activity {
 
-	public static MazeCell a[][] = null;
+	
 	DrawView drawview = null;
 	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		drawview = new DrawView(this);
-		setContentView(drawview);
-		
+		//drawview = new DrawView(this);
+		setContentView(R.layout.dpad_buttons);
 		
 		View decorView = getWindow().getDecorView();
 		// Hide the status bar.
@@ -30,14 +29,20 @@ public class MazeActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
 		
+		
+		//Button b = new Button(this);
+		
+		//RelativeLayout dpadButt = (RelativeLayout)findViewById(R.id.dpadButt);
+		
 		while( true ) 
 		{
-			a =	 MazeGen.generateMaze();
-			if ( checkBorder(a) )
+			MazeCell.a =	 MazeGen.generateMaze();
+			if ( MazeCell.checkBorder(MazeCell.a) )
 			{
 				break;
 			}  
 		}
+		
 	}
 
 	@Override
@@ -47,16 +52,4 @@ public class MazeActivity extends Activity {
 		return true;
 	}
 
-
-	private static boolean checkBorder(MazeCell[][] maze)
-	{
-		for(int i=0; i < maze.length; i++)
-		{
-			if(!maze[i][0].isWall() || !maze[i][maze.length - 1].isWall() || !maze[0][i].isWall() || !maze[maze.length -1][i].isWall() )
-			{
-				return false;
-			}
-		}
-		return true;
-	}
 }

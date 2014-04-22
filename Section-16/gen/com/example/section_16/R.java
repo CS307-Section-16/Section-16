@@ -33,7 +33,7 @@ public final class R {
         public static final int ProgressBar02=0x7f090017;
         public static final int ProgressBar03=0x7f090016;
         public static final int ProgressBar04=0x7f090014;
-        public static final int ScrollView01=0x7f09002c;
+        public static final int ScrollView01=0x7f09002d;
         public static final int TextView01=0x7f090013;
         public static final int TextView02=0x7f090012;
         public static final int TextView03=0x7f090011;
@@ -44,8 +44,8 @@ public final class R {
         public static final int TextView09=0x7f09001e;
         public static final int TextView10=0x7f09001d;
         public static final int TextView11=0x7f09001c;
-        public static final int action_settings=0x7f09002f;
-        public static final int add_record=0x7f09002e;
+        public static final int action_settings=0x7f090030;
+        public static final int add_record=0x7f09002f;
         public static final int anchor=0x7f090027;
         public static final int button1=0x7f090026;
         public static final int button2=0x7f090028;
@@ -56,8 +56,9 @@ public final class R {
         public static final int choice3=0x7f090004;
         public static final int choice4=0x7f090005;
         public static final int confirm=0x7f090007;
+        public static final int dpadButt=0x7f09002c;
         public static final int hint=0x7f090009;
-        public static final int linear=0x7f09002d;
+        public static final int linear=0x7f09002e;
         public static final int lives=0x7f090008;
         public static final int progressBar1=0x7f090015;
         public static final int questionBox=0x7f090006;
