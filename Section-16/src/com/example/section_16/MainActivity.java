@@ -48,9 +48,11 @@ public class MainActivity extends Activity {
 			Log.d("insertion", "Already Created");
 		}
 		
+		datasource.addSettings(3, 0);
+		
 		for(int i=0;i<4;i++){
 			Question q = datasource.retrieveQuestion();
-			Log.d("Q_ID","ID = "+String.valueOf(q.id));
+			Log.d("Q_TYPE","Type = "+q.type);
 		}
 		
 	}

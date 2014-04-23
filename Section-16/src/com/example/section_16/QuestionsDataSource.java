@@ -20,7 +20,7 @@ public class QuestionsDataSource {
   private  String[] allColumns = { MySQLiteHelper.Q_ID,
       MySQLiteHelper.QUESTION , MySQLiteHelper.ANSWER_A,MySQLiteHelper.ANSWER_B,
       MySQLiteHelper.ANSWER_C,MySQLiteHelper.ANSWER_D,MySQLiteHelper.CORRECT,
-      MySQLiteHelper.USED,MySQLiteHelper.DIFFICULTY,MySQLiteHelper.HINT}; 
+      MySQLiteHelper.USED,MySQLiteHelper.TYPE,MySQLiteHelper.HINT}; 
   
   private String[] scoreColumns = {MySQLiteHelper.HS_ID, MySQLiteHelper.HS_NAME, MySQLiteHelper.HS_SCORE};
 
@@ -46,7 +46,7 @@ public class QuestionsDataSource {
     values.put(MySQLiteHelper.ANSWER_D, question.answer_D);
     values.put(MySQLiteHelper.CORRECT, question.correct);
     values.put(MySQLiteHelper.USED, question.used);
-    values.put(MySQLiteHelper.DIFFICULTY, question.difficulty);
+    values.put(MySQLiteHelper.TYPE, question.type);
     values.put(MySQLiteHelper.HINT, question.hint);
     long insertId = database.insert(MySQLiteHelper.TABLE_QUESTIONS, null,
         values);
@@ -59,7 +59,7 @@ public class QuestionsDataSource {
     Question newQuestion = cursorToQuestion(cursor);
     cursor.close();
     Log.d("createQuestion", newQuestion.question);
-    Log.d("createQuestion", newQuestion.hint);
+    Log.d("createQuestion", newQuestion.type);
     return newQuestion;
   }
 
@@ -71,8 +71,20 @@ public class QuestionsDataSource {
   }
 
   public Question retrieveQuestion(){
+	  String type = "";
+	  int t = 0;
+	  Cursor sc = database.rawQuery("SELECT * FROM " + MySQLiteHelper.TABLE_SETTINGS, null);
+	  	sc.moveToFirst();
+	  	t = sc.getInt(1);
+	  	if(t==0){
+	  		type = "AND TYPE = 'JAVA'";
+	  	}else if(t == 1){
+	  		type = "AND TYPE = 'C'";
+	  	}else if(t == 2){
+	  		type = "AND TYPE = 'CONCEPT'";
+	  	}
       Cursor cursor  = database.rawQuery("SELECT * FROM "+  MySQLiteHelper.TABLE_QUESTIONS + 
-    		  " WHERE USED = 0 ORDER BY RANDOM()", null);
+    		  " WHERE (USED = 0) " + type + " ORDER BY RANDOM()", null);
       cursor.moveToFirst();
       Question q = cursorToQuestion(cursor);
       //database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 1 WHERE ID = " + q.id);            
@@ -159,7 +171,7 @@ public class QuestionsDataSource {
 	    q.answer_D = cursor.getString(5);
 	    q.correct = cursor.getString(6);
 	    q.used = cursor.getInt(7);
-	    q.difficulty = cursor.getInt(8);
+	    q.type = cursor.getString(8);
 	    q.hint = cursor.getString(9);
 	    return q;
 }
@@ -177,6 +189,10 @@ public class QuestionsDataSource {
 public void insertAllIntoTable(QuestionsDataSource ds){
 	int numQuestions = 21;
     q_array = new Question[numQuestions];
+    
+    final String java = "JAVA";
+    final String c = "C";
+    final String conc = "CONCEPT";
 
     for(int i=0;i<q_array.length;i++){
     	q_array[i] = new Question();
@@ -189,7 +205,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[0].answer_D = "Because public constructors are too mainstream";
     q_array[0].correct = "A";
     q_array[0].used = 0;
-    q_array[0].difficulty = 1;
+    q_array[0].type = "JAVA";
     q_array[0].hint = "Not D";
 
     q_array[1].question = "..........\n" +
@@ -208,7 +224,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[1].answer_D = "Nothing. The code is correct.";
     q_array[1].correct = "C";
     q_array[1].used = 0;
-    q_array[1].difficulty = 1;
+    q_array[1].type = java;
     q_array[1].hint = "Not A";
 
 
@@ -219,7 +235,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[2].answer_D = "char";
     q_array[2].correct = "B";
     q_array[2].used = 0;
-    q_array[2].difficulty = 1;
+    q_array[2].type = java;
     q_array[2].hint = "Not A";
 
     q_array[3].question = " ..........\n" +
@@ -235,7 +251,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[3].answer_D = "The program crashes.";
     q_array[3].correct = "D";
     q_array[3].used = 0;
-    q_array[3].difficulty = 5;
+    q_array[3].type = java;
     q_array[3].hint = "Not C";
 
     q_array[4].question = "..........\n" +
@@ -251,7 +267,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[4].answer_D = "x = -7, y = 1, z = 5";
     q_array[4].correct = "C";
     q_array[4].used = 0;
-    q_array[4].difficulty = 7;
+    q_array[4].type = c;
     q_array[4].hint = "Not D";
 
     q_array[5].question = "..........\n" +
@@ -267,7 +283,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[5].answer_D = "c = b";
     q_array[5].correct = "B";
     q_array[5].used = 0;
-    q_array[5].difficulty = 6;
+    q_array[5].type = c;
     q_array[5].hint = "Not A";
 
     q_array[6].question = "Which of the following is true about an abstract method inherited into a class Apple?";
@@ -277,7 +293,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[6].answer_D = "Neither a nor b";
     q_array[6].correct = "A";
     q_array[6].used = 0;
-    q_array[6].difficulty = 9;
+    q_array[6].type = conc;
     q_array[6].hint = "Not C";
 
     q_array[7].question = "Suppose the class Undergraduate extends the class Student which extends the class Person.\n" +
@@ -299,7 +315,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
     q_array[7].answer_D = "II, III, and V";
     q_array[7].correct = "C";
     q_array[7].used = 0;
-    q_array[7].difficulty = 8;
+    q_array[7].type = java;
     q_array[7].hint = "Not B";
     
 
@@ -310,7 +326,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[8].answer_D = "Growing Urban Integration";
 	q_array[8].correct = "B";
 	q_array[8].used = 0;
-	q_array[8].difficulty = 1;
+	q_array[8].type = conc;
 	q_array[8].hint = "It isn't growing or good";
 
 	q_array[9].question = "What is pseudocode?\n";
@@ -320,7 +336,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[9].answer_D = "Used by programmers to help map out what a program is supposed to do";
 	q_array[9].correct = "D";
 	q_array[9].used = 0;
-	q_array[9].difficulty = 2;
+	q_array[9].type = conc;
 	q_array[9].hint = "It's used in planning out your code";
 
 	q_array[10].question = "Which is an example of only declaring a number variable\n";
@@ -330,7 +346,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[10].answer_D = "Integer int = new Integer()";
 	q_array[10].correct = "B";
 	q_array[10].used = 0;
-	q_array[10].difficulty = 3;
+	q_array[10].type = conc;
 	q_array[10].hint = "Remember, declarations aren't initializations";
 
 	q_array[11].question = "What does it mean to \"override\" a method\n";
@@ -340,7 +356,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[11].answer_D = "It's when you hack into someone else's methods and use them as your own";
 	q_array[11].correct = "A";
 	q_array[11].used = 0;
-	q_array[11].difficulty = 8;
+	q_array[11].type = java;
 	q_array[11].hint = "No hacking required";
 
 	q_array[12].question = "Which data type is the best for numbers\n";
@@ -350,7 +366,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[12].answer_D = "int";
 	q_array[12].correct = "D";
 	q_array[12].used = 0;
-	q_array[12].difficulty = 2;
+	q_array[12].type = conc;
 	q_array[12].hint = "char and String are for letters";
 	
 	q_array[13].question = "An array with that ranges from 0 - 4 has a length of..\n";
@@ -360,7 +376,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[13].answer_D = "6";
 	q_array[13].correct = "C";
 	q_array[13].used = 0;
-	q_array[13].difficulty = 5;
+	q_array[13].type = conc;
 	q_array[13].hint = "Count from 0";
 	
 	q_array[14].question = "To terminate a case in a switch statement you must have a..\n";
@@ -370,7 +386,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[14].answer_D = "Period";
 	q_array[14].correct = "C";
 	q_array[14].used = 0;
-	q_array[14].difficulty = 6;
+	q_array[14].type = conc;
 	q_array[14].hint = "It isn't A or D";
 	
 	q_array[15].question = "To use predefined java methods you must _____ a library\n";
@@ -380,7 +396,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[15].answer_D = "Ask to use";
 	q_array[15].correct = "A";
 	q_array[15].used = 0;
-	q_array[15].difficulty = 4;
+	q_array[15].type = java;
 	q_array[15].hint = "Java doesn't use #include statements";
 
 	q_array[16].question = "Which statement is true:\n";
@@ -390,7 +406,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[16].answer_D = "Java a low level language";
 	q_array[16].correct = "A";
 	q_array[16].used = 0;
-	q_array[16].difficulty = 3;
+	q_array[16].type = java;
 	q_array[16].hint = "Steve Jobs didn't create Java";
 
 	q_array[17].question = "Which language would be considered a low-level language?\n";
@@ -400,7 +416,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[17].answer_D = "Javascript";
 	q_array[17].correct = "B";
 	q_array[17].used = 0;
-	q_array[17].difficulty = 2;
+	q_array[17].type = java;
 	q_array[17].hint = "Low-level programming is still used today";
 
 	q_array[18].question = "When a variable is follwed by ++ it is...\n";
@@ -410,7 +426,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[18].answer_D = "A C++ statement";
 	q_array[18].correct = "B";
 	q_array[18].used = 0;
-	q_array[18].difficulty = 3;
+	q_array[18].type = conc;
 	q_array[18].hint = "It's used in Java too";
 	
 	q_array[19].question = "Which symbol means \"or\"?\n";
@@ -420,7 +436,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[19].answer_D = "&";
 	q_array[19].correct = "B";
 	q_array[19].used = 0;
-	q_array[19].difficulty = 2;
+	q_array[19].type = conc;
 	q_array[19].hint = "& means \"and\"";
 
 	q_array[20].question = "Does Java use garbage collection?\n";
@@ -430,7 +446,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[20].answer_D = "No";
 	q_array[20].correct = "A";
 	q_array[20].used = 0;
-	q_array[20].difficulty = 10;
+	q_array[20].type = java;
 	q_array[20].hint = "Garbage collection is used by most high-level languages";
     
     long added = 0;

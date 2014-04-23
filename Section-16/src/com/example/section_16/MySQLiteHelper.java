@@ -23,7 +23,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	  public static final String ANSWER_D = "ANSWER_D";
 	  public static final String CORRECT = "CORRECT";
 	  public static final String USED = "USED";
-	  public static final String DIFFICULTY = "DIFFICULTY";
+	  public static final String TYPE = "TYPE";
 	  public static final String HINT = "HINT";
 	  
 	  public static final String QUESTION_CREATE = "create table "
@@ -35,8 +35,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			  + " text not null, " + ANSWER_D
 			  + " text not null, " + CORRECT
 			  + " text not null, " + USED
-			  + " integer, " + DIFFICULTY
-			  + " integer, " + HINT
+			  + " integer, " + TYPE
+			  + " text not null, " + HINT
 			  + " text not null);";
 	  
 	  //Settings Data Fields
@@ -95,7 +95,7 @@ class Question{
     String answer_D;
     String correct;
     int used;
-    int difficulty;
+    String type;
     String hint;
 
     public Question(){}

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class HighScoreScreen extends Activity {
@@ -14,6 +15,7 @@ public class HighScoreScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_high_score_screen);
 		this.setScores();
+		this.setProgress();
 	}
 
 	@Override
@@ -28,23 +30,37 @@ public class HighScoreScreen extends Activity {
 		startActivity(back);
 	}
 
+	public void setProgress(){
+		MainActivity.datasource.open();
+		Score scores[] = MainActivity.datasource.getScores();
+		MainActivity.datasource.close();
+		
+		if(scores[0].score > 0){
+			int maxScore = scores[0].score;
+			ProgressBar pb1 = (ProgressBar) findViewById(R.id.progressBar1);
+			ProgressBar pb2 = (ProgressBar) findViewById(R.id.ProgressBar04);
+			ProgressBar pb3 = (ProgressBar) findViewById(R.id.ProgressBar03);
+			ProgressBar pb4 = (ProgressBar) findViewById(R.id.ProgressBar02);
+			ProgressBar pb5 = (ProgressBar) findViewById(R.id.ProgressBar01);
+			pb1.setMax(maxScore);
+			pb2.setMax(maxScore);
+			pb3.setMax(maxScore);
+			pb4.setMax(maxScore);
+			pb5.setMax(maxScore);
+			pb1.setProgress(scores[0].score);
+			pb2.setProgress(scores[1].score);
+			pb3.setProgress(scores[2].score);
+			pb4.setProgress(scores[3].score);
+			pb5.setProgress(scores[4].score);
+			
+		}
+	}
+	
 	public void setScores(){
 		MainActivity.datasource.open();
 		Score scores[] = MainActivity.datasource.getScores();
 		MainActivity.datasource.close();
-		//TextView players[] = new TextView[5];
-		//TextView scoreText[] = new TextView[5];
 		
-		/*players[0] = (TextView) findViewById(R.id.textView1);
-		players[1] = (TextView) findViewById(R.id.textView2);
-		players[2] = (TextView) findViewById(R.id.textView3);
-		players[3] = (TextView) findViewById(R.id.textView4);
-		players[4] = (TextView) findViewById(R.id.textView5);
-		scoreText[0] = (TextView) findViewById(R.id.TextView11);
-		scoreText[1] = (TextView) findViewById(R.id.TextView10);
-		scoreText[2] = (TextView) findViewById(R.id.TextView09);
-		scoreText[3] = (TextView) findViewById(R.id.TextView08);
-		scoreText[4] = (TextView) findViewById(R.id.TextView07); */
 		TextView player1 = (TextView) findViewById(R.id.textView1);
 		TextView player2 = (TextView) findViewById(R.id.textView2);
 		TextView player3 = (TextView) findViewById(R.id.textView3);
@@ -66,15 +82,6 @@ public class HighScoreScreen extends Activity {
 		score3.setText(String.valueOf(scores[2].score));
 		score4.setText(String.valueOf(scores[3].score));
 		score5.setText(String.valueOf(scores[4].score));
-		
-		/*for(int i=0; i<5; i++){
-			if(scores[i] == null){
-				scores[i].name = "----------";
-				scores[i].score = 0;
-			}
-			players[i].setText(scores[i].name);
-			scoreText[i].setText(scores[i].score);
-		}*/
 		
 	}
 }

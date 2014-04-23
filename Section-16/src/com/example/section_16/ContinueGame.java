@@ -60,49 +60,7 @@ public class ContinueGame extends Activity {
 	        }
 	    }
 	
-    public Question retrieveQuestion(){
-    	
-    	mydb = SQLiteDB.getDatabase();
-		
-        Random rand = new Random();
-        Question q = new Question();
 
-        try{
-            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-            Cursor question_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  TABLE+ " WHERE USED = 1 ORDER BY RANDOM()", null);
-
-            if(question_to_retrieve.moveToFirst()){
-                    String ID = question_to_retrieve .getString(0);
-                    String QUESTION= question_to_retrieve .getString(1);
-                    String ANSWER_A= question_to_retrieve .getString(2);
-                    String ANSWER_B= question_to_retrieve .getString(3);
-                    String ANSWER_C= question_to_retrieve .getString(4);
-                    String ANSWER_D= question_to_retrieve .getString(5);
-                    String CORRECT= question_to_retrieve .getString(6);
-                    String DIFFICULTY = question_to_retrieve .getString(8);
-                    String HINT = question_to_retrieve .getString(9);
-
-                    q.question = QUESTION;
-                    q.answer_A = ANSWER_A;
-                    q.answer_B = ANSWER_B;
-                    q.answer_C = ANSWER_C;
-                    q.answer_D = ANSWER_D;
-                    q.correct = CORRECT;
-                    q.used = 1;
-                    q.difficulty = Integer.parseInt(DIFFICULTY);
-                    q.hint = HINT;
-
-                    mydb.execSQL("UPDATE " + TABLE + " SET USED = 1 WHERE ID = " + ID);
-
-            }
-            mydb.close();
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Error encountered.", Toast.LENGTH_LONG);
-        }
-
-        return q;
-    }
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

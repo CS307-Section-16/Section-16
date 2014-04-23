@@ -104,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/progressBar1"
         android:layout_alignTop="@+id/textView2" 
+        android:color="#7cfc00"
         android:minWidth="250dp"/>
 
     <ProgressBar
@@ -113,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/ProgressBar04"
         android:layout_alignTop="@+id/textView3" 
+        android:color="#7cfc00"
         android:minWidth="250dp"/>
 
     <ProgressBar
@@ -122,6 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignLeft="@+id/ProgressBar03" 
+        android:color="#7cfc00"
         android:minWidth="250dp"/>
 
     <ProgressBar
@@ -131,6 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/ProgressBar02"
         android:layout_alignTop="@+id/textView5" 
+        android:color="#7cfc00"
         android:minWidth="250dp"/>
 
     <ProgressBar
@@ -140,6 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentRight="true"
+        android:color="#7cfc00"
         android:minWidth="250dp" />
 
     <TextView

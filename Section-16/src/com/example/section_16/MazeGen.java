@@ -4,11 +4,13 @@ import java.lang.Math;
 import java.util.ArrayList;
 
 public class MazeGen {
+	
+	static int questionWeight = 15;
  
  public static void generateObstacles(MazeCell[][] maze, int mazeSize){
 	 for(int i = 0; i < mazeSize; i++){
 		for(int j = 0; j < mazeSize; j++){
-			int var = (int)(Math.random()*10);
+			int var = (int)(Math.random()*questionWeight);
 			if(!maze[i][j].isWall() && var < 2){
 				maze[i][j].obstacle = true;
 			}
@@ -21,7 +23,7 @@ public class MazeGen {
  
  
  public static MazeCell[][] generateMaze(){
-  int mazeSize = 31;
+  int mazeSize = 19;
   MazeCell maze[][] = new MazeCell[mazeSize][mazeSize]; 
   
   //Initialize cells
