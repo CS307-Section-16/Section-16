@@ -75,4 +75,16 @@
         android:textSize="15sp" 
         android:textColor="@color/white"/>
 
+    <Button
+        android:id="@+id/button5"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:onClick="dummyScores"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@+id/button2"
+        android:text="Test Scores"
+    	android:textColor="@color/white"/>
+
 </RelativeLayout>

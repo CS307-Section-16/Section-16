@@ -21,6 +21,8 @@ public class QuestionsDataSource {
       MySQLiteHelper.QUESTION , MySQLiteHelper.ANSWER_A,MySQLiteHelper.ANSWER_B,
       MySQLiteHelper.ANSWER_C,MySQLiteHelper.ANSWER_D,MySQLiteHelper.CORRECT,
       MySQLiteHelper.USED,MySQLiteHelper.DIFFICULTY,MySQLiteHelper.HINT}; 
+  
+  private String[] scoreColumns = {MySQLiteHelper.HS_ID, MySQLiteHelper.HS_NAME, MySQLiteHelper.HS_SCORE};
 
   public QuestionsDataSource(Context context) {
     dbHelper = new MySQLiteHelper(context);
@@ -93,6 +95,8 @@ public class QuestionsDataSource {
     return questions;
   }
   
+  
+  
   public void addSettings(int type, int diff){
 	  ContentValues v = new ContentValues();
 	  v.put(MySQLiteHelper.S_TYPE, type);
@@ -100,6 +104,31 @@ public class QuestionsDataSource {
 	  long insertId = database.insert(MySQLiteHelper.TABLE_SETTINGS, null, v);
 	  Log.d("addSettings", "Settings ID = "+String.valueOf(insertId));
   }
+  
+  public void addHighScore(String name, int score){
+	  ContentValues v = new ContentValues();
+	  v.put(MySQLiteHelper.HS_NAME, name);
+	  v.put(MySQLiteHelper.HS_SCORE, score);
+	  long insertId = database.insert(MySQLiteHelper.TABLE_SCORES, null, v);
+	  Log.d("addScore", "Score ID = "+String.valueOf(insertId));
+  }
+  
+  public Score[] getScores(){
+	    Score scores[] = new Score[5];
+	    Cursor cursor = database.query(MySQLiteHelper.TABLE_SCORES,
+	        scoreColumns, null, null, null, null, "SCORE DESC");
+	    cursor.moveToFirst();
+	    int i = 0;
+	    while (!cursor.isAfterLast() && i<5) {
+	      Score score = cursorToScore(cursor);
+	      scores[i] = score;
+	      cursor.moveToNext();
+	      i++;
+	    }
+	    // make sure to close the cursor
+	    cursor.close();
+	    return scores;
+}
   
   private Question cursorToQuestion(Cursor cursor) {
 	  //cursor.moveToFirst();
@@ -115,6 +144,14 @@ public class QuestionsDataSource {
 	    q.difficulty = cursor.getInt(8);
 	    q.hint = cursor.getString(9);
 	    return q;
+}
+  private Score cursorToScore(Cursor cursor) {
+	  //cursor.moveToFirst();
+	    Score s = new Score();
+	    s.id = cursor.getLong(0);
+	    s.name = cursor.getString(1);
+	    s.score = cursor.getInt(2);
+	    return s;
 }
   
 

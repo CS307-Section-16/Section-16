@@ -102,6 +102,7 @@ class Question{
 }
 
 class Score{
+	long id;
 	String name;
 	int score;
 	public Score(){}
