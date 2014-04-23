@@ -29,6 +29,14 @@ public class MainActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
 		
+		while( true ) 
+		{
+			MazeCell.a =	 MazeGen.generateMaze();
+			if ( MazeCell.checkBorder(MazeCell.a) )
+			{
+				break;
+			}  
+		}
 		
 		datasource = new QuestionsDataSource(this);
 		datasource.open();

@@ -17,6 +17,9 @@ public class MazeCell {
 	//Parent cell for computing opposite
 	MazeCell parent;
 	
+	
+	public static MazeCell a[][] = null;
+	
 	//Contructor
 	public MazeCell(int x, int y, MazeCell parent){
 		this.wall = true;
@@ -62,5 +65,17 @@ public class MazeCell {
 	public Point coordinates(MazeCell cell){
 		Point point = new Point(this.x, this.y);
 		return point;
+	}
+	
+	public static boolean checkBorder(MazeCell[][] maze)
+	{
+		for(int i=0; i < maze.length; i++)
+		{
+			if(!maze[i][0].isWall() || !maze[i][maze.length - 1].isWall() || !maze[0][i].isWall() || !maze[maze.length -1][i].isWall() )
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 }
