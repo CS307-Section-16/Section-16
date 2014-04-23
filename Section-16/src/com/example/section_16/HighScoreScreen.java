@@ -13,10 +13,27 @@ public class HighScoreScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_high_score_screen);
+		this.setScores();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.high_score_screen, menu);
+		return true;
+	}
+	
+	public void startBack(View view) {
+		Intent back = new Intent(this, MainActivity.class);
+		startActivity(back);
+	}
+
+	public void setScores(){
 		MainActivity.datasource.open();
 		Score scores[] = MainActivity.datasource.getScores();
-		TextView players[] = new TextView[5];
-		TextView scoreText[] = new TextView[5];
+		MainActivity.datasource.close();
+		//TextView players[] = new TextView[5];
+		//TextView scoreText[] = new TextView[5];
 		
 		/*players[0] = (TextView) findViewById(R.id.textView1);
 		players[1] = (TextView) findViewById(R.id.textView2);
@@ -59,20 +76,6 @@ public class HighScoreScreen extends Activity {
 			scoreText[i].setText(scores[i].score);
 		}*/
 		
-		MainActivity.datasource.close();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.high_score_screen, menu);
-		return true;
-	}
-	
-	public void startBack(View view) {
-		Intent back = new Intent(this, MainActivity.class);
-		startActivity(back);
-	}
-
 }
 	

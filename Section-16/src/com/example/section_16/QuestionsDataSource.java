@@ -98,6 +98,8 @@ public class QuestionsDataSource {
   
   
   public void addSettings(int type, int diff){
+	  database.execSQL("drop table if exists " + MySQLiteHelper.TABLE_SETTINGS);
+	  database.execSQL(MySQLiteHelper.SETTINGS_CREATE);
 	  ContentValues v = new ContentValues();
 	  v.put(MySQLiteHelper.S_TYPE, type);
 	  v.put(MySQLiteHelper.S_DIFF, diff);
@@ -113,25 +115,41 @@ public class QuestionsDataSource {
 	  Log.d("addScore", "Score ID = "+String.valueOf(insertId));
   }
   
+  public void clearAllScores(){
+	  database.execSQL("drop table if exists " + MySQLiteHelper.TABLE_SCORES);
+	  database.execSQL(MySQLiteHelper.HIGH_SCORE_CREATE);
+  }
+  
+  
   public Score[] getScores(){
 	    Score scores[] = new Score[5];
 	    Cursor cursor = database.query(MySQLiteHelper.TABLE_SCORES,
 	        scoreColumns, null, null, null, null, "SCORE DESC");
-	    cursor.moveToFirst();
-	    int i = 0;
-	    while (!cursor.isAfterLast() && i<5) {
-	      Score score = cursorToScore(cursor);
-	      scores[i] = score;
-	      cursor.moveToNext();
-	      i++;
+	    int test = 0;
+    	int i=0;
+	    if(cursor.moveToFirst()){
+	    test = cursor.getCount();
+	    	while (!cursor.isAfterLast() && test>0 && i<5) {
+	    		Score score = cursorToScore(cursor);
+	   			scores[i] = score;
+	   			cursor.moveToNext();
+	   			i++;
+	   			test--;
+	   		}
 	    }
+	    	while(test <= 0 && i < 5){
+	    		Score score = new Score();
+	    		score.name = "-------";
+	    		score.score = 0;
+	    		scores[i] = score;
+	    		i++;
+	    	}
 	    // make sure to close the cursor
 	    cursor.close();
 	    return scores;
 }
   
   private Question cursorToQuestion(Cursor cursor) {
-	  //cursor.moveToFirst();
 	    Question q = new Question();
 	    q.id = cursor.getLong(0);
 	    q.question = cursor.getString(1);
@@ -145,6 +163,7 @@ public class QuestionsDataSource {
 	    q.hint = cursor.getString(9);
 	    return q;
 }
+  
   private Score cursorToScore(Cursor cursor) {
 	  //cursor.moveToFirst();
 	    Score s = new Score();

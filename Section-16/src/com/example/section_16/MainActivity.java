@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
 	}
 	public void dummyScores(View view){
 		datasource.open();
-		Score scores[] = new Score[5];
+		Score scores[] = new Score[4];
 		for(int i=0;i<scores.length;i++){
 			scores[i] = new Score();
 		}
@@ -101,13 +101,13 @@ public class MainActivity extends Activity {
 		scores[1].name = "Dan";
 		scores[2].name = "Max";
 		scores[3].name = "Phillip";
-		scores[4].name = "Ashley";
+		//scores[4].name = "Ashley";
 		scores[0].score = 500;
 		scores[1].score = 10009;
 		scores[2].score = 207;
 		scores[3].score = 84600;
-		scores[4].score = 33;
-		for(int i=0;i<5;i++){
+		//scores[4].score = 33;
+		for(int i=0;i<scores.length;i++){
 			datasource.addHighScore(scores[i].name, scores[i].score);
 		}
 		datasource.close();
