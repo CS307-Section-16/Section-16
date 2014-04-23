@@ -6,6 +6,8 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 
 
@@ -18,7 +20,7 @@ public class MazeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//drawview = new DrawView(this);
+		drawview = new DrawView(this);
 		setContentView(R.layout.dpad_buttons);
 		
 		View decorView = getWindow().getDecorView();
@@ -30,19 +32,11 @@ public class MazeActivity extends Activity {
 		actionBar.hide();
 		
 		
-		//Button b = new Button(this);
+		Button b = new Button(this);
 		
-		//RelativeLayout dpadButt = (RelativeLayout)findViewById(R.id.dpadButt);
-		
-		while( true ) 
-		{
-			MazeCell.a =	 MazeGen.generateMaze();
-			if ( MazeCell.checkBorder(MazeCell.a) )
-			{
-				break;
-			}  
-		}
-		
+		RelativeLayout dpadButt = (RelativeLayout)findViewById(R.id.dpadButt);	
+		dpadButt.addView(drawview);
+		dpadButt.addView(b);
 	}
 
 	@Override
