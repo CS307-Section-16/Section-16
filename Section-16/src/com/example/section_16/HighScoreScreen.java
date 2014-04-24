@@ -1,6 +1,8 @@
 package com.example.section_16;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -10,12 +12,21 @@ import android.widget.TextView;
 
 public class HighScoreScreen extends Activity {
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_high_score_screen);
 		this.setScores();
 		this.setProgress();
+		
+		View decorView = getWindow().getDecorView();
+		// Hide the status bar.
+		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+		decorView.setSystemUiVisibility(uiOptions);
+
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
 	}
 
 	@Override
@@ -35,7 +46,7 @@ public class HighScoreScreen extends Activity {
 		Score scores[] = MainActivity.datasource.getScores();
 		MainActivity.datasource.close();
 		
-		if(scores[0].score > 0){
+		/*if(scores[0].score > 0){
 			int maxScore = scores[0].score;
 			ProgressBar pb1 = (ProgressBar) findViewById(R.id.progressBar1);
 			ProgressBar pb2 = (ProgressBar) findViewById(R.id.ProgressBar04);
@@ -53,7 +64,7 @@ public class HighScoreScreen extends Activity {
 			pb4.setProgress(scores[3].score);
 			pb5.setProgress(scores[4].score);
 			
-		}
+		}*/
 	}
 	
 	public void setScores(){
@@ -61,7 +72,7 @@ public class HighScoreScreen extends Activity {
 		Score scores[] = MainActivity.datasource.getScores();
 		MainActivity.datasource.close();
 		
-		TextView player1 = (TextView) findViewById(R.id.textView1);
+		/*TextView player1 = (TextView) findViewById(R.id.textView1);
 		TextView player2 = (TextView) findViewById(R.id.textView2);
 		TextView player3 = (TextView) findViewById(R.id.textView3);
 		TextView player4 = (TextView) findViewById(R.id.textView4);
@@ -81,7 +92,7 @@ public class HighScoreScreen extends Activity {
 		score2.setText(String.valueOf(scores[1].score));
 		score3.setText(String.valueOf(scores[2].score));
 		score4.setText(String.valueOf(scores[3].score));
-		score5.setText(String.valueOf(scores[4].score));
+		score5.setText(String.valueOf(scores[4].score));*/
 		
 	}
 }
