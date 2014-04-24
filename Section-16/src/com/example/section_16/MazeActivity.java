@@ -22,7 +22,6 @@ public class MazeActivity extends Activity {
 		drawview = new DrawView(this);
 		setContentView(R.layout.activity_maze);
 
-
 		View decorView = getWindow().getDecorView();
 		// Hide the status bar.
 		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -32,12 +31,19 @@ public class MazeActivity extends Activity {
 		actionBar.hide();
 
 		
-		Button b = new Button(this);
-		View anchor = new View(this);
+		Button up = (Button)findViewById(R.id.d_button1);	
+		Button right = (Button)findViewById(R.id.d_button2);	
+		Button down = (Button)findViewById(R.id.d_button3);	
+		Button left = (Button)findViewById(R.id.d_button4);	
+		View anchor = findViewById(R.id.d_anchor);
 		
 		RelativeLayout dpadButt = (RelativeLayout)findViewById(R.id.dpad_layout);	
 		dpadButt.addView(drawview);
-		dpadButt.addView(b);
+		anchor.bringToFront();
+		up.bringToFront();
+		right.bringToFront();
+		down.bringToFront();
+		left.bringToFront();
 	}
 
 	@Override

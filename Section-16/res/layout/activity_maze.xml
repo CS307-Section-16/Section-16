@@ -3,60 +3,57 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal" 
-    android:id="@+id/dpad_layout">"
-    
+    android:id="@+id/dpad_layout" >
     
 	<View
-            android:id="@+id/d_anchor"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true" 
-            android:layout_alignParentRight="true"/>
-
+	    android:id="@+id/d_anchor"
+	    android:layout_width="75dp"
+	    android:layout_height="0dp"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true" 
+	   	
+	    />
 
     <Button
         android:id="@+id/d_button1"
         android:layout_centerInParent="true"
 		android:layout_toLeftOf="@+id/d_anchor"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="startInitialization"
-        android:text="New" 
+		android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="^" 
         android:textSize="15sp" 
         android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/d_button2"
         android:layout_centerInParent="true"
-		android:layout_toRightOf="@+id/d_anchor"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="startContinue"
-        android:text="Continue" 
+        android:layout_below="@+id/d_button1"
+		android:layout_toRightOf="@+id/d_button1"
+		android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text=">" 
         android:textSize="15sp" 
         android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/d_button3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/d_button1"
+        android:layout_toLeftOf="@+id/d_button1"
         android:layout_centerInParent="true"
-		android:layout_below="@+id/d_button1"
-		android:layout_toLeftOf="@+id/d_anchor"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="startHighScores"
-        android:text="High Scores"
-        android:textSize="15sp" 
-        android:textColor="@color/white"/>
+        android:text="left"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/d_button4"
         android:layout_centerInParent="true"
-		android:layout_below="@+id/d_button1"
-		android:layout_toRightOf="@+id/d_anchor"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="startSettings"
-        android:text="Settings" 
+		android:layout_below="@+id/d_button2"
+		android:layout_toLeftOf="@+id/d_anchor"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="v" 
         android:textSize="15sp" 
         android:textColor="@color/white"/>
 

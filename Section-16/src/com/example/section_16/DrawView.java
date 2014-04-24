@@ -29,7 +29,7 @@ public class DrawView extends View {
 		canvas.drawPaint(paint);
 
 
-		int startX = x/2 - y/2;
+		int startX = (x/2 - y/2)-155;
 		for(int j = 0; j < MazeCell.a[1].length; j++){
 			for(int i = 0; i < MazeCell.a.length; i++){
 				if(MazeCell.a[i][j].wall == true)
