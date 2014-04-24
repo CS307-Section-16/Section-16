@@ -52,6 +52,18 @@ public class Initialize extends Activity {
 		int indexDiff = diff.indexOfChild(radioButton1);
 		MainActivity.datasource.addSettings(indexType, indexDiff);
 		MainActivity.datasource.close();
+		
+		while( true ) 
+		{
+			MazeCell.a =	 MazeGen.generateMaze();
+			if ( MazeCell.checkBorder(MazeCell.a) )
+			{
+				break;
+			}  
+		}
+		
+		Intent cont = new Intent(this, MazeActivity.class);
+		startActivity(cont);
 	}
 
 }

@@ -3,11 +3,15 @@ package com.example.section_16;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.graphics.PorterDuff;
 
 
 
@@ -44,6 +48,30 @@ public class MazeActivity extends Activity {
 		right.bringToFront();
 		down.bringToFront();
 		left.bringToFront();
+		
+		up.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+            	
+            }
+        });
+		
+		right.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+            	
+            }
+        });
+		
+		down.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+            	
+            }
+        });
+		
+		left.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+            	
+            }
+        });
 	}
 
 	@Override

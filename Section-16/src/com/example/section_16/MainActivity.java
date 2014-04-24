@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -29,14 +30,8 @@ public class MainActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
 		
-		while( true ) 
-		{
-			MazeCell.a =	 MazeGen.generateMaze();
-			if ( MazeCell.checkBorder(MazeCell.a) )
-			{
-				break;
-			}  
-		}
+		Button continueB = (Button)findViewById(R.id.button2);	
+		continueB.setEnabled(false);
 		
 		datasource = new QuestionsDataSource(this);
 		datasource.open();
@@ -75,8 +70,8 @@ public class MainActivity extends Activity {
 	}
 	
 	public void startContinue(View view) {
-		Intent cont = new Intent(this, MazeActivity.class);
-		startActivity(cont);
+		//Intent cont = new Intent(this, MazeActivity.class);
+		//startActivity(cont);
 	}
 	
 	public void startInitialization(View view) {
