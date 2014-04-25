@@ -19,13 +19,14 @@ public class MazeCell {
 	
 	
 	public static MazeCell a[][] = null;
+	public static Point playerPos = null;
 	
 	//Contructor
 	public MazeCell(int x, int y, MazeCell parent){
 		this.wall = true;
 		this.x=x;
 		this.y=y;
-		this.parent = parent;		
+		this.parent = parent;	
 	}
 	
 	//Compute cell located on opposite side of parent

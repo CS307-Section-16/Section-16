@@ -3,6 +3,8 @@ package com.example.section_16;
 import java.lang.Math;
 import java.util.ArrayList;
 
+import android.graphics.Point;
+
 public class MazeGen {
 
 	static int questionWeight = 15;
@@ -16,6 +18,7 @@ public class MazeGen {
 					if(!placedPlayer){
 						maze[i][j].player = true;
 						placedPlayer = true;
+						MazeCell.playerPos = new Point(j,i);
 						continue;
 					}
 					maze[i][j].obstacle = true;
