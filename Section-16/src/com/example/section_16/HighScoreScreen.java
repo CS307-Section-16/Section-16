@@ -73,17 +73,18 @@ public class HighScoreScreen extends Activity {
 		Score scores[] = MainActivity.datasource.getScores();
 		MainActivity.datasource.close();
 		
-		/*
-		TextView player1 = (TextView) findViewById(R.id.textView1);
-		TextView player2 = (TextView) findViewById(R.id.textView2);
-		TextView player3 = (TextView) findViewById(R.id.textView3);
-		TextView player4 = (TextView) findViewById(R.id.textView4);
-		TextView player5 = (TextView) findViewById(R.id.textView5);
-		TextView score1 = (TextView) findViewById(R.id.TextView11);
-		TextView score2 = (TextView) findViewById(R.id.TextView10);
-		TextView score3 = (TextView) findViewById(R.id.TextView09);
-		TextView score4 = (TextView) findViewById(R.id.TextView08);
-		TextView score5 = (TextView) findViewById(R.id.TextView07); 
+		
+		TextView player1 = (TextView) findViewById(R.id.player1);
+		TextView player2 = (TextView) findViewById(R.id.player2);
+		TextView player3 = (TextView) findViewById(R.id.player3);
+		TextView player4 = (TextView) findViewById(R.id.player4);
+		TextView player5 = (TextView) findViewById(R.id.player5);
+		
+		TextView score1 = (TextView) findViewById(R.id.score1);
+		TextView score2 = (TextView) findViewById(R.id.score2);
+		TextView score3 = (TextView) findViewById(R.id.score3);
+		TextView score4 = (TextView) findViewById(R.id.score4);
+		TextView score5 = (TextView) findViewById(R.id.score5); 
 		
 		player1.setText(scores[0].name);
 		player2.setText(scores[1].name);
@@ -95,6 +96,6 @@ public class HighScoreScreen extends Activity {
 		score3.setText(String.valueOf(scores[2].score));
 		score4.setText(String.valueOf(scores[3].score));
 		score5.setText(String.valueOf(scores[4].score));
-		*/
+		
 	}
 }

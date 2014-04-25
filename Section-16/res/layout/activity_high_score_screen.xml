@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/Title2"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Title2"
         android:fontFamily="sans-serif"
@@ -59,7 +60,6 @@
         android:textSize="28sp" />
 
     <!-- Number Ranking -->
-
 
     <TextView
         android:id="@+id/rank1"
@@ -104,7 +104,6 @@
         android:text="4."
         android:textColor="@color/white"
         android:textSize="15sp" />
-
 
     <TextView
         android:id="@+id/rank5"
@@ -241,10 +240,10 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/player1"
-		android:layout_alignLeft="@+id/Title3"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_alignLeft="@+id/Title3"
+        android:layout_below="@+id/Title3"
+        android:layout_marginBottom="21dp"
+        android:layout_marginTop="40dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -255,9 +254,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/player2"
         android:layout_alignLeft="@+id/Title3"
-        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/ProgressBar1"
+        android:layout_marginBottom="21dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -268,9 +267,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/player3"
+        android:layout_below="@+id/ProgressBar2"
         android:layout_alignLeft="@+id/Title3"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="21dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -281,9 +280,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/player4"
+        android:layout_below="@+id/ProgressBar3"
         android:layout_alignLeft="@+id/Title3"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="21dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -294,9 +293,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/player5"
+        android:layout_below="@+id/ProgressBar4"
         android:layout_alignLeft="@+id/Title3"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="21dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
