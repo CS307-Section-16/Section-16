@@ -28,7 +28,7 @@
         android:fontFamily="sans-serif"
         android:text="Player Name"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/Title2"
@@ -43,7 +43,7 @@
         android:fontFamily="sans-serif"
         android:text="Scores"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/Title3"
@@ -56,70 +56,250 @@
         android:fontFamily="sans-serif"
         android:text="Comparison"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
 
-    <!--
-Progress Bars 
+    <!-- Number Ranking -->
+
+
+    <TextView
+        android:id="@+id/rank1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Title1"
+        android:layout_margin="8dp"
+        android:text="1."
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/rank2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rank1"
+        android:layout_margin="8dp"
+        android:text="2."
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/rank3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rank2"
+        android:layout_margin="8dp"
+        android:text="3."
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/rank4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rank3"
+        android:layout_margin="8dp"
+        android:text="4."
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/rank5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rank4"
+        android:layout_margin="8dp"
+        android:text="5."
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <!-- Players Names -->
+
+    <TextView
+        android:id="@+id/player1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rank1"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/rank1"
+        android:text="Player1"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/player2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rank2"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/rank2"
+        android:text="Player2"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/player3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rank3"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/rank3"
+        android:text="Player3"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/player4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rank4"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/rank3"
+        android:text="Player4"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/player5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rank5"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/rank5"
+        android:text="Player5"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <!-- End players names -->
+
+
+    <!-- Scores -->
+
+    <TextView
+        android:id="@+id/score1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player1"
+        android:layout_alignLeft="@+id/Title2"
+        android:layout_marginLeft="20dp"
+        android:text="15000"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/score2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player2"
+        android:layout_alignLeft="@+id/Title2"
+        android:layout_marginLeft="20dp"
+        android:text="10000"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/score3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player3"
+        android:layout_alignLeft="@+id/Title2"
+        android:layout_marginLeft="20dp"
+        android:text="5000"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/score4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player4"
+        android:layout_alignLeft="@+id/Title2"
+        android:layout_marginLeft="20dp"
+        android:text="1000"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/score5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/player5"
+        android:layout_alignLeft="@+id/Title2"
+        android:layout_marginLeft="20dp"
+        android:text="100"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <!-- Progress bars -->
 
     <ProgressBar
-        android:id="@+id/ProgressBar01"
+        android:id="@+id/ProgressBar1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ProgressBar02"
-        android:layout_alignTop="@+id/textView5"
+        android:layout_alignBaseline="@+id/player1"
+		android:layout_alignLeft="@+id/Title3"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:color="#7cfc00" />
 
     <ProgressBar
-        android:id="@+id/ProgressBar02"
+        android:id="@+id/ProgressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/ProgressBar03"
+        android:layout_alignBaseline="@+id/player2"
+        android:layout_alignLeft="@+id/Title3"
+        android:layout_marginBottom="20dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:color="#7cfc00" />
 
     <ProgressBar
-        android:id="@+id/ProgressBar03"
+        android:id="@+id/ProgressBar3"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ProgressBar04"
-        android:layout_alignTop="@+id/textView3"
+        android:layout_alignBaseline="@+id/player3"
+        android:layout_alignLeft="@+id/Title3"
+        android:layout_marginBottom="20dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:color="#7cfc00" />
 
     <ProgressBar
-        android:id="@+id/ProgressBar04"
+        android:id="@+id/ProgressBar4"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/progressBar1"
-        android:layout_alignTop="@+id/textView2"
+        android:layout_alignBaseline="@+id/player4"
+        android:layout_alignLeft="@+id/Title3"
+        android:layout_marginBottom="20dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:color="#7cfc00" />
 
     <ProgressBar
-        android:id="@+id/progressBar1"
+        android:id="@+id/ProgressBar5"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@+id/player5"
+        android:layout_alignLeft="@+id/Title3"
+        android:layout_marginBottom="20dp"
         android:minWidth="250dp"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:color="#7cfc00" />
-    -->
 
 </RelativeLayout>

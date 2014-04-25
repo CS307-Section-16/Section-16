@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -71,6 +72,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.y--;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y-1][x].player = true;
+				/*if(MazeCell.a[y-1][x].obstacle){
+					Intent question = new Intent(this, ContinueGame.class);
+					startActivity(question);
+				}*/
 				drawview.invalidate();
 			}
 		}else if(b == R.id.d_right){
@@ -78,6 +83,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.x++;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y][x+1].player = true;
+				/*if(MazeCell.a[y][x+1].obstacle){
+					Intent question = new Intent(this, ContinueGame.class);
+					startActivity(question);
+				}*/
 				drawview.invalidate();
 			}
 		}else if(b == R.id.d_down){
@@ -85,6 +94,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.y++;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y+1][x].player = true;
+				/*if(MazeCell.a[y+1][x].obstacle){
+					Intent question = new Intent(this, ContinueGame.class);
+					startActivity(question);
+				}*/
 				drawview.invalidate();
 			}
 		}else if(b == R.id.d_left){
@@ -92,6 +105,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.x--;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y][x-1].player = true;
+				/*if(MazeCell.a[y][x-1].obstacle){
+					Intent question = new Intent(this, ContinueGame.class);
+					startActivity(question);
+				}*/
 				drawview.invalidate();
 			}
 		}
