@@ -59,8 +59,12 @@ public class MazeCell {
 		return this.start;
 	}
 	
-	public boolean isEnd(MazeCell cell){
+	public boolean isEnd(){
 		return this.end;
+	}
+	
+	public boolean isPlayer(){
+		return this.player;
 	}
 	
 	public Point coordinates(MazeCell cell){

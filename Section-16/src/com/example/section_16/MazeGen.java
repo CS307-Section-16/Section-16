@@ -8,28 +8,61 @@ import android.graphics.Point;
 public class MazeGen {
 
 	static int questionWeight = 15;
+	
+	public static boolean isJunction(MazeCell[][] maze, int x, int y){
+		int junctionCount = 0;
+		//3x3 Grid centered at (0,0)
+		for(int a = -1; a <= 1; a++){
+			for(int b = -1; b <= 1; b++){
+				//Skip diagonal neighbors and the origin
+				if(a==0 && b==0 || a!=0 && b!=0){
+					continue;
+				}
+				//Ignore out of bounds exceptions
+				try{
+					//Skip neighbors that are paths
+					if(!maze[x+a][y+b].isWall()){
+						junctionCount++;
+						continue;
+					}
+				}catch(Exception e){
+					continue;
+				}				
+			}
+		} 
+		//If more than 2 orthogonal cells are paths, return true
+		if(junctionCount > 2){
+			return true;
+		}else{		
+			return false;
+		}
+	}
 
 	public static void generateObstacles(MazeCell[][] maze, int mazeSize){
-		boolean placedPlayer = false;
+		//Place obstacle only at junctions
+		for(int m = 0; m < mazeSize; m++){
+			for(int n = 0; n < mazeSize; n++){
+				if(!maze[m][n].isWall() && !maze[m][n].isEnd() && !maze[m][n].isPlayer()){
+					if(isJunction(maze, m, n)){
+						maze[m][n].obstacle = true;
+					}
+				}
+			}
+		}
+	}	
+	
+	public static void generatePlayer(MazeCell[][] maze, int mazeSize){
 		for(int i = 0; i < mazeSize; i++){
 			for(int j = 0; j < mazeSize; j++){
 				int var = (int)(Math.random()*questionWeight);
-				if(!maze[i][j].isWall() && var < 2 && !maze[i][j].end){
-					if(!placedPlayer){
+				if(!maze[i][j].isWall() && var < 2 && !maze[i][j].isEnd()){
 						maze[i][j].player = true;
-						placedPlayer = true;
-						MazeCell.playerPos = new Point(j,i);
-						continue;
-					}
-					maze[i][j].obstacle = true;
+						MazeCell.playerPos = new Point(i,j);
+						return;
 				}
 			}
-		}		 
+		}
 	}
-
-
-
-
 
 	public static MazeCell[][] generateMaze(){
 		int mazeSize = 19;
@@ -118,7 +151,8 @@ public class MazeGen {
 				maze[save.x][save.y].obstacle = false;
 			}   
 		} 
-
+		
+		generatePlayer(maze, mazeSize);
 		generateObstacles(maze, mazeSize);
 
 
