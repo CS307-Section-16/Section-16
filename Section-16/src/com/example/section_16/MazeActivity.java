@@ -61,7 +61,21 @@ public class MazeActivity extends Activity implements OnClickListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
+	public void handlePlayerMove(int x0, int x1, int y0, int y1){
+		if(!MazeCell.a[y1][x1].isWall()){
+			MazeCell.playerPos.y = y1;
+			MazeCell.playerPos.x = x1;
+			MazeCell.a[y0][x0].player = false;
+			MazeCell.a[y1][x1].player = true;
+			if(MazeCell.a[y1][x1].obstacle){
+				Intent question = new Intent(this, QuestionIntent.class);
+				startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
+			}
+			drawview.invalidate();
+		}
+	}
+	
 	@Override
 	public void onClick(View v) {
 		int b = v.getId();
@@ -70,49 +84,13 @@ public class MazeActivity extends Activity implements OnClickListener {
 		int y = MazeCell.playerPos.y;
 		
 		if(b == R.id.d_up){
-			if(!MazeCell.a[y-1][x].isWall()){
-				MazeCell.playerPos.y--;
-				MazeCell.a[y][x].player = false;
-				MazeCell.a[y-1][x].player = true;
-				if(MazeCell.a[y-1][x].obstacle){
-					Intent question = new Intent(this, QuestionIntent.class);
-					startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
-				}
-				drawview.invalidate();
-			}
+			handlePlayerMove(x,x,y,y-1);
 		}else if(b == R.id.d_right){
-			if(!MazeCell.a[y][x+1].isWall()){
-				MazeCell.playerPos.x++;
-				MazeCell.a[y][x].player = false;
-				MazeCell.a[y][x+1].player = true;
-				if(MazeCell.a[y][x+1].obstacle){
-					Intent question = new Intent(this, QuestionIntent.class);
-					startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
-				}
-				drawview.invalidate();
-			}
+			handlePlayerMove(x,x+1,y,y);
 		}else if(b == R.id.d_down){
-			if(!MazeCell.a[y+1][x].isWall()){
-				MazeCell.playerPos.y++;
-				MazeCell.a[y][x].player = false;
-				MazeCell.a[y+1][x].player = true;
-				if(MazeCell.a[y+1][x].obstacle){
-					Intent question = new Intent(this, QuestionIntent.class);
-					startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
-				}
-				drawview.invalidate();
-			}
+			handlePlayerMove(x,x,y,y+1);
 		}else if(b == R.id.d_left){
-			if(!MazeCell.a[y][x-1].isWall()){
-				MazeCell.playerPos.x--;
-				MazeCell.a[y][x].player = false;
-				MazeCell.a[y][x-1].player = true;
-				if(MazeCell.a[y][x-1].obstacle){
-					Intent question = new Intent(this, QuestionIntent.class);
-					startActivityForResult(question, ANSWER_RESPONSE);
-				}
-				drawview.invalidate();
-			}
+			handlePlayerMove(x,x-1,y,y);
 		}
 	}
 	
