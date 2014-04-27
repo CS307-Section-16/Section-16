@@ -70,8 +70,8 @@ public class MainActivity extends Activity {
 	}
 	
 	public void startContinue(View view) {
-		//Intent cont = new Intent(this, MazeActivity.class);
-		//startActivity(cont);
+		Intent cont = new Intent(this, ContinueGame.class);
+		startActivity(cont);
 	}
 	
 	public void startInitialization(View view) {

@@ -55,9 +55,10 @@ public class MazeGen {
 		for(int i = 0; i < mazeSize; i++){
 			for(int j = 0; j < mazeSize; j++){
 				int var = (int)(Math.random()*questionWeight);
+				
 				if(!maze[i][j].isWall() && var < 2 && !maze[i][j].isEnd()){
 						maze[i][j].player = true;
-						MazeCell.playerPos = new Point(i,j);
+						MazeCell.playerPos = new Point(j,i);
 						return;
 				}
 			}

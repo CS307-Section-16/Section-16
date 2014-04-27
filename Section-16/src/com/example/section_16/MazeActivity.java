@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 
 public class MazeActivity extends Activity implements OnClickListener {
 
+	private static final int ANSWER_RESPONSE = 0;
+	
 	DrawView drawview = null;
 
 	@SuppressLint("NewApi")
@@ -72,10 +74,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.y--;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y-1][x].player = true;
-				/*if(MazeCell.a[y-1][x].obstacle){
-					Intent question = new Intent(this, ContinueGame.class);
-					startActivity(question);
-				}*/
+				if(MazeCell.a[y-1][x].obstacle){
+					Intent question = new Intent(this, QuestionIntent.class);
+					startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
+				}
 				drawview.invalidate();
 			}
 		}else if(b == R.id.d_right){
@@ -83,10 +85,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.x++;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y][x+1].player = true;
-				/*if(MazeCell.a[y][x+1].obstacle){
-					Intent question = new Intent(this, ContinueGame.class);
-					startActivity(question);
-				}*/
+				if(MazeCell.a[y][x+1].obstacle){
+					Intent question = new Intent(this, QuestionIntent.class);
+					startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
+				}
 				drawview.invalidate();
 			}
 		}else if(b == R.id.d_down){
@@ -94,10 +96,10 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.y++;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y+1][x].player = true;
-				/*if(MazeCell.a[y+1][x].obstacle){
-					Intent question = new Intent(this, ContinueGame.class);
-					startActivity(question);
-				}*/
+				if(MazeCell.a[y+1][x].obstacle){
+					Intent question = new Intent(this, QuestionIntent.class);
+					startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
+				}
 				drawview.invalidate();
 			}
 		}else if(b == R.id.d_left){
@@ -105,12 +107,32 @@ public class MazeActivity extends Activity implements OnClickListener {
 				MazeCell.playerPos.x--;
 				MazeCell.a[y][x].player = false;
 				MazeCell.a[y][x-1].player = true;
-				/*if(MazeCell.a[y][x-1].obstacle){
-					Intent question = new Intent(this, ContinueGame.class);
-					startActivity(question);
-				}*/
+				if(MazeCell.a[y][x-1].obstacle){
+					Intent question = new Intent(this, QuestionIntent.class);
+					startActivityForResult(question, ANSWER_RESPONSE);
+				}
 				drawview.invalidate();
 			}
 		}
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	      if (requestCode == ANSWER_RESPONSE) {
+	          if (resultCode == RESULT_OK) {
+	            String myValue = null;
+	            if(((myValue=data.getStringExtra("1"))!=null)){
+	            	
+	            	int x = MazeCell.playerPos.x;
+	        		int y = MazeCell.playerPos.y;
+	        		MazeCell.a[y][x].obstacle = false;
+	            	
+	            }else if(((myValue=data.getStringExtra("0"))!=null)){
+	            	
+					Intent question = new Intent(this, QuestionIntent.class);
+					startActivityForResult(question, ANSWER_RESPONSE);
+	            	
+	            }
+	          }
+	      }
 	}
 }

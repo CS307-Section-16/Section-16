@@ -53,6 +53,10 @@
             android:name="com.example.section_16.MazeActivity"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.example.section_16.QuestionIntent"
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 
 </manifest>
