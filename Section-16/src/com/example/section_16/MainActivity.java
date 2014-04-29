@@ -76,6 +76,7 @@ public class MainActivity extends Activity {
 	
 	public void startInitialization(View view) {
 		Intent init = new Intent(this, Initialize.class);
+		datasource.resetQuestions();
 		startActivity(init);	    
 	}
 	

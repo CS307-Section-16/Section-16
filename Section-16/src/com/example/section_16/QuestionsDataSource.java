@@ -87,7 +87,7 @@ public class QuestionsDataSource {
     		  " WHERE (USED = 0) " + type + " ORDER BY RANDOM()", null);
       cursor.moveToFirst();
       Question q = cursorToQuestion(cursor);
-      //database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 1 WHERE ID = " + q.id);            
+      database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 1 WHERE ID = " + q.id);            
       return q;       
  }
 			
@@ -105,6 +105,10 @@ public class QuestionsDataSource {
     // make sure to close the cursor
     cursor.close();
     return questions;
+  }
+  
+  public void resetQuestions(){
+	  database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 0");
   }
   
   
