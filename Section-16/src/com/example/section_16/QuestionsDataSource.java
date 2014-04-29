@@ -187,7 +187,7 @@ public class QuestionsDataSource {
   
 
 public void insertAllIntoTable(QuestionsDataSource ds){
-	int numQuestions = 21;
+	int numQuestions = 76;
     q_array = new Question[numQuestions];
     
     final String java = "JAVA";
@@ -448,6 +448,585 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[20].used = 0;
 	q_array[20].type = java;
 	q_array[20].hint = "Garbage collection is used by most high-level languages";
+	
+	q_array[21].question = "In Java, an object...";
+	q_array[21].answer_A = "is a list of classes.";
+	q_array[21].answer_B = "is the same as a variable.";
+	q_array[21].answer_C = "is an instance of a class.";
+	q_array[21].answer_D = "cannot be used.";
+	q_array[21].correct = "C";
+	q_array[21].used = 0;
+	q_array[21].type = java;
+	q_array[21].hint = "An object is not a list of classes.";
+	
+	q_array[22].question = "In Java, a class...";
+	q_array[22].answer_A = "cannot have its own methods.";
+	q_array[22].answer_B = "is an overarching design pattern that creates objects.";
+	q_array[22].answer_C = "is a subtype of objects";
+	q_array[22].answer_D = "must have created instances in order to be a class";
+	q_array[22].correct = "B";
+	q_array[22].used = 0;
+	q_array[22].type = java;
+	q_array[22].hint = "A class is not a subtype of objects";
+	
+	q_array[23].question = "What is the purpose of a semi-colon?";
+	q_array[23].answer_A = "To aid the programmer in visualizing the code";
+	q_array[23].answer_B = "Semi-colons are needed to end class and method creation.";
+	q_array[23].answer_C = "Semi-colons are needed to allow the use of a new line while coding.";
+	q_array[23].answer_D = "The compiler uses semi-colons to determine the termination of a statement.";
+	q_array[23].correct = "D";
+	q_array[23].used = 0;
+	q_array[23].type = conc;
+	q_array[23].hint = "Semi-colons are recognized by the compiler.";
+	
+	q_array[24].question = "In Java, a constructor...";
+	q_array[24].answer_A = "is used to create an instance of an object within a class.";
+	q_array[24].answer_B = "is a waster of code";
+	q_array[24].answer_C = "needs a return value";
+	q_array[24].answer_D = "is a design pattern that creates an object";
+	q_array[24].correct = "A";
+	q_array[24].used = 0;
+	q_array[24].type = java;
+	q_array[24].hint = "It is not a waste of code.";
+	
+	q_array[25].question = "A Java variable name CANNOT begin with a...";
+	q_array[25].answer_A = "4";
+	q_array[25].answer_B = "_";
+	q_array[25].answer_C = "$";
+	q_array[25].answer_D = "C";
+	q_array[25].correct = "A";
+	q_array[25].used = 0;
+	q_array[25].type = java;
+	q_array[25].hint = "Can't be numeric.";
+	
+	q_array[26].question = "What is the purpose of static variables?";
+	q_array[26].answer_A = "When performance can be sacrificed for the sake of protection";
+	q_array[26].answer_B = "When only a copy of a variable is needed for every nstance of a class";
+	q_array[26].answer_C = "All variables are static variables.";
+	q_array[26].answer_D = "Static variables are not used in Java";
+	q_array[26].correct = "B";
+	q_array[26].used = 0;
+	q_array[26].type = java;
+	q_array[26].hint = "They are used in Java";
+	
+	q_array[27].question = "A boolean variable is...";
+	q_array[27].answer_A = "a set of numbers";
+	q_array[27].answer_B = "a set of letters";
+	q_array[27].answer_C = "either true or false";
+	q_array[27].answer_D = "a set of colors";
+	q_array[27].correct = "C";
+	q_array[27].used = 0;
+	q_array[27].type = conc;
+	q_array[27].hint = "Has nothing to do with colors";
+	
+	q_array[28].question = "..........\n"
+			+ "int x = 0, y = 1;\n"
+			+ "while(x>10){\n"
+			+ "\tx+=2;\n"
+			+ "\ty*=2;\n"
+			+ "}\n"
+			+ "..........\n"
+			+ "After the loop, the value of y is...";
+	q_array[28].answer_A = "Compiler Error";
+	q_array[28].answer_B = "16";
+	q_array[28].answer_C = "64";
+	q_array[28].answer_D = "42";
+	q_array[28].correct = "D";
+	q_array[28].used = 0;
+	q_array[28].type = conc;
+	q_array[28].hint = "It is a power of 2";
+	
+	q_array[29].question = "........../n"
+			+ "for(int j = 0; j < 100; j++){\n"
+			+ "\tt = 0;\n"
+			+ "\tt--;\n"
+			+ "}\n"
+			+ "..........\n"
+			+ "After the loop the value of t is...";
+	q_array[29].answer_A = "Compiler Error";
+	q_array[29].answer_B = "100";
+	q_array[29].answer_C = "-100";
+	q_array[29].answer_D = "-10";
+	q_array[29].correct = "A";
+	q_array[29].used = 0;
+	q_array[29].type = conc;
+	q_array[29].hint = "Its not negative";
+	
+	q_array[30].question = "What is an array index out of bounds exception?";
+	q_array[30].answer_A = "When an array has been referenced that does not exist.";
+	q_array[30].answer_B = "When an element of an array is referenced that is not a part of the array.";
+	q_array[30].answer_C = "When an array stores the wrong data type.";
+	q_array[30].answer_D = "When one array shares the emory of another array.";
+	q_array[30].correct = "B";
+	q_array[30].used = 0;
+	q_array[30].type = java;
+	q_array[30].hint = "Has nothing to do with shared memory";
+	
+	q_array[31].question = "In which direction soes a stack grow?";
+	q_array[31].answer_A = "Up";
+	q_array[31].answer_B = "Left";
+	q_array[31].answer_C = "Down";
+	q_array[31].answer_D = "Right";
+	q_array[31].correct = "C";
+	q_array[31].used = 0;
+	q_array[31].type = conc;
+	q_array[31].hint = "A stack is visualized vertically";
+	
+	q_array[32].question = "To reference the array initialzed as 'array[10]' you must use elements...";
+	q_array[32].answer_A = "0 - 10";
+	q_array[32].answer_B = "1 - 9";
+	q_array[32].answer_C = "1 - 10";
+	q_array[32].answer_D = "0 - 9";
+	q_array[32].correct = "D";
+	q_array[32].used = 0;
+	q_array[32].type = conc;
+	q_array[32].hint = "Array referencing begins at 0";
+	
+	q_array[33].question = "ASCII characters...";
+	q_array[33].answer_A = "are the number representations of English charactesr.";
+	q_array[33].answer_B = "are the charasters in a popular Java education textbook.";
+	q_array[33].answer_C = "are used when converting code from Java to C#.";
+	q_array[33].answer_D = "are all negative values";
+	q_array[33].correct = "A";
+	q_array[33].used = 0;
+	q_array[33].type = conc;
+	q_array[33].hint = "They are numeric values";
+	
+	q_array[34].question = "int a = 0, b = 0, c = 0;\n"
+			+ "while(a < 10 || b < 5){\n"
+			+ "\ta++;\n"
+			+ "\tb++;\n"
+			+ "\tc++;\b"
+			+ "}\n"
+			+ "What is the value of c after the loop?";
+	q_array[34].answer_A = "Compiler Error";
+	q_array[34].answer_B = "5";
+	q_array[34].answer_C = "10";
+	q_array[34].answer_D = "0";
+	q_array[34].correct = "B";
+	q_array[34].used = 0;
+	q_array[34].type = conc;
+	q_array[34].hint = "Check the details of the while loop.";
+
+	q_array[35].question = "char val = 'B';\n"
+			+ "val++;\n"
+			+ "What is the new value of val?";
+	q_array[35].answer_A = "A";
+	q_array[35].answer_B = "B";
+	q_array[35].answer_C = "C";
+	q_array[35].answer_D = "Compilation Error";
+	q_array[35].correct = "C";
+	q_array[35].used = 0;
+	q_array[35].type = conc;
+	q_array[35].hint = "Add one to 'B' and you get...?";
+	
+	q_array[36].question = "char c = 0; is the same as char = '0'.";
+	q_array[36].answer_A = "True";
+	q_array[36].answer_B = "False";
+	q_array[36].answer_C = "N/A";
+	q_array[36].answer_D = "N/A";
+	q_array[36].correct = "B";
+	q_array[36].used = 0;
+	q_array[36].type = java;
+	q_array[36].hint = "N/A";
+	
+	q_array[37].question = "Polymorphism...";
+	q_array[37].answer_A = "allows variables to change their type.";
+	q_array[37].answer_B = "is determined at runtime alone.";
+	q_array[37].answer_C = "is determined at the compile time alone.";
+	q_array[37].answer_D = "allows you to define multiple different functions with the same name.";
+	q_array[37].correct = "D";
+	q_array[37].used = 0;
+	q_array[37].type = java;
+	q_array[37].hint = "Not determined at compilation or runtime alone";
+	
+	q_array[38].question = "What is the difference bewtween overloading and overriding?";
+	q_array[38].answer_A = "Overloading happens during compile time while overriding happens during runtime.";
+	q_array[38].answer_B = "They are the same thing.";
+	q_array[38].answer_C = "Overloading is a systems error when you try to override.";
+	q_array[38].answer_D = "Overriding is changing code after compilation while overloading is to change the code too much,causing a crash.";
+	q_array[38].correct = "A";
+	q_array[38].used = 0;
+	q_array[38].type = java;
+	q_array[38].hint = "They both occur at seperate times.";
+	
+	q_array[39].question = "Which of the following is true about switch statements?";
+	q_array[39].answer_A = "A switch statement can only access one case per evaluation.";
+	q_array[39].answer_B = "Breaks are used to ensure the correct amount of cases are used.";
+	q_array[39].answer_C = "Switch statements can do operations that cannot be done with if-then-else statements.";
+	q_array[39].answer_D = "Switch statements need to end with a break statement.";
+	q_array[39].correct = "C";
+	q_array[39].used = 0;
+	q_array[39].type = conc;
+	q_array[39].hint = "Breaks are helpful, but not required.";
+
+	q_array[40].question = "Which choice is INCORRECT about threads in Java?";
+	q_array[40].answer_A = "A single thread in a program can be used without the need for other threads.";
+	q_array[40].answer_B = "Threading allows multiple points of execution in the program.";
+	q_array[40].answer_C = "Threading is less CPU intensive then OS forking";
+	q_array[40].answer_D = "All threads share a single execution stack";
+	q_array[40].correct = "D";
+	q_array[40].used = 0;
+	q_array[40].type = java;
+	q_array[40].hint = "Why would different threads have the same execution stack?";
+	
+	q_array[41].question = "What operation is used to make sure all threads are done before continuing?";
+	q_array[41].answer_A = "join()";
+	q_array[41].answer_B = "wait()";
+	q_array[41].answer_C = "connect()";
+	q_array[41].answer_D = "fuse()";
+	q_array[41].correct = "A";
+	q_array[41].used = 0;
+	q_array[41].type = java;
+	q_array[41].hint = "Thing of it as a bunch of threads all coming together.";
+	
+	q_array[42].question = "What does making an object public in Java do?";
+	q_array[42].answer_A = "It causes an error at compilation.";
+	q_array[42].answer_B = "It allows the object to be accessed from anywhere in the program.";
+	q_array[42].answer_C = "It allows an object to be accessed only from classes in the same directory.";
+	q_array[42].answer_D = "It prevents the object from being accessed by any other class.";
+	q_array[42].correct = "B";
+	q_array[42].used = 0;
+	q_array[42].type = java;
+	q_array[42].hint = "You can also make objects private and protected.";
+
+	q_array[43].question = "What does making an object private in java do?";
+	q_array[43].answer_A = "It allows the object to be accessed from any class.";
+	q_array[43].answer_B = "It prevents the object from being used in public classes.";
+	q_array[43].answer_C = "It prevents any other class from accessing the object.";
+	q_array[43].answer_D = "The object must be placed in a protected class";
+	q_array[43].correct = "C";
+	q_array[43].used = 0;
+	q_array[43].type = java;
+	q_array[43].hint = "You can also make objects public and protected.";
+	
+	q_array[44].question = "What does making an object protected in Java do?";
+	q_array[44].answer_A = "It does the same thing as makeing an object public";
+	q_array[44].answer_B = "It allows the object to only be used in encrypted programs.";
+	q_array[44].answer_C = "It prevents the object's variables from being modified.";
+	q_array[44].answer_D = "It allows the object to be accessed only from classes in the same directory.";
+	q_array[44].correct = "D";
+	q_array[44].used = 0;
+	q_array[44].type = java;
+	q_array[44].hint = "You can also make objects public and private.";
+	
+	q_array[45].question = "G.U.I. stands for...";
+	q_array[45].answer_A = "Graphical User Interface";
+	q_array[45].answer_B = "Graphs Utilizing Intelligence";
+	q_array[45].answer_C = "Generic Unit Instance";
+	q_array[45].answer_D = "Generation Underflow Inline";
+	q_array[45].correct = "A";
+	q_array[45].used = 0;
+	q_array[45].type = conc;
+	q_array[45].hint = "It is an interface.";
+	
+	q_array[46].question = "What is a pointer in C?";
+	q_array[46].answer_A = "Pointers are the same as variables.";
+	q_array[46].answer_B = "Pointers hold the memory address of variables.";
+	q_array[46].answer_C = "Pointers store the values saved in variables.";
+	q_array[46].answer_D = "Pointers are variables that do not need to be initialized.";
+	q_array[46].correct = "B";
+	q_array[46].used = 0;
+	q_array[46].type = c;
+	q_array[46].hint = "They hold something pertaining to a variables.";
+	
+	q_array[47].question = "A pointer can point to a function.";
+	q_array[47].answer_A = "True";
+	q_array[47].answer_B = "False";
+	q_array[47].answer_C = "N/A";
+	q_array[47].answer_D = "N/A";
+	q_array[47].correct = "A";
+	q_array[47].used = 0;
+	q_array[47].type = c;
+	q_array[47].hint = "N/A";
+	
+	q_array[48].question = "When pointing to a structure, which operator is used to access the members of the structure?";
+	q_array[48].answer_A = "&";
+	q_array[48].answer_B = "*";
+	q_array[48].answer_C = "->";
+	q_array[48].answer_D = ".";
+	q_array[48].correct = "C";
+	q_array[48].used = 0;
+	q_array[48].type = c;
+	q_array[48].hint = "Think of it as a literal pointer.";
+	
+	q_array[49].question = "In a printf statement '%d' is used to print what type of variable?";
+	q_array[49].answer_A = "Float";
+	q_array[49].answer_B = "String";
+	q_array[49].answer_C = "Hexadecimal Value";
+	q_array[49].answer_D = "Integer";
+	q_array[49].correct = "D";
+	q_array[49].used = 0;
+	q_array[49].type = conc;
+	q_array[49].hint = "It is a decimal, numerical value";
+	
+	q_array[50].question = "In a printf statement '%s' is used to print what type of variable?";
+	q_array[50].answer_A = "Float";
+	q_array[50].answer_B = "String";
+	q_array[50].answer_C = "Integer";
+	q_array[50].answer_D = "Hexadecimal Value";
+	q_array[50].correct = "B";
+	q_array[50].used = 0;
+	q_array[50].type = conc;
+	q_array[50].hint = "The letter matches the type of variable represented.";
+	
+	q_array[51].question = "In a printf statement '%f' is used to print what type of variable?";
+	q_array[51].answer_A = "String";
+	q_array[51].answer_B = "Integer";
+	q_array[51].answer_C = "Float";
+	q_array[51].answer_D = "Hexadecimal Value";
+	q_array[51].correct = "C";
+	q_array[51].used = 0;
+	q_array[51].type = conc;
+	q_array[51].hint = "The letter matches the type of variable represented.";
+	
+	q_array[52].question = "In a printf statement '%s' is used to print what type of variable?";
+	q_array[52].answer_A = "Float";
+	q_array[52].answer_B = "Integer";
+	q_array[52].answer_C = "String";
+	q_array[52].answer_D = "Hexadecimal Value";
+	q_array[52].correct = "D";
+	q_array[52].used = 0;
+	q_array[52].type = conc;
+	q_array[52].hint = "It is a non-decimal, numeric value.";
+	
+	q_array[53].question = "LIFO stands for...";
+	q_array[53].answer_A = "Last In First Out";
+	q_array[53].answer_B = "Late Initialization For Objects";
+	q_array[53].answer_C = "Listing Instance Fields Openly";
+	q_array[53].answer_D = "Looking in Final Operations";
+	q_array[53].correct = "A";
+	q_array[53].used = 0;
+	q_array[53].type = conc;
+	q_array[53].hint = "This is utilized in a stack.";
+
+	q_array[54].question = "FIFO stands for...";
+	q_array[54].answer_A = "Finalizing Instances For Objects";
+	q_array[54].answer_B = "First In First Out";
+	q_array[54].answer_C = "Fields Initializing Final Operations";
+	q_array[54].answer_D = "Forgetting Inheritance For Orientations";
+	q_array[54].correct = "B";
+	q_array[54].used = 0;
+	q_array[54].type = conc;
+	q_array[54].hint = "This is utilized in a queue.";
+	
+	q_array[55].question = "What is the average time complexity of a bubble sort?";
+	q_array[55].answer_A = "O(n)";
+	q_array[55].answer_B = "O(n*log(n))";
+	q_array[55].answer_C = "O(n^2)";
+	q_array[55].answer_D = "O(n*n!)";
+	q_array[55].correct = "C";
+	q_array[55].used = 0;
+	q_array[55].type = conc;
+	q_array[55].hint = "Think of the number of operations required to run this kind of sort.";
+	
+	q_array[56].question = "What is the average time complexity of a quick sort?";
+	q_array[56].answer_A = "O(n)";
+	q_array[56].answer_B = "O(n^2)";
+	q_array[56].answer_C = "O(n*n!)";
+	q_array[56].answer_D = "O(n*log(n))";
+	q_array[56].correct = "D";
+	q_array[56].used = 0;
+	q_array[56].type = conc;
+	q_array[56].hint = "Think of the number of operations required to run this kind of sort.";
+	
+	q_array[57].question = "What is the average time complexity of a bogo sort?";
+	q_array[57].answer_A = "O(n*n!)";
+	q_array[57].answer_B = "O(n)";
+	q_array[57].answer_C = "O(n^2)";
+	q_array[57].answer_D = "O(n*log(n))";
+	q_array[57].correct = "A";
+	q_array[57].used = 0;
+	q_array[57].type = conc;
+	q_array[57].hint = "Think of the number of operations required to run this kind of sort.";
+
+	q_array[58].question = "What operation is used to transfer data and control from the current function to the calling function?";
+	q_array[58].answer_A = "transfer()";
+	q_array[58].answer_B = "return()";
+	q_array[58].answer_C = "back()";
+	q_array[58].answer_D = "switch()";
+	q_array[58].correct = "B";
+	q_array[58].used = 0;
+	q_array[58].type = conc;
+	q_array[58].hint = "";
+	
+	q_array[59].question = "In binary (base 2), what is the value of 5?";
+	q_array[59].answer_A = "0b111";
+	q_array[59].answer_B = "0b11111";
+	q_array[59].answer_C = "0b101";
+	q_array[59].answer_D = "0b10101";
+	q_array[59].correct = "C";
+	q_array[59].used = 0;
+	q_array[59].type = conc;
+	q_array[59].hint = "4 in binary is 100";
+	
+	q_array[60].question = "What is the decimal value of the binary number 0b10000";
+	q_array[60].answer_A = "10,000";
+	q_array[60].answer_B = "64";
+	q_array[60].answer_C = "8";
+	q_array[60].answer_D = "16";
+	q_array[60].correct = "D";
+	q_array[60].used = 0;
+	q_array[60].type = conc;
+	q_array[60].hint = "0b1000 is 8";
+	
+	q_array[61].question = "Which statement returns TRUE?";
+	q_array[61].answer_A = "1 && 1 || 0";
+	q_array[61].answer_B = "0 && 0 || 0";
+	q_array[61].answer_C = "1 && 0 || 0";
+	q_array[61].answer_D = "0 && 1 || 0";
+	q_array[61].correct = "A";
+	q_array[61].used = 0;
+	q_array[61].type = conc;
+	q_array[61].hint = "Anything and 0 will return false.";
+	
+	q_array[62].question = "Which header is needed to use printf()?";
+	q_array[62].answer_A = "stdlib.h";
+	q_array[62].answer_B = "stdio.h";
+	q_array[62].answer_C = "math.h";
+	q_array[62].answer_D = "string.h";
+	q_array[62].correct = "B";
+	q_array[62].used = 0;
+	q_array[62].type = c;
+	q_array[62].hint = "You need the header for Standard Input/Output.";
+	
+	q_array[63].question = "Which header file is needed to allocate memory with malloc()?";
+	q_array[63].answer_A = "math.h";
+	q_array[63].answer_B = "stdio.h";
+	q_array[63].answer_C = "stdlib.h";
+	q_array[63].answer_D = "string.h";
+	q_array[63].correct = "C";
+	q_array[63].used = 0;
+	q_array[63].type = c;
+	q_array[63].hint = "You need the header for Stadard Library.";
+	
+	q_array[64].question = "What function should be used to clear memory allocated from malloc()?";
+	q_array[64].answer_A = "erase()";
+	q_array[64].answer_B = "clear()";
+	q_array[64].answer_C = "dealloc()";
+	q_array[64].answer_D = "free()";
+	q_array[64].correct = "D";
+	q_array[64].used = 0;
+	q_array[64].type = c;
+	q_array[64].hint = "The memory is not erased.";
+	
+	q_array[65].question = "In C, when passing an array as an argument, what is being passed?";
+	q_array[65].answer_A = "Value of the elements in the array";
+	q_array[65].answer_B = "The first element in the array";
+	q_array[65].answer_C = "The base address of the array";
+	q_array[65].answer_D = "The address of the last element in the array";
+	q_array[65].correct = "A";
+	q_array[65].used = 0;
+	q_array[65].type = c;
+	q_array[65].hint = "Passing an array is different than passing a pointer";
+	
+	q_array[66].question = "What type cannot be checked in a switch statement?";
+	q_array[66].answer_A = "Enum";
+	q_array[66].answer_B = "Float";
+	q_array[66].answer_C = "Integer";
+	q_array[66].answer_D = "Character";
+	q_array[66].correct = "B";
+	q_array[66].used = 0;
+	q_array[66].type = conc;
+	q_array[66].hint = "It is a numerical value.";
+	
+	q_array[67].question = "In C, results rom logical operations are either...";
+	q_array[67].answer_A = "True or False";
+	q_array[67].answer_B = "Depends on the computer";
+	q_array[67].answer_C = "0 or 1";
+	q_array[67].answer_D = "None of these are correct";
+	q_array[67].correct = "C";
+	q_array[67].used = 0;
+	q_array[67].type = c;
+	q_array[67].hint = "It doesn't depend on the computer.";
+	
+	q_array[68].question = "Which is NOT a logical operator?";
+	q_array[68].answer_A = "!=";
+	q_array[68].answer_B = "==";
+	q_array[68].answer_C = "||";
+	q_array[68].answer_D = "=";
+	q_array[68].correct = "D";
+	q_array[68].used = 0;
+	q_array[68].type = c;
+	q_array[68].hint = "Notice how only one consists of a single character.";
+	
+	q_array[69].question = "The statement:\n"
+			+ "..........\n"
+			+ "for(;;)\n"
+			+ "..........\n"
+			+ "is valid C code";
+	q_array[69].answer_A = "True";
+	q_array[69].answer_B = "False";
+	q_array[69].answer_C = "N/A";
+	q_array[69].answer_D = "N/A";
+	q_array[69].correct = "A";
+	q_array[69].used = 0;
+	q_array[69].type = c;
+	q_array[69].hint = "N/A";
+	
+	q_array[70].question = "It is impossible for a for loop to enter an infinite loop.";
+	q_array[70].answer_A = "True";
+	q_array[70].answer_B = "False";
+	q_array[70].answer_C = "N/A";
+	q_array[70].answer_D = "N/A";
+	q_array[70].correct = "B";
+	q_array[70].used = 0;
+	q_array[70].type = conc;
+	q_array[70].hint = "N/A";
+	
+	q_array[71].question = "Which keyword is used to leave an iteration of a loop?";
+	q_array[71].answer_A = "break()";
+	q_array[71].answer_B = "return()";
+	q_array[71].answer_C = "continue()";
+	q_array[71].answer_D = "next()";
+	q_array[71].correct = "C";
+	q_array[71].used = 0;
+	q_array[71].type = c;
+	q_array[71].hint = "You want to stay in the loop, and just skip the current  iteration.";
+	
+	q_array[72].question = "Which keyword is used to exit an entire loop bu stay in the same function?";
+	q_array[72].answer_A = "continue()";
+	q_array[72].answer_B = "return()";
+	q_array[72].answer_C = "end()";
+	q_array[72].answer_D = "break()";
+	q_array[72].correct = "D";
+	q_array[72].used = 0;
+	q_array[72].type = c;
+	q_array[72].hint = "You want to leave the loop, but stay in the function";
+	
+	q_array[73].question = "Compilers allow a return to be in the middle of a while or for loop.";
+	q_array[73].answer_A = "True";
+	q_array[73].answer_B = "False";
+	q_array[73].answer_C = "N/A";
+	q_array[73].answer_D = "N/A";
+	q_array[73].correct = "A";
+	q_array[73].used = 0;
+	q_array[73].type = c;
+	q_array[73].hint = "N/A";
+	
+	q_array[74].question = "An array can have at most 3 dimensions.";
+	q_array[74].answer_A = "True";
+	q_array[74].answer_B = "False";
+	q_array[74].answer_C = "N/A";
+	q_array[74].answer_D = "N/A";
+	q_array[74].correct = "B";
+	q_array[74].used = 0;
+	q_array[74].type = conc;
+	q_array[74].hint = "N/A";
+	
+	q_array[75].question = "The for loop:\n"
+			+ "..........\n"
+			+ "for(x = 0; x < 10; x++)\n"
+			+ "..........\n"
+			+ "will loop how many times?";
+	q_array[75].answer_A = "9";
+	q_array[75].answer_B = "11";
+	q_array[75].answer_C = "10";
+	q_array[75].answer_D = "Until the program crashes";
+	q_array[75].correct = "C";
+	q_array[75].used = 0;
+	q_array[75].type = conc;
+	q_array[75].hint = "";
     
     long added = 0;
     for(int i=0;i<numQuestions;i++){
