@@ -89,7 +89,18 @@ public class QuestionIntent extends Activity {
 		int id = rg.getCheckedRadioButtonId();
 		View radioButton = rg.findViewById(id);
 		index = rg.indexOfChild(radioButton);
-
+		if( index == -1){
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Warning!");
+			alertDialog.setMessage("Choose an answer...");
+			alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					// here you can add functions
+				}
+			});
+			alertDialog.show();
+			return;
+		}
 		ans=4;
 
 		if(q.correct.equals("A")){
@@ -101,6 +112,7 @@ public class QuestionIntent extends Activity {
 		}else if(q.correct.equals("D")){
 			ans = 3;
 		}
+		
 		String resp=null;
 		if(ans == index){
 			resp = "Correct!!!";
@@ -108,7 +120,7 @@ public class QuestionIntent extends Activity {
 			resp = "Try again...";
 		}
 		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-		alertDialog.setTitle("Response");
+		alertDialog.setTitle("Section-16");
 		alertDialog.setMessage(resp);
 		alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
