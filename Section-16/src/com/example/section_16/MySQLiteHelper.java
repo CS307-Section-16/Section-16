@@ -43,14 +43,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	  public static final String S_ID = "ID";
 	  public static final String S_TYPE = "TYPE";
 	  public static final String S_DIFF = "DIFFICULTY";
-	  public static final String S_FONT = "FONT";
+	  public static final String S_SAVE = "SAVE";
 	  
 	  public static final String SETTINGS_CREATE = "create table "
 			  + TABLE_SETTINGS + "(" + S_ID 
 			  + " integer primary key autoincrement, " + S_TYPE
 			  + " integer, " + S_DIFF
-			  + " integer, " + S_FONT
+			  + " integer, " + S_SAVE
 			  + " integer);";
+	  
 	  
 	  //Score Data Fields
 	  public static final String HS_ID = "ID";
@@ -106,4 +107,10 @@ class Score{
 	String name;
 	int score;
 	public Score(){}
+}
+class Set{
+	long id;
+	int type;
+	int diff;
+	int save;
 }

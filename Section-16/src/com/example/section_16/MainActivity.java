@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
 	public static QuestionsDataSource datasource;
 	private boolean created = false;
 	
+	@SuppressWarnings("unused")
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,7 @@ public class MainActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
 		
-		Button continueB = (Button)findViewById(R.id.button2);	
-		continueB.setEnabled(false);
+		Button continueB = (Button)findViewById(R.id.button2);
 		
 		datasource = new QuestionsDataSource(this);
 		datasource.open();
@@ -42,14 +42,15 @@ public class MainActivity extends Activity {
 		}else{
 			Log.d("insertion", "Already Created");
 		}
+
+		//datasource.addSettings(0, 0);
 		
-		datasource.addSettings(3, 0);
-		
-		for(int i=0;i<4;i++){
-			Question q = datasource.retrieveQuestion();
-			Log.d("Q_TYPE","Type = "+q.type);
+		Set s = datasource.getSettings();
+		if(s == null || s.save == 0){//|| s.save == 0){
+			continueB.setEnabled(false);
+		}else{
+			continueB.setEnabled(true);
 		}
-		
 	}
 	  protected void onResume() {
 	    datasource.open();
@@ -88,6 +89,9 @@ public class MainActivity extends Activity {
 	public void startSettings(View view) {
 		Intent sett = new Intent(this, SettingsScreen.class);
 		startActivity(sett);	 
+	}
+	public void onBackPressed(){
+		finish();
 	}
 	public void dummyScores(View view){
 		datasource.open();

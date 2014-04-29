@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +28,14 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		super.onCreate(savedInstanceState);
 		drawview = new DrawView(this);
 		setContentView(R.layout.activity_maze);
+		
+		MainActivity.datasource.open();
+		Set s = MainActivity.datasource.getSettings();
+		MainActivity.datasource.close();
+		
+		if (s.save == 1){
+			loadCurrentState();
+		}
 		
 
 		View decorView = getWindow().getDecorView();
@@ -115,7 +124,20 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	            }
 	          }
 	      }
+	      
 	}
+	@Override
+	public void onBackPressed() {
+		this.saveCurrentState();
+		MainActivity.datasource.open();
+		MainActivity.datasource.updateSave(1);
+		MainActivity.datasource.close();
+		Log.d("startBack", "Save state initialized");
+		Intent back = new Intent(this, MainActivity.class);
+		startActivity(back);
+		finish();
+	}
+	
 	public void saveCurrentState(){
 		try {
 			FileOutputStream fos = new FileOutputStream(savefile);

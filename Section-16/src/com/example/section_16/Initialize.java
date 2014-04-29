@@ -64,6 +64,7 @@ public class Initialize extends Activity {
 		
 		Intent cont = new Intent(this, MazeActivity.class);
 		startActivity(cont);
+		finish();
 	}
 
 }

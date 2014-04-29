@@ -23,7 +23,8 @@ public class QuestionsDataSource {
       MySQLiteHelper.USED,MySQLiteHelper.TYPE,MySQLiteHelper.HINT}; 
   
   private String[] scoreColumns = {MySQLiteHelper.HS_ID, MySQLiteHelper.HS_NAME, MySQLiteHelper.HS_SCORE};
-
+  private String[] saveColumns = {MySQLiteHelper.S_ID, MySQLiteHelper.S_TYPE, MySQLiteHelper.S_DIFF, MySQLiteHelper.S_SAVE};
+  
   public QuestionsDataSource(Context context) {
     dbHelper = new MySQLiteHelper(context);
   }
@@ -106,7 +107,25 @@ public class QuestionsDataSource {
     cursor.close();
     return questions;
   }
+  public Set getSettings(){
+	  Set s = null;
+	  Cursor cursor = database.query(MySQLiteHelper.TABLE_SETTINGS,
+	        saveColumns, null, null, null, null, null);
+	  if(cursor.moveToFirst()){
+		  s = new Set();
+		  s.id = cursor.getLong(0);
+		  s.type  = cursor.getInt(1);
+		  s.diff = cursor.getInt(2);
+		  s.save = cursor.getInt(3);
+	  }
+	  return s;
+  }
   
+  public void updateSave(int state){
+	  database.execSQL("update " + MySQLiteHelper.TABLE_SETTINGS +
+			  " set " + MySQLiteHelper.S_SAVE + "=" + state +
+			  " where ID=1");
+  }
   public void resetQuestions(){
 	  database.execSQL("UPDATE " + MySQLiteHelper.TABLE_QUESTIONS + " SET USED = 0");
   }
