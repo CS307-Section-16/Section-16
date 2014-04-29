@@ -75,12 +75,12 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	}
 	
 	public void handlePlayerMove(int x0, int x1, int y0, int y1){
-		if(!MazeCell.a[y1][x1].isWall()){
+		if(!MainActivity.a[y1][x1].isWall()){
 			MazeCell.playerPos.y = y1;
 			MazeCell.playerPos.x = x1;
-			MazeCell.a[y0][x0].player = false;
-			MazeCell.a[y1][x1].player = true;
-			if(MazeCell.a[y1][x1].obstacle){
+			MainActivity.a[y0][x0].player = false;
+			MainActivity.a[y1][x1].player = true;
+			if(MainActivity.a[y1][x1].obstacle){
 				Intent question = new Intent(this, QuestionIntent.class);
 				startActivityForResult(question, ANSWER_RESPONSE);
 			}
@@ -114,7 +114,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	            	
 	            	int x = MazeCell.playerPos.x;
 	        		int y = MazeCell.playerPos.y;
-	        		MazeCell.a[y][x].obstacle = false;
+	        		MainActivity.a[y][x].obstacle = false;
 	            	
 	            }else if(((myValue=data.getStringExtra("0"))!=null)){
 	            	
@@ -142,7 +142,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		try {
 			FileOutputStream fos = new FileOutputStream(savefile);
 			ObjectOutputStream out = new ObjectOutputStream(fos);
-			out.writeObject(MazeCell.a);
+			out.writeObject(MainActivity.a);
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -152,7 +152,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		try{
 			FileInputStream fis = new FileInputStream(savefile);
 			ObjectInputStream in = new ObjectInputStream(fis);
-			MazeCell.a = (MazeCell[][]) in.readObject();
+			MainActivity.a = (MazeCell[][]) in.readObject();
 		}catch(IOException e){
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

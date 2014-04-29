@@ -21,7 +21,8 @@ public class MazeCell implements Serializable{
 	MazeCell parent;
 	
 	
-	public static MazeCell a[][] = null;
+	//public static MazeCell a[][] = null;
+	
 	public static Point playerPos = null;
 	
 	//Constructor

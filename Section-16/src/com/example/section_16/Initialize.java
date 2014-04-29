@@ -55,8 +55,8 @@ public class Initialize extends Activity {
 		
 		while( true ) 
 		{
-			MazeCell.a =	 MazeGen.generateMaze();
-			if ( MazeCell.checkBorder(MazeCell.a) )
+			MainActivity.a =	 MazeGen.generateMaze();
+			if ( MazeCell.checkBorder(MainActivity.a) )
 			{
 				break;
 			}  

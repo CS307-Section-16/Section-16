@@ -14,6 +14,7 @@ public class MainActivity extends Activity {
 
 	public static QuestionsDataSource datasource;
 	private boolean created = false;
+	public static MazeCell a[][] = null;
 	
 	@SuppressWarnings("unused")
 	@SuppressLint("NewApi")
