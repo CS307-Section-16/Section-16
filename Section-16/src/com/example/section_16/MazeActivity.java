@@ -70,7 +70,7 @@ public class MazeActivity extends Activity implements OnClickListener {
 			MazeCell.a[y1][x1].player = true;
 			if(MazeCell.a[y1][x1].obstacle){
 				Intent question = new Intent(this, QuestionIntent.class);
-				startActivityForResult(Intent.createChooser(question, "test"), ANSWER_RESPONSE);
+				startActivityForResult(question, ANSWER_RESPONSE);
 			}
 			drawview.invalidate();
 		}
