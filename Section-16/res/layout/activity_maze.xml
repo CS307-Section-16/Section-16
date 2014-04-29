@@ -20,8 +20,9 @@
 		android:layout_toLeftOf="@+id/d_anchor"
 		android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="^" 
-        android:textSize="15sp" 
+        android:text=">"
+        android:rotation="270"
+        android:textSize="32sp" 
         android:textColor="@color/white"/>
 
     <Button
@@ -31,8 +32,8 @@
 		android:layout_toRightOf="@+id/d_up"
 		android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text=">" 
-        android:textSize="15sp" 
+        android:text=">"
+        android:textSize="32sp" 
         android:textColor="@color/white"/>
 
     <Button
@@ -42,9 +43,10 @@
         android:layout_below="@+id/d_up"
         android:layout_toLeftOf="@+id/d_up"
         android:layout_centerInParent="true"
-        android:text="left"
+        android:text=">"
+        android:rotation="180"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/d_down"
@@ -53,8 +55,9 @@
 		android:layout_toLeftOf="@+id/d_anchor"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="v" 
-        android:textSize="15sp" 
+        android:text=">"
+        android:rotation="90"
+        android:textSize="32sp" 
         android:textColor="@color/white"/>
 
 </RelativeLayout>
