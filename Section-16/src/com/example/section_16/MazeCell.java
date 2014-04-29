@@ -1,8 +1,11 @@
 package com.example.section_16;
 
+import java.io.Serializable;
+
+
 import android.graphics.Point;
 
-public class MazeCell {
+public class MazeCell implements Serializable{
 	//Coordinates
 	int x, y;
 	
@@ -21,12 +24,27 @@ public class MazeCell {
 	public static MazeCell a[][] = null;
 	public static Point playerPos = null;
 	
-	//Contructor
+	//Constructor
 	public MazeCell(int x, int y, MazeCell parent){
 		this.wall = true;
 		this.x=x;
 		this.y=y;
 		this.parent = parent;	
+	}
+	
+	//for savestate
+	public MazeCell(int type){
+		if(type == 0){
+			start = true;
+		}else if(type == 1){
+			end = true;
+		}else if(type == 2){
+			wall = true;
+		}else if(type == 3){
+			obstacle = true;
+		}else if(type == 4){
+			player = true;
+		}
 	}
 	
 	//Compute cell located on opposite side of parent

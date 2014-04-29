@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import java.io.*;
 
 
 
-public class MazeActivity extends Activity implements OnClickListener {
+public class MazeActivity extends Activity implements OnClickListener, Serializable {
 
 	private static final int ANSWER_RESPONSE = 0;
+	private final String savefile = "maze.ser";
 	
 	DrawView drawview = null;
 
@@ -25,6 +27,7 @@ public class MazeActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		drawview = new DrawView(this);
 		setContentView(R.layout.activity_maze);
+		
 
 		View decorView = getWindow().getDecorView();
 		// Hide the status bar.
@@ -113,4 +116,26 @@ public class MazeActivity extends Activity implements OnClickListener {
 	          }
 	      }
 	}
+	public void saveCurrentState(){
+		try {
+			FileOutputStream fos = new FileOutputStream(savefile);
+			ObjectOutputStream out = new ObjectOutputStream(fos);
+			out.writeObject(MazeCell.a);
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+	public void loadCurrentState(){
+		try{
+			FileInputStream fis = new FileInputStream(savefile);
+			ObjectInputStream in = new ObjectInputStream(fis);
+			MazeCell.a = (MazeCell[][]) in.readObject();
+		}catch(IOException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
