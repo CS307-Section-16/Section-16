@@ -59,6 +59,8 @@ public class Initialize extends Activity {
 			size = 15;
 		}else if (indexDiff == 2){
 			size = 19;
+		}else if (indexDiff == 3){
+			size = 23;
 		}
 		
 		while( true ) 

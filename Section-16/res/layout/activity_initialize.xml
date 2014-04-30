@@ -125,6 +125,15 @@
             android:layout_height="wrap_content"
             android:text="Hard"
             android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/RadioButton01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Extreme"
+            android:textColor="@color/white" />
+
     </RadioGroup>
 
     <Button
@@ -132,11 +141,11 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_below="@+id/radioGroup2"
+        android:layout_alignBottom="@+id/radioGroup2"
         android:layout_toRightOf="@+id/radioGroup2"
         android:onClick="initSettings"
         android:text="Start"
-        android:textSize="18sp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 </RelativeLayout>
