@@ -125,6 +125,13 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		int x = MazeCell.playerPos.x;
 		int y = MazeCell.playerPos.y;
 
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if(b == R.id.d_up){
 			handlePlayerMove(x,x,y,y-1);
 		}else if(b == R.id.d_right){
