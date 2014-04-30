@@ -52,10 +52,18 @@ public class Initialize extends Activity {
 		int indexDiff = diff.indexOfChild(radioButton1);
 		MainActivity.datasource.addSettings(indexType, indexDiff);
 		MainActivity.datasource.close();
+		int size = 1;
+		if(indexDiff == 0){
+			size = 11;
+		}else if(indexDiff == 1){
+			size = 15;
+		}else if (indexDiff == 2){
+			size = 19;
+		}
 		
 		while( true ) 
 		{
-			MainActivity.a =	 MazeGen.generateMaze();
+			MainActivity.a =	 MazeGen.generateMaze(size);
 			if ( MazeCell.checkBorder(MainActivity.a) )
 			{
 				break;

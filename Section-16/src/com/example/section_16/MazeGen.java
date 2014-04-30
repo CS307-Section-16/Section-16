@@ -65,8 +65,8 @@ public class MazeGen {
 		}
 	}
 
-	public static MazeCell[][] generateMaze(){
-		int mazeSize = 19;
+	public static MazeCell[][] generateMaze(int size){
+		int mazeSize = size;
 		MazeCell maze[][] = new MazeCell[mazeSize][mazeSize]; 
 
 		//Initialize cells
