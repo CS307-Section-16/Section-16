@@ -135,4 +135,8 @@ public class QuestionIntent extends Activity {
 		});
 		alertDialog.show();
 	}
+	
+	public void displayHint(View view){
+		Toast.makeText(getApplicationContext(), q.hint, Toast.LENGTH_SHORT).show();
+	}
 }
