@@ -39,17 +39,6 @@
         android:textColor="@color/white"/>
 
     <Button
-        android:id="@+id/e_button2"
-        android:layout_centerInParent="true"
-		android:layout_toRightOf="@+id/e_button1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:onClick="startMenu"
-        android:text="Menu" 
-        android:textSize="15sp" 
-        android:textColor="@color/white"/>
-
-    <Button
         android:id="@+id/e_button3"
         android:layout_centerInParent="true"
 		android:layout_toLeftOf="@+id/e_button1"
@@ -59,5 +48,41 @@
         android:text="New game"
         android:textSize="15sp" 
         android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/enterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/e_button3"
+        android:layout_below="@+id/e_button1"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/white" 
+        android:hint="Enter Your Name"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/e_button2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/enterName"
+        android:layout_toRightOf="@+id/e_button1"
+        android:onClick="startMenu"
+        android:text="Menu"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/sumbitButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/enterName"
+        android:layout_toRightOf="@+id/enterName"
+        android:onClick="submitScore"
+        android:text="Submit High Score"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

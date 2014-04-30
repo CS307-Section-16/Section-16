@@ -7,17 +7,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class EndActivity extends Activity {
-
+	
 	@SuppressLint("NewApi")
 	@Override
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_end);
 
-
+		
 		View decorView = getWindow().getDecorView();
 		// Hide the status bar.
 		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -59,5 +61,15 @@ public class EndActivity extends Activity {
 		Intent init = new Intent(this, Initialize.class);
 		startActivity(init);
 		finish();
+	}
+	public void submitScore(View view){
+		EditText e = (EditText) findViewById(R.id.enterName);
+		String name = e.getText().toString();
+		if(!name.equals("")&&!name.equals("Enter Your Name")){
+			MainActivity.datasource.open();
+			MainActivity.datasource.addHighScore(name, MazeActivity.reportScore());
+			MainActivity.datasource.close();
+		}	
+		this.startHighScores(view);
 	}
 }
