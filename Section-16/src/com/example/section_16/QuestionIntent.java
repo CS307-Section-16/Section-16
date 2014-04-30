@@ -14,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -58,6 +59,7 @@ public class QuestionIntent extends Activity {
 		TextView tv = (TextView)findViewById(R.id.questionBox);
 		//tv.setText("NAME " + s.name + "\n\n SCORE: " + s.score );
 		tv.setText(q.question + "\nA: " + q.answer_A + "\nB: " + q.answer_B+ "\nC: " + q.answer_C+ "\nD: " + q.answer_D);
+		tv.setMovementMethod(new ScrollingMovementMethod());
 	}
 	public void insertHighScore(Score s){
 		try{
