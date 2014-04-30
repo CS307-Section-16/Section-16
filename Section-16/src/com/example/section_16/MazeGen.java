@@ -77,8 +77,10 @@ public class MazeGen {
 		}
 
 		//Pick random start point
-		MazeCell start = new MazeCell((int)(Math.random()*mazeSize),(int)(Math.random()*mazeSize), null);
+		//MazeCell start = new MazeCell((int)(Math.random()*mazeSize),(int)(Math.random()*mazeSize), null);
+		MazeCell start = new MazeCell(1,1,null);
 		maze[start.x][start.y] = start;
+		maze[start.x][start.y].wall = false;
 
 		//Initialize and add walls to frontier
 		ArrayList<MazeCell> frontierWalls = new ArrayList<MazeCell>();
