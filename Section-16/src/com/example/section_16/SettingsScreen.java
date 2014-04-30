@@ -55,6 +55,10 @@ public class SettingsScreen extends Activity {
 		//	case(bold);
 		//	case(large);
 	}
-
+	public void clearScores(View view){
+		MainActivity.datasource.open();
+		MainActivity.datasource.clearAllScores();
+		MainActivity.datasource.close();
+	}
 
 }
