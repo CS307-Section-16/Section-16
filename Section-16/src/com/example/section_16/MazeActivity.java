@@ -25,9 +25,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	
 	
 	public static int reportScore(){
-		double percentage = 100*(MainActivity.questionsAnswered/MainActivity.questionsAttempted);
-		
-		return (int)(percentage*Math.ceil(MainActivity.questionsAnswered));		
+		return (int)(100*Math.pow(MainActivity.questionsAnswered,2)/MainActivity.questionsAttempted);
 	}
 	
 	public void setVisibility(){
@@ -148,6 +146,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			if (resultCode == RESULT_OK) {
 				String myValue = null;
 				if(((myValue=data.getStringExtra("1"))!=null)){
+					MainActivity.questionsAttempted++;
 					MainActivity.questionsAnswered++;
 					int x = MazeCell.playerPos.x;
 					int y = MazeCell.playerPos.y;
