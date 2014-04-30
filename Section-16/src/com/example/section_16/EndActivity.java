@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 public class EndActivity extends Activity {
 
@@ -24,6 +25,10 @@ public class EndActivity extends Activity {
 
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
+		
+		TextView tv = (TextView)findViewById(R.id.e_textView1);
+		//tv.setText("NAME " + s.name + "\n\n SCORE: " + s.score );
+		tv.setText("Your score is: " + MazeActivity.reportScore());
 		
 		
 	}
