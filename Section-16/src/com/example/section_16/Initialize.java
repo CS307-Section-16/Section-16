@@ -16,6 +16,10 @@ public class Initialize extends Activity {
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		MainActivity.questionsAnswered = 0;
+		MainActivity.questionsAttempted = 0;
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_initialize);
 		

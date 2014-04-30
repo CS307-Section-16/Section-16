@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import java.io.*;
 import java.lang.Math;
 
@@ -25,6 +27,8 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	
 	
 	public static int reportScore(){
+		if(MainActivity.questionsAttempted == 0)
+			return 0;
 		return (int)(100*Math.pow(MainActivity.questionsAnswered,2)/MainActivity.questionsAttempted);
 	}
 	
@@ -71,7 +75,10 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		Button down = (Button)findViewById(R.id.d_down);	
 		Button left = (Button)findViewById(R.id.d_left);	
 		View anchor = findViewById(R.id.d_anchor);
-
+		
+		TextView sv = (TextView)findViewById(R.id.score_text);
+		sv.setText("Score: "+ reportScore());
+		
 		RelativeLayout dpadButt = (RelativeLayout)findViewById(R.id.dpad_layout);	
 		dpadButt.addView(drawview);
 		anchor.bringToFront();
@@ -79,6 +86,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		right.bringToFront();
 		down.bringToFront();
 		left.bringToFront();
+		sv.bringToFront();
 
 		up.setOnClickListener(this);
 		right.setOnClickListener(this);
@@ -160,7 +168,9 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 				}
 			}
 		}
-
+		
+		TextView sv = (TextView)findViewById(R.id.score_text);
+		sv.setText("Score: "+ reportScore());
 	}
 	@Override
 	public void onBackPressed() {
