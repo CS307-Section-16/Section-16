@@ -21,6 +21,15 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	private static final int ANSWER_RESPONSE = 0;
 	private final String savefile = "maze.ser";
 
+	public static int questionsAnswered = 0;
+	public static int questionsAttempted;
+	
+	public int reportScore(){
+		double percentage = 100*(questionsAnswered/questionsAttempted);
+		return (int)percentage*questionsAnswered;		
+	}
+	
+	
 	DrawView drawview = null;
 
 	@SuppressLint("NewApi")
@@ -82,12 +91,13 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			MainActivity.a[y0][x0].player = false;
 			MainActivity.a[y1][x1].player = true;
 			if(MainActivity.a[y1][x1].obstacle){
+				questionsAttempted++;
 				Intent question = new Intent(this, QuestionIntent.class);
 				startActivityForResult(question, ANSWER_RESPONSE);
 			}else if(MainActivity.a[y1][x1].end){
-				Intent end = new Intent(this, EndActivity.class);
-				startActivity(end);
-				finish();
+		//		Intent end = new Intent(this, EndActivity.class);
+		//		startActivity(end);
+		//		finish();
 			}
 			drawview.invalidate();
 		}
@@ -116,13 +126,13 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			if (resultCode == RESULT_OK) {
 				String myValue = null;
 				if(((myValue=data.getStringExtra("1"))!=null)){
-
+					questionsAnswered++;
 					int x = MazeCell.playerPos.x;
 					int y = MazeCell.playerPos.y;
 					MainActivity.a[y][x].obstacle = false;
 
 				}else if(((myValue=data.getStringExtra("0"))!=null)){
-
+					questionsAttempted++;
 					Intent question = new Intent(this, QuestionIntent.class);
 					startActivityForResult(question, ANSWER_RESPONSE);
 
