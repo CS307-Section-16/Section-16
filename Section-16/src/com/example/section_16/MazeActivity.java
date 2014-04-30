@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import java.io.*;
+import java.lang.Math;
 
 
 
@@ -25,7 +26,8 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	
 	public static int reportScore(){
 		double percentage = 100*(MainActivity.questionsAnswered/MainActivity.questionsAttempted);
-		return (int)percentage*MainActivity.questionsAnswered;		
+		
+		return (int)(percentage*Math.ceil(MainActivity.questionsAnswered));		
 	}
 	
 	public void setVisibility(){
@@ -140,12 +142,13 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 					int x = MazeCell.playerPos.x;
 					int y = MazeCell.playerPos.y;
 					MainActivity.a[y][x].obstacle = false;
+					getIntent().removeExtra("1");
 
 				}else if(((myValue=data.getStringExtra("0"))!=null)){
 					MainActivity.questionsAttempted++;
 					Intent question = new Intent(this, QuestionIntent.class);
 					startActivityForResult(question, ANSWER_RESPONSE);
-
+					getIntent().removeExtra("0");
 				}
 			}
 		}

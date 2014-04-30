@@ -70,10 +70,9 @@ public class QuestionIntent extends Activity {
 		}
 	}
 
-	/*public void onBackPressed() {
+	public void onBackPressed() {
 
 	}
-*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
