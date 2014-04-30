@@ -15,6 +15,15 @@
         android:layout_height="0dp"
         android:layout_centerInParent="true" />
 
+    <Button
+        android:id="@+id/resetHighScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/reset"
+        android:textColor="@color/white" />
+
     <SeekBar
         android:id="@+id/seekBar1"
         android:layout_width="match_parent"

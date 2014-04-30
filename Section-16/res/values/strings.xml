@@ -18,9 +18,11 @@
 	<string name="dialogresponse">Response</string>
 	<string name="Ok">OK</string>
 	<string name="lives">Lives: %s</string>
-	<string name="hint">hint</string>
+	<string name="hint">Hint</string>
+	<string name="reset">Reset Highscores</string>
 	<string name="testQuestion">Test Question</string>
 	<string name="question">%s</string>
 	<color name="black">#000000</color>
+	<color name="green">#00FF00</color>
 	<color name="white">#ffffff</color>
 </resources>

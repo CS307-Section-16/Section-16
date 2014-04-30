@@ -25,7 +25,9 @@ public class DrawView extends View {
 
 		Paint paint = new Paint();
 		paint.setStyle(Paint.Style.FILL);
-		paint.setColor(Color.WHITE);
+		
+		/* Keep this commented to make mazebackground black */
+		//paint.setColor(Color.WHITE);
 		canvas.drawPaint(paint);
 
 

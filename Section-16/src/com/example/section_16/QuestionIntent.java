@@ -23,8 +23,6 @@ import android.widget.Toast;
 
 public class QuestionIntent extends Activity {
 
-
-
 	SQLiteDatabase mydb;
 	Question q_array[];
 	Question q;
@@ -72,10 +70,11 @@ public class QuestionIntent extends Activity {
 		}
 	}
 
-	public void onBackPressed() {
+	/*public void onBackPressed() {
 
 	}
-
+*/
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

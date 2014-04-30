@@ -12,7 +12,8 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f060000;
-        public static final int white=0x7f060001;
+        public static final int green=0x7f060001;
+        public static final int white=0x7f060002;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -34,12 +35,12 @@ public final class R {
         public static final int ProgressBar3=0x7f09001b;
         public static final int ProgressBar4=0x7f09001c;
         public static final int ProgressBar5=0x7f09001d;
-        public static final int ScrollView01=0x7f09003c;
+        public static final int ScrollView01=0x7f09003d;
         public static final int Title1=0x7f090007;
         public static final int Title2=0x7f090008;
         public static final int Title3=0x7f090009;
-        public static final int action_settings=0x7f09003f;
-        public static final int add_record=0x7f09003e;
+        public static final int action_settings=0x7f090040;
+        public static final int add_record=0x7f09003f;
         public static final int anchor=0x7f090006;
         public static final int button1=0x7f090027;
         public static final int button2=0x7f090028;
@@ -62,9 +63,9 @@ public final class R {
         public static final int e_button2=0x7f090004;
         public static final int e_button3=0x7f090005;
         public static final int e_textView1=0x7f090002;
-        public static final int hint=0x7f09003a;
-        public static final int linear=0x7f09003d;
-        public static final int lives=0x7f090039;
+        public static final int hint=0x7f090039;
+        public static final int linear=0x7f09003e;
+        public static final int lives=0x7f09003a;
         public static final int player1=0x7f09000f;
         public static final int player2=0x7f090010;
         public static final int player3=0x7f090011;
@@ -83,12 +84,13 @@ public final class R {
         public static final int rank3=0x7f09000c;
         public static final int rank4=0x7f09000d;
         public static final int rank5=0x7f09000e;
+        public static final int resetHighScores=0x7f09003b;
         public static final int score1=0x7f090014;
         public static final int score2=0x7f090015;
         public static final int score3=0x7f090016;
         public static final int score4=0x7f090017;
         public static final int score5=0x7f090018;
-        public static final int seekBar1=0x7f09003b;
+        public static final int seekBar1=0x7f09003c;
         public static final int textView1=0x7f09001e;
         public static final int textView2=0x7f09001f;
         public static final int textView3=0x7f090021;
@@ -130,8 +132,9 @@ public final class R {
         public static final int hint=0x7f050011;
         public static final int lives=0x7f050010;
         public static final int placeholder=0x7f05000c;
-        public static final int question=0x7f050013;
-        public static final int testQuestion=0x7f050012;
+        public static final int question=0x7f050014;
+        public static final int reset=0x7f050012;
+        public static final int testQuestion=0x7f050013;
         public static final int title_activity_continue_game=0x7f050003;
         public static final int title_activity_high_score_screen=0x7f050005;
         public static final int title_activity_initialize=0x7f050004;

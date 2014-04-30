@@ -16,7 +16,6 @@ public class SettingsScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings_screen);
 
-
 		View decorView = getWindow().getDecorView();
 		
 		// Hide the status bar.
