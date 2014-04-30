@@ -35,6 +35,10 @@ public final class R {
         public static final int ProgressBar3=0x7f09001d;
         public static final int ProgressBar4=0x7f09001e;
         public static final int ProgressBar5=0x7f09001f;
+<<<<<<< HEAD
+=======
+        public static final int RadioButton01=0x7f090029;
+>>>>>>> cf7da0c3c5be2969d7a1c91f8bf815b6352e3737
         public static final int ScrollView01=0x7f090040;
         public static final int Title1=0x7f090009;
         public static final int Title2=0x7f09000a;
@@ -42,22 +46,39 @@ public final class R {
         public static final int action_settings=0x7f090043;
         public static final int add_record=0x7f090042;
         public static final int anchor=0x7f090008;
+<<<<<<< HEAD
         public static final int button1=0x7f090029;
         public static final int button2=0x7f09002a;
         public static final int button3=0x7f09002b;
         public static final int button4=0x7f09002c;
         public static final int button5=0x7f09002d;
+=======
+        public static final int button1=0x7f09002a;
+        public static final int button2=0x7f09002b;
+        public static final int button3=0x7f09002c;
+        public static final int button4=0x7f09002d;
+        public static final int button5=0x7f09002e;
+>>>>>>> cf7da0c3c5be2969d7a1c91f8bf815b6352e3737
         public static final int choice1=0x7f090036;
         public static final int choice2=0x7f090037;
         public static final int choice3=0x7f090038;
         public static final int choice4=0x7f090039;
         public static final int confirm=0x7f09003b;
+<<<<<<< HEAD
         public static final int d_anchor=0x7f09002f;
         public static final int d_down=0x7f090033;
         public static final int d_left=0x7f090032;
         public static final int d_right=0x7f090031;
         public static final int d_up=0x7f090030;
         public static final int dpad_layout=0x7f09002e;
+=======
+        public static final int d_anchor=0x7f090030;
+        public static final int d_down=0x7f090034;
+        public static final int d_left=0x7f090033;
+        public static final int d_right=0x7f090032;
+        public static final int d_up=0x7f090031;
+        public static final int dpad_layout=0x7f09002f;
+>>>>>>> cf7da0c3c5be2969d7a1c91f8bf815b6352e3737
         public static final int e_anchor=0x7f090001;
         public static final int e_button1=0x7f090003;
         public static final int e_button2=0x7f090006;
@@ -91,7 +112,10 @@ public final class R {
         public static final int score3=0x7f090018;
         public static final int score4=0x7f090019;
         public static final int score5=0x7f09001a;
+<<<<<<< HEAD
         public static final int score_text=0x7f090034;
+=======
+>>>>>>> cf7da0c3c5be2969d7a1c91f8bf815b6352e3737
         public static final int seekBar1=0x7f09003f;
         public static final int sumbitButton=0x7f090007;
         public static final int textView1=0x7f090020;
