@@ -16,8 +16,8 @@ public class MainActivity extends Activity {
 	private boolean created = false;
 	public static MazeCell a[][] = null;
 	
-	public static int questionsAnswered = 0;
-	public static int questionsAttempted = 0;
+	public static double questionsAnswered = 0;
+	public static double questionsAttempted = 0;
 	
 	@SuppressWarnings("unused")
 	@SuppressLint("NewApi")
