@@ -136,28 +136,4 @@ public class QuestionIntent extends Activity {
 		});
 		alertDialog.show();
 	}
-	/*
-	public Score retrieveScore(){
-
-	        Score s = new Score();
-
-	        try{
-	            mydb = openOrCreateDatabase(DBNAME, Context.MODE_PRIVATE,null);
-	            Cursor score_to_retrieve  = mydb.rawQuery("SELECT * FROM "+  SCORETABLE, null);
-
-	            if(score_to_retrieve.moveToFirst()){
-	                    String ID = score_to_retrieve .getString(0);
-	                    String NAME= score_to_retrieve .getString(1);
-	                    String SCORE= score_to_retrieve .getString(2);
-
-	                    s.name = NAME;
-	                    s.score = Integer.parseInt(SCORE);
-	            }
-	            mydb.close();
-	        }catch(Exception e){
-	            Toast.makeText(getApplicationContext(), "Error encountered.", Toast.LENGTH_LONG);
-	        }
-
-	        return s;
-	    }*/
 }

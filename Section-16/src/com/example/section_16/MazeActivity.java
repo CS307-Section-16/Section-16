@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -19,7 +20,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 
 	private static final int ANSWER_RESPONSE = 0;
 	private final String savefile = "maze.ser";
-	
+
 	DrawView drawview = null;
 
 	@SuppressLint("NewApi")
@@ -28,15 +29,15 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		super.onCreate(savedInstanceState);
 		drawview = new DrawView(this);
 		setContentView(R.layout.activity_maze);
-		
+
 		MainActivity.datasource.open();
 		Set s = MainActivity.datasource.getSettings();
 		MainActivity.datasource.close();
-		
+
 		if (s.save == 1){
 			loadCurrentState();
 		}
-		
+
 
 		View decorView = getWindow().getDecorView();
 		// Hide the status bar.
@@ -73,7 +74,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	public void handlePlayerMove(int x0, int x1, int y0, int y1){
 		if(!MainActivity.a[y1][x1].isWall()){
 			MazeCell.playerPos.y = y1;
@@ -83,18 +84,22 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			if(MainActivity.a[y1][x1].obstacle){
 				Intent question = new Intent(this, QuestionIntent.class);
 				startActivityForResult(question, ANSWER_RESPONSE);
+			}else if(MainActivity.a[y1][x1].end){
+				Intent end = new Intent(this, EndActivity.class);
+				startActivity(end);
+				finish();
 			}
 			drawview.invalidate();
 		}
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		int b = v.getId();
-		
+
 		int x = MazeCell.playerPos.x;
 		int y = MazeCell.playerPos.y;
-		
+
 		if(b == R.id.d_up){
 			handlePlayerMove(x,x,y,y-1);
 		}else if(b == R.id.d_right){
@@ -105,26 +110,26 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			handlePlayerMove(x,x-1,y,y);
 		}
 	}
-	
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	      if (requestCode == ANSWER_RESPONSE) {
-	          if (resultCode == RESULT_OK) {
-	            String myValue = null;
-	            if(((myValue=data.getStringExtra("1"))!=null)){
-	            	
-	            	int x = MazeCell.playerPos.x;
-	        		int y = MazeCell.playerPos.y;
-	        		MainActivity.a[y][x].obstacle = false;
-	            	
-	            }else if(((myValue=data.getStringExtra("0"))!=null)){
-	            	
+		if (requestCode == ANSWER_RESPONSE) {
+			if (resultCode == RESULT_OK) {
+				String myValue = null;
+				if(((myValue=data.getStringExtra("1"))!=null)){
+
+					int x = MazeCell.playerPos.x;
+					int y = MazeCell.playerPos.y;
+					MainActivity.a[y][x].obstacle = false;
+
+				}else if(((myValue=data.getStringExtra("0"))!=null)){
+
 					Intent question = new Intent(this, QuestionIntent.class);
 					startActivityForResult(question, ANSWER_RESPONSE);
-	            	
-	            }
-	          }
-	      }
-	      
+
+				}
+			}
+		}
+
 	}
 	@Override
 	public void onBackPressed() {
@@ -137,7 +142,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		startActivity(back);
 		finish();
 	}
-	
+
 	public void saveCurrentState(){
 		try {
 			FileOutputStream fos = new FileOutputStream(savefile);
@@ -159,5 +164,5 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			e.printStackTrace();
 		}
 	}
-	
+
 }

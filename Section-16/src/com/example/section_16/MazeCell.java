@@ -30,6 +30,7 @@ public class MazeCell implements Serializable{
 		this.wall = true;
 		this.x=x;
 		this.y=y;
+		this.visible = false;
 		this.parent = parent;	
 	}
 	
