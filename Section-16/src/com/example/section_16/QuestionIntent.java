@@ -59,7 +59,7 @@ public class QuestionIntent extends Activity {
 
 		TextView tv = (TextView)findViewById(R.id.questionBox);
 		//tv.setText("NAME " + s.name + "\n\n SCORE: " + s.score );
-		tv.setText(q.question + "\n\nA: " + q.answer_A + "\n\nB: " + q.answer_B+ "\n\nC: " + q.answer_C+ "\n\nD: " + q.answer_D);
+		tv.setText(q.question + "\nA: " + q.answer_A + "\nB: " + q.answer_B+ "\nC: " + q.answer_C+ "\nD: " + q.answer_D);
 	}
 	public void insertHighScore(Score s){
 		try{

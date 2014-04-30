@@ -210,7 +210,7 @@ public class QuestionsDataSource {
   
 
 public void insertAllIntoTable(QuestionsDataSource ds){
-	int numQuestions = 76;
+	int numQuestions = 102;
     q_array = new Question[numQuestions];
     
     final String java = "JAVA";
@@ -1050,7 +1050,269 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[75].used = 0;
 	q_array[75].type = conc;
 	q_array[75].hint = "";
-    
+	
+	q_array[76].question = "A linked list can implement random access.";
+	q_array[76].answer_A = "True";
+	q_array[76].answer_B = "False";
+	q_array[76].answer_C = "N/A";
+	q_array[76].answer_D = "N/A";
+	q_array[76].correct = "B";
+	q_array[76].used = 0;
+	q_array[76].type = conc;
+	q_array[76].hint = "N/A";
+	
+	q_array[77].question = "What is the result of 'int var = 2.6' and then printing out var?";
+	q_array[77].answer_A = "2.6";
+	q_array[77].answer_B = "3";
+	q_array[77].answer_C = "2";
+	q_array[77].answer_D = "Error";
+	q_array[77].correct = "C";
+	q_array[77].used = 0;
+	q_array[77].type = conc;
+	q_array[77].hint = "A decimal put into an int is truncated; not rounded.";
+	
+	q_array[78].question = "A function is not allowed to call itself.";
+	q_array[78].answer_A = "True";
+	q_array[78].answer_B = "False";
+	q_array[78].answer_C = "N/A";
+	q_array[78].answer_D = "N/A";
+	q_array[78].correct = "A";
+	q_array[78].used = 0;
+	q_array[78].type = conc;
+	q_array[78].hint = "N/A";
+	
+	q_array[79].question = "What is an external variable used for in C?";
+	q_array[79].answer_A = "An extgernal variable prevents the use of multiple function sin on file";
+	q_array[79].answer_B = "An external variable is allowed to be used in other source files than the one it was initialized in";
+	q_array[79].answer_C = "An external variable is not used in C code, but in Java";
+	q_array[79].answer_D = "An external variable does not need to be initialized at compiler time, but instead can ber done at runtime";
+	q_array[79].correct = "B";
+	q_array[79].used = 0;
+	q_array[79].type = c;
+	q_array[79].hint = "Why would something want to be used externally?";
+	
+	q_array[80].question = "Both a pointer's source and target can be changed.";
+	q_array[80].answer_A = "True";
+	q_array[80].answer_B = "False";
+	q_array[80].answer_C = "N/A";
+	q_array[80].answer_D = "N/A";
+	q_array[80].correct = "A";
+	q_array[80].used = 0;
+	q_array[80].type = c;
+	q_array[80].hint = "N/A";
+	
+	q_array[81].question = "What happens when using '%d' in a printf statement when printing a character?";
+	q_array[81].answer_A = "This causes a compilation error";
+	q_array[81].answer_B = "This causes a runtime error";
+	q_array[81].answer_C = "The character is still printed";
+	q_array[81].answer_D = "The ANSII value of the character is printed.";
+	q_array[81].correct = "D";
+	q_array[81].used = 0;
+	q_array[81].type = conc;
+	q_array[81].hint = "What would an integer value of a character be?";
+	
+	q_array[82].question = "How do you refer to the first element of an array?";
+	q_array[82].answer_A = "array[1]";
+	q_array[82].answer_B = "array[]";
+	q_array[82].answer_C = "array[0]";
+	q_array[82].answer_D = "arra[start]";
+	q_array[82].correct = "C";
+	q_array[82].used = 0;
+	q_array[82].type = conc;
+	q_array[82].hint = "Counting starts at 0 in programming.";
+	
+	q_array[83].question = "What is the maximum amount of characters that can be used in command-line arguments?";
+	q_array[83].answer_A = "64";
+	q_array[83].answer_B = "126";
+	q_array[83].answer_C = "256";
+	q_array[83].answer_D = "Depends on your operating system";
+	q_array[83].correct = "D";
+	q_array[83].used = 0;
+	q_array[83].type = conc;
+	q_array[83].hint = "Are all operating systems created equal?";
+	
+	q_array[84].question = "Macros have a local scope.";
+	q_array[84].answer_A = "True";
+	q_array[84].answer_B = "False";
+	q_array[84].answer_C = "N/A";
+	q_array[84].answer_D = "N/A";
+	q_array[84].correct = "B";
+	q_array[84].used = 0;
+	q_array[84].type = c;
+	q_array[84].hint = "N/A";
+	
+	q_array[85].question = "Which is the correct function to reverse a string?";
+	q_array[85].answer_A = "strback()";
+	q_array[85].answer_B = "revstr()";
+	q_array[85].answer_C = "strrev()";
+	q_array[85].answer_D = "strswitch()";
+	q_array[85].correct = "C";
+	q_array[85].used = 0;
+	q_array[85].type = c;
+	q_array[85].hint = "Almost all string functions begin with str";
+	
+	q_array[86].question = "Which is the correct function to copy a string?";
+	q_array[86].answer_A = "copystr()";
+	q_array[86].answer_B = "stringcopy()";
+	q_array[86].answer_C = "memcopy()";
+	q_array[86].answer_D = "strcopy()";
+	q_array[86].correct = "D";
+	q_array[86].used = 0;
+	q_array[86].type = c;
+	q_array[86].hint = "Almost all string functions begin with str";
+	
+	q_array[87].question = "Which is the correct function to find a string?";
+	q_array[87].answer_A = "strfind()";
+	q_array[87].answer_B = "strlocate()";
+	q_array[87].answer_C = "strwhr()";
+	q_array[87].answer_D = "strstr()";
+	q_array[87].correct = "D";
+	q_array[87].used = 0;
+	q_array[87].type = c;
+	q_array[87].hint = "It finds a string within a string.";
+	
+	q_array[88].question = "What is the correct order that C code does arithmetic operations?";
+	q_array[88].answer_A = "* / + -";
+	q_array[88].answer_B = "/ * - +";
+	q_array[88].answer_C = "/ * + -";
+	q_array[88].answer_D = "* / - +";
+	q_array[88].correct = "C";
+	q_array[88].used = 0;
+	q_array[88].type = c;
+	q_array[88].hint = "Its not excatly the normal order of operations.";
+	
+	q_array[89].question = "In hexadecimal, the number 0xFFF represents:";
+	q_array[89].answer_A = "45";
+	q_array[89].answer_B = "151515";
+	q_array[89].answer_C = "4095";
+	q_array[89].answer_D = "255";
+	q_array[89].correct = "C";
+	q_array[89].used = 0;
+	q_array[89].type = c;
+	q_array[89].hint = "Each F represents 15 multiplied by 16 to the power of where the digit is.";
+	
+	q_array[90].question = "The decimal number 3011 can be displayed in hexadecimal as:";
+	q_array[90].answer_A = "0xC3D0";
+	q_array[90].answer_B = "0xB0F";
+	q_array[90].answer_C = "0xDD0";
+	q_array[90].answer_D = "0xBC3";
+	q_array[90].correct = "D";
+	q_array[90].used = 0;
+	q_array[90].type = conc;
+	q_array[90].hint = "Divide by 16. This is the furthest left digit. Then divide the remainder by 16, etc. until the number in base 16 is reached";
+	
+	q_array[91].question = "How do you reverence the last element in an array of 20 elements?";
+	q_array[91].answer_A = "array[19]";
+	q_array[91].answer_B = "array[20]";
+	q_array[91].answer_C = "array[21]";
+	q_array[91].answer_D = "array[end]";
+	q_array[91].correct = "A";
+	q_array[91].used = 0;
+	q_array[91].type = conc;
+	q_array[91].hint = "Counting starts at 0 in programming";
+	
+	q_array[92].question = "Nested for loops are not allowed.";
+	q_array[92].answer_A = "True";
+	q_array[92].answer_B = "False";
+	q_array[92].answer_C = "N/A";
+	q_array[92].answer_D = "N/A";
+	q_array[92].correct = "B";
+	q_array[92].used = 0;
+	q_array[92].type = conc;
+	q_array[92].hint = "N/A";
+	
+	q_array[93].question = "Nested while loops are not allowed.";
+	q_array[93].answer_A = "True";
+	q_array[93].answer_B = "False";
+	q_array[93].answer_C = "N/A";
+	q_array[93].answer_D = "N/A";
+	q_array[93].correct = "B";
+	q_array[93].used = 0;
+	q_array[93].type = conc;
+	q_array[93].hint = "N/A";
+	
+	q_array[94].question = "For loops and while loops are allowed to be nested in each other.";
+	q_array[94].answer_A = "True";
+	q_array[94].answer_B = "False";
+	q_array[94].answer_C = "N/A";
+	q_array[94].answer_D = "N/A";
+	q_array[94].correct = "A";
+	q_array[94].used = 0;
+	q_array[94].type = conc;
+	q_array[94].hint = "N/A";
+	
+	q_array[95].question = "A C program using a large amount of recursive calls may cause a stack overflow.";
+	q_array[95].answer_A = "True";
+	q_array[95].answer_B = "False";
+	q_array[95].answer_C = "N/A";
+	q_array[95].answer_D = "N/A";
+	q_array[95].correct = "A";
+	q_array[95].used = 0;
+	q_array[95].type = c;
+	q_array[95].hint = "N/A";
+	
+	q_array[96].question = "A macro cannot be initialized with lower case letters.";
+	q_array[96].answer_A = "True";
+	q_array[96].answer_B = "False";
+	q_array[96].answer_C = "N/A";
+	q_array[96].answer_D = "N/A";
+	q_array[96].correct = "B";
+	q_array[96].used = 0;
+	q_array[96].type = c;
+	q_array[96].hint = "N/A";
+	
+	q_array[97].question = "Header files contain:";
+	q_array[97].answer_A = "Macros";
+	q_array[97].answer_B = "Structure Declarations";
+	q_array[97].answer_C = "Function Prototypes";
+	q_array[97].answer_D = "All of these";
+	q_array[97].correct = "D";
+	q_array[97].used = 0;
+	q_array[97].type = c;
+	q_array[97].hint = "It contains more than just macros";
+	
+	q_array[98].question = "Input and output functin prototypes are stored in which header file.";
+	q_array[98].answer_A = "inout.h";
+	q_array[98].answer_B = "stdlib.h";
+	q_array[98].answer_C = "stdio.h";
+	q_array[98].answer_D = "math.h";
+	q_array[98].correct = "C";
+	q_array[98].used = 0;
+	q_array[98].type = c;
+	q_array[98].hint = "The header is for Standard Input and Output";
+	
+	q_array[99].question = "Every if-else statement can be mirrored in functionality with a '?'";
+	q_array[99].answer_A = "True";
+	q_array[99].answer_B = "False";
+	q_array[99].answer_C = "N/A";
+	q_array[99].answer_D = "N/A";
+	q_array[99].correct = "B";
+	q_array[99].used = 0;
+	q_array[99].type = conc;
+	q_array[99].hint = "N/A";
+	
+	q_array[100].question = "A function cannot contain two seperate return() statements.";
+	q_array[100].answer_A = "True";
+	q_array[100].answer_B = "False";
+	q_array[100].answer_C = "N/A";
+	q_array[100].answer_D = "N/A";
+	q_array[100].correct = "B";
+	q_array[100].used = 0;
+	q_array[100].type = conc;
+	q_array[100].hint = "N/A";
+	
+	q_array[101].question = "You cannot change the size of a statically defined array during runtime.";
+	q_array[101].answer_A = "True";
+	q_array[101].answer_B = "False";
+	q_array[101].answer_C = "N/A";
+	q_array[101].answer_D = "N/A";
+	q_array[101].correct = "A";
+	q_array[101].used = 0;
+	q_array[101].type = conc;
+	q_array[101].hint = "N/A";
+	
+	
+	
     long added = 0;
     for(int i=0;i<numQuestions;i++){
     	added = ds.createQuestion(q_array[i]).id;
