@@ -106,6 +106,9 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 				Intent question = new Intent(this, QuestionIntent.class);
 				startActivityForResult(question, ANSWER_RESPONSE);
 			}else if(MainActivity.a[y1][x1].end){
+				MainActivity.datasource.open();
+				MainActivity.datasource.updateSave(0);
+				MainActivity.datasource.close();
 				Intent end = new Intent(this, EndActivity.class);
 				startActivity(end);
 				finish();
