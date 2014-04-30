@@ -100,7 +100,6 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 			MainActivity.a[y0][x0].player = false;
 			MainActivity.a[y1][x1].player = true;
 			if(MainActivity.a[y1][x1].obstacle){
-				MainActivity.questionsAttempted++;
 				Intent question = new Intent(this, QuestionIntent.class);
 				startActivityForResult(question, ANSWER_RESPONSE);
 			}else if(MainActivity.a[y1][x1].end){
@@ -124,7 +123,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		int y = MazeCell.playerPos.y;
 
 		try {
-			Thread.sleep(50);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
