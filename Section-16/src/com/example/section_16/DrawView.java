@@ -32,7 +32,9 @@ public class DrawView extends View {
 		int startX = (x/2 - y/2) - 155;
 		for(int j = 0; j < MainActivity.a[1].length; j++){
 			for(int i = 0; i < MainActivity.a.length; i++){
-				if(MainActivity.a[i][j].wall == true)
+				if(!MainActivity.a[i][j].isVisible())
+					paint.setColor(Color.parseColor("#C0C0C0"));
+				else if(MainActivity.a[i][j].wall == true)
 					paint.setColor(Color.parseColor("#000000"));
 				else if(MainActivity.a[i][j].player == true)
 					paint.setColor(Color.parseColor("#00FF00"));

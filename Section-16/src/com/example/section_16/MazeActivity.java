@@ -30,9 +30,11 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	}
 	
 	public void setVisibility(){
+		int x = MazeCell.playerPos.x;
+		int y = MazeCell.playerPos.y;
 		for(int i = -1; i <= 1; i++){
 			for(int j = -1; j <=1; j++){
-				MainActivity.a[i][j].visible = true;
+				MainActivity.a[y+i][x+j].visible = true;
 			}
 		}
 	}
@@ -42,6 +44,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setVisibility();
 		super.onCreate(savedInstanceState);
 		drawview = new DrawView(this);
 		setContentView(R.layout.activity_maze);
@@ -106,6 +109,7 @@ public class MazeActivity extends Activity implements OnClickListener, Serializa
 		//		startActivity(end);
 		//		finish();
 			}
+			setVisibility();
 			drawview.invalidate();
 		}
 	}
