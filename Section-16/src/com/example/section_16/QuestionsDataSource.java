@@ -559,7 +559,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[28].type = conc;
 	q_array[28].hint = "It is a power of 2";
 	
-	q_array[29].question = "........../n"
+	q_array[29].question = "..........\n"
 			+ "for(int j = 0; j < 100; j++){\n"
 			+ "\tt = 0;\n"
 			+ "\tt--;\n"
@@ -585,7 +585,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[30].type = java;
 	q_array[30].hint = "Has nothing to do with shared memory";
 	
-	q_array[31].question = "In which direction soes a stack grow?";
+	q_array[31].question = "In which direction does a stack grow?";
 	q_array[31].answer_A = "Up";
 	q_array[31].answer_B = "Left";
 	q_array[31].answer_C = "Down";
@@ -663,7 +663,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[37].type = java;
 	q_array[37].hint = "Not determined at compilation or runtime alone";
 	
-	q_array[38].question = "What is the difference bewtween overloading and overriding?";
+	q_array[38].question = "What is the difference between overloading and overriding?";
 	q_array[38].answer_A = "Overloading happens during compile time while overriding happens during runtime.";
 	q_array[38].answer_B = "They are the same thing.";
 	q_array[38].answer_C = "Overloading is a systems error when you try to override.";
@@ -921,7 +921,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[63].correct = "C";
 	q_array[63].used = 0;
 	q_array[63].type = c;
-	q_array[63].hint = "You need the header for Stadard Library.";
+	q_array[63].hint = "You need the header for Standard Library.";
 	
 	q_array[64].question = "What function should be used to clear memory allocated from malloc()?";
 	q_array[64].answer_A = "erase()";
@@ -953,7 +953,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[66].type = conc;
 	q_array[66].hint = "It is a numerical value.";
 	
-	q_array[67].question = "In C, results rom logical operations are either...";
+	q_array[67].question = "In C, results from logical operations are either...";
 	q_array[67].answer_A = "True or False";
 	q_array[67].answer_B = "Depends on the computer";
 	q_array[67].answer_C = "0 or 1";
@@ -1076,13 +1076,13 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[78].answer_B = "False";
 	q_array[78].answer_C = "N/A";
 	q_array[78].answer_D = "N/A";
-	q_array[78].correct = "A";
+	q_array[78].correct = "B";
 	q_array[78].used = 0;
 	q_array[78].type = conc;
 	q_array[78].hint = "N/A";
 	
 	q_array[79].question = "What is an external variable used for in C?";
-	q_array[79].answer_A = "An extgernal variable prevents the use of multiple function sin on file";
+	q_array[79].answer_A = "An external variable prevents the use of multiple functions in a file";
 	q_array[79].answer_B = "An external variable is allowed to be used in other source files than the one it was initialized in";
 	q_array[79].answer_C = "An external variable is not used in C code, but in Java";
 	q_array[79].answer_D = "An external variable does not need to be initialized at compiler time, but instead can ber done at runtime";
@@ -1155,7 +1155,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[86].answer_A = "copystr()";
 	q_array[86].answer_B = "stringcopy()";
 	q_array[86].answer_C = "memcopy()";
-	q_array[86].answer_D = "strcopy()";
+	q_array[86].answer_D = "strcpy()";
 	q_array[86].correct = "D";
 	q_array[86].used = 0;
 	q_array[86].type = c;
@@ -1281,7 +1281,7 @@ public void insertAllIntoTable(QuestionsDataSource ds){
 	q_array[98].type = c;
 	q_array[98].hint = "The header is for Standard Input and Output";
 	
-	q_array[99].question = "Every if-else statement can be mirrored in functionality with a '?'";
+	q_array[99].question = "Every if-else statement can be mirrored in functionality with '?:'";
 	q_array[99].answer_A = "True";
 	q_array[99].answer_B = "False";
 	q_array[99].answer_C = "N/A";
